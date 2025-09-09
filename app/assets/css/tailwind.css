@@ -194,4 +194,8 @@
     font-family: 'GuarujaNeue', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans";
     font-weight: 500 !important;
   }
+  .heroTitle {
+    font-family: 'GuarujaNeue', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans";
+    font-weight: 600 !important;
+  }
 }

@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1 class="text-5xl font-semibold">Welcome to the homepage</h1>
+    <IconsLogo />
+    <h1 class="text-5xl heroTitle">IVA 360 — платформа для эффективной работы</h1>
     <Button>Click me</Button>
   </div>
 </template>
