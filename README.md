@@ -1,1 +1,7 @@
-# Nuxt 4 / Tailwind CSS 4 / Shadcn Vue / Custom Fonts
+# IVA360 DEV
+
+- [x] Nuxt 4
+- [x] Tailwind CSS 4
+- [x] Shadcn Vue
+- [x] Custom Fonts
+- [ ] HomePage
