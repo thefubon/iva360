@@ -65,6 +65,8 @@
   --color-primary-800: var(--primary-800);
   --color-primary-900: var(--primary-900);
   --color-primary-950: var(--primary-950);
+
+  --breakpoint-3xl: 120rem;
 }
 
 :root {
@@ -188,16 +190,27 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased flex flex-col overflow-x-clip;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1 {
+    @apply text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl leading-[110%];
+    font-family: 'GuarujaNeue', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans";
+    font-weight: 600 !important;
+  }
+
+  h2 {
+    @apply text-3xl lg:text-4xl xl:text-5xl leading-[110%];
     font-family: 'GuarujaNeue', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans";
     font-weight: 500 !important;
   }
-  
-  .heroTitle {
+
+  h3, h4, h5, h6 {
     font-family: 'GuarujaNeue', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans";
-    font-weight: 600 !important;
+    font-weight: 500 !important;
+  }
+
+  p {
+    @apply !leading-[150%];
   }
 }
 

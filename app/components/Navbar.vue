@@ -93,7 +93,7 @@ const components: { title: string, href: string, description: string, icon: stri
       <NavigationMenuItem>
         <NavigationMenuTrigger class="uppercase cursor-pointer">Продукты</NavigationMenuTrigger>
         <NavigationMenuContent>
-          <ul class="grid w-[480px] gap-3 p-4 md:w-[600px] md:grid-cols-2 lg:w-[680px] ">
+          <ul class="grid w-[480px] gap-4 p-4 md:w-[670px] md:grid-cols-2 lg:w-[670px]">
             <li v-for="component in components" :key="component.title">
               <NavigationMenuLink as-child>
                 <a :href="component.href"
@@ -103,7 +103,7 @@ const components: { title: string, href: string, description: string, icon: stri
                       <component :is="iconComponents[component.icon]" class="!size-9" />
                     </div>
                     <div class="space-y-1.5">
-                      <div class="font-medium leading-none">{{ component.title }}</div>
+                      <div class="text-lg font-medium leading-none">{{ component.title }}</div>
                       <p class="line-clamp-2 text-sm leading-snug text-muted-foreground">
                         {{ component.description }}
                       </p>

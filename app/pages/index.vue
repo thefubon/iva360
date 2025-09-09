@@ -12,7 +12,8 @@ useHead({
 </script>
 
 <template>
-  <div class="py-10">
-   <BlocksHero />
+  <div class="py-6 md:py-16 space-y-16 md:space-y-24">
+    <BlocksHero />
+    <BlocksCardsProducts />
   </div>
 </template>

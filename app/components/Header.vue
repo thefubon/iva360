@@ -26,7 +26,7 @@ import { Button } from '@/components/ui/button'
     </div>
   </header>
 
-  <div class="bg-background shadow-lg shadow-slate-600/10 relative z-40">
+  <div class="hidden md:block bg-background shadow-lg shadow-slate-600/10 relative z-40">
     <div class="container flex justify-center items-center h-16">
       <Navbar />
     </div>
