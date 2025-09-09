@@ -1,1 +1,1 @@
-# Nuxt 4 / Tailwind 4 / Shadcn Vue / Custom Fonts
+# Nuxt 4 / Tailwind CSS 4 / Shadcn Vue / Custom Fonts
