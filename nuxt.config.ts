@@ -18,5 +18,19 @@ export default defineNuxtConfig({
   shadcn: {
     prefix: '',
     componentDir: './app/components/ui'
+  },
+
+  app: {
+    head: {
+      titleTemplate: 'IVA360 | %s',
+      title: 'IVA360',
+      meta: [
+        { name: 'description', content: 'Empty' },
+        { name: 'robots', content: 'noindex, nofollow' }
+      ],
+      htmlAttrs: {
+        lang: 'ru',
+      },
+    }
   }
 })
