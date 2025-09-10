@@ -204,7 +204,7 @@
   }
 
   h3 {
-    @apply text-3xl lg:text-4xl leading-[110%];
+    @apply text-3xl lg:text-4xl leading-[120%];
     font-family: 'GuarujaNeue', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans";
     font-weight: 500 !important;
   }
