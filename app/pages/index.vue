@@ -13,7 +13,7 @@ useHead({
 
 <template>
   <div class="relative">
-    <div class="absolute inset-x-0 top-32 md:top-40 overflow-x-clip">
+    <div class="absolute inset-x-0 top-10 lg:top-40 overflow-x-clip">
       <BgLine class="w-full h-full scale-130 lg:scale-160 xl:scale-130" />
     </div>
 
