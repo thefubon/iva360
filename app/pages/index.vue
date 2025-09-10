@@ -39,6 +39,8 @@ useHead({
           <h2>Почему выбирают IVA&nbsp;360</h2>
         </div>
         <BlocksCardsThree />
+
+        <BlocksCardsFive />
       </div>
     </div>
   </div>
