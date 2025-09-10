@@ -47,18 +47,20 @@ const closeMobileMenu = () => {
   
   // Небольшая задержка перед анимацией контейнера
   setTimeout(() => {
-    $gsap.to(mobileMenuRef.value, {
-      y: '-100%',
-      duration: 0.3,
-      ease: "power2.in",
-      onComplete: () => {
-        isMobileMenuOpen.value = false
-        // Разблокируем скролл body
-        if (typeof document !== 'undefined') {
-          document.body.style.overflow = ''
+    if (mobileMenuRef.value) {
+      $gsap.to(mobileMenuRef.value, {
+        y: '-100%',
+        duration: 0.3,
+        ease: "power2.in",
+        onComplete: () => {
+          isMobileMenuOpen.value = false
+          // Разблокируем скролл body
+          if (typeof document !== 'undefined') {
+            document.body.style.overflow = ''
+          }
         }
-      }
-    })
+      })
+    }
   }, 200)
 }
 
