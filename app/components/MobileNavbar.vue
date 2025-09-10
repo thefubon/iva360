@@ -120,7 +120,12 @@ const simpleMenuItems = [
 <template>
   <nav v-if="isVisible" class="px-6 space-y-4">
     <!-- Аккордеон с shadcn/vue для подменю -->
-    <Accordion type="single" collapsible class="space-y-2">
+    <Accordion
+      type="single"
+      collapsible
+      default-value="products"
+      class="space-y-2"
+    >
       <!-- Продукты -->
       <AccordionItem value="products" class="border-0">
         <AccordionTrigger class="py-3 text-lg font-medium hover:no-underline hover:text-primary [&>svg]:size-5">
