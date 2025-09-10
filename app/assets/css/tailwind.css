@@ -65,8 +65,6 @@
   --color-primary-800: var(--primary-800);
   --color-primary-900: var(--primary-900);
   --color-primary-950: var(--primary-950);
-
-  --breakpoint-3xl: 120rem;
 }
 
 :root {

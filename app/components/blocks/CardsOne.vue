@@ -82,7 +82,7 @@ const components: { title: string, href: string, description: string, textColor:
 </script>
 
 <template>
-  <div class="container grid md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 lg:gap-10 3xl:gap-12">
+  <div class="container grid md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
     <div v-for="component in components" :key="component.title" :class="component.iconColor"
       class="rounded-3xl relative flex flex-col md:hover:-translate-y-2 transition-all duration-300 p-6 md:p-10 space-y-10 overflow-hidden">
 
