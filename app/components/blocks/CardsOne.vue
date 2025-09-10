@@ -24,7 +24,7 @@ const components: { title: string, href: string, description: string, textColor:
     href: "#",
     description:
       "Запись видеовстреч, субтитры в реальном времени, текстовая расшифровка встреч, онлайн-перевод, составление резюме после встречи.",
-    iconColor: "bg-slate-100",
+    iconColor: "bg-primary-50",
     icon: "Meetings",
     textColor: "text-forgraund",
     image: "/img/CardImageVideo.png"
