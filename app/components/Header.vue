@@ -5,6 +5,7 @@ import { Search, ShoppingBag, Menu, X } from 'lucide-vue-next'
 // Состояние мобильного меню
 const isMobileMenuOpen = ref(false)
 const isMenuFullyOpen = ref(false)
+const isContentVisible = ref(false)
 const mobileMenuRef = ref<HTMLElement>()
 
 // Получаем GSAP из плагина
@@ -13,6 +14,8 @@ const { $gsap } = useNuxtApp()
 // Функция для открытия мобильного меню с анимацией
 const openMobileMenu = () => {
   isMobileMenuOpen.value = true
+  // Показываем содержимое сразу
+  isContentVisible.value = true
   
   // Блокируем скролл body
   if (typeof document !== 'undefined') {
@@ -25,14 +28,16 @@ const openMobileMenu = () => {
     // Устанавливаем начальное состояние (сверху)
     $gsap.set(mobileMenuRef.value, { y: '-100%' })
     
-    // Анимация выезда контейнера сверху вниз
+    // Анимация выезда контейнера сверху вниз (медленнее)
     $gsap.to(mobileMenuRef.value, {
       y: '0%',
-      duration: 0.4,
+      duration: 0.8,
       ease: "power3.out",
       onComplete: () => {
-        // После открытия контейнера показываем кнопки через состояние
-        isMenuFullyOpen.value = true
+        // После открытия контейнера показываем кнопки
+        setTimeout(() => {
+          isMenuFullyOpen.value = true
+        }, 150)
       }
     })
   })
@@ -42,26 +47,24 @@ const openMobileMenu = () => {
 const closeMobileMenu = () => {
   if (!mobileMenuRef.value) return
   
-  // Скрываем кнопки через состояние
+  // Скрываем только кнопки, контент остается видимым
   isMenuFullyOpen.value = false
   
-  // Небольшая задержка перед анимацией контейнера
-  setTimeout(() => {
-    if (mobileMenuRef.value) {
-      $gsap.to(mobileMenuRef.value, {
-        y: '-100%',
-        duration: 0.3,
-        ease: "power2.in",
-        onComplete: () => {
-          isMobileMenuOpen.value = false
-          // Разблокируем скролл body
-          if (typeof document !== 'undefined') {
-            document.body.style.overflow = ''
-          }
-        }
-      })
+  // Сразу начинаем анимацию контейнера вверх
+  $gsap.to(mobileMenuRef.value, {
+    y: '-100%',
+    duration: 0.3,
+    ease: "power2.in",
+    onComplete: () => {
+      // После анимации скрываем контент и контейнер
+      isContentVisible.value = false
+      isMobileMenuOpen.value = false
+      // Разблокируем скролл body
+      if (typeof document !== 'undefined') {
+        document.body.style.overflow = ''
+      }
     }
-  }, 200)
+  })
 }
 
 // Функция для переключения мобильного меню
@@ -134,8 +137,8 @@ onUnmounted(() => {
     class="fixed inset-0 bg-background z-[60] md:hidden flex flex-col py-10"
   >
     <!-- Контент меню с прокруткой -->
-    <div class="flex-1 overflow-y-auto">
-      <MobileNavbar />
+    <div v-if="isContentVisible" class="flex-1 overflow-y-auto">
+      <MobileNavbar :is-visible="isContentVisible" />
     </div>
     
     <!-- Sticky кнопка входа снизу -->

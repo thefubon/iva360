@@ -8,6 +8,15 @@ import Disc from "@/components/icons/Disc.vue"
 import Webinar from "@/components/icons/Webinar.vue"
 import Ai from "@/components/icons/Ai.vue"
 
+// Props для управления видимостью
+interface Props {
+  isVisible?: boolean
+}
+
+const { isVisible } = withDefaults(defineProps<Props>(), {
+  isVisible: false
+})
+
 // Map icon names to components
 const iconComponents: Record<string, any> = {
   Meetings,
@@ -109,7 +118,7 @@ const simpleMenuItems = [
 </script>
 
 <template>
-  <nav class="px-6 space-y-4">
+  <nav v-if="isVisible" class="px-6 space-y-4">
     <!-- Аккордеон с shadcn/vue для подменю -->
     <Accordion type="single" collapsible class="space-y-2">
       <!-- Продукты -->
