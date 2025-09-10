@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const cardClasses = computed(() => {
-  const baseClass = 'bg-slate-100 rounded-3xl relative flex md:hover:-translate-y-2 transition-all duration-300 overflow-hidden'
+  const baseClass = 'bg-slate-100 rounded-3xl relative flex md:hover:-translate-y-2 transition-all duration-300 overflow-hidden h-full'
   
   const variantClasses = {
     default: 'flex-col',

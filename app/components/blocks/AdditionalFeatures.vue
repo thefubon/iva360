@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Card from '@/components/ui/Card.vue'
+import Card from '@/components/ui/card/Card.vue'
 
 const components: { title: string, href: string, description: string, image: string }[] = [
   {

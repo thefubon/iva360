@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import IconCard from '@/components/ui/IconCard.vue'
+import IconCard from '@/components/ui/icon-card/IconCard.vue'
 import Meetings from "@/components/icons/Meetings.vue"
 import Messenger from "@/components/icons/Messenger.vue"
 import Mail from "@/components/icons/Mail.vue"

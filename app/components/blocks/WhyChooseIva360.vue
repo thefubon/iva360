@@ -1,14 +1,20 @@
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
+import HorizontalCard from '@/components/ui/horizontal-card/HorizontalCard.vue'
 
-const components: { title: string, href: string, description: string, image: string, position: string }[] = [
+const components: { 
+  title: string, 
+  href: string, 
+  description: string, 
+  image: string, 
+  isReverse: boolean 
+}[] = [
   {
     title: "Одна платформа вместо&nbsp;6+ отдельных сервисов",
     href: "#",
     description:
       "Все инструменты для коммуникации и организации рабочего процесса собраны в одном пространстве – без переключений и потерь данных.",
     image: "/img/CardImageVideo.png",
-    position: "lg:flex-row-reverse"
+    isReverse: true
   },
   {
     title: "Российская разработка, соответствующая требованиям безопасности",
@@ -16,7 +22,7 @@ const components: { title: string, href: string, description: string, image: str
     description:
       "Собственная инфраструктура, сертифицированные серверы и контроль доступа в соответствии с корпоративными и государственными стандартами.",
     image: "/img/CardImageChat.png",
-    position: ""
+    isReverse: false
   },
   {
     title: "Простой интерфейс, не&nbsp;требующий обучения",
@@ -24,36 +30,23 @@ const components: { title: string, href: string, description: string, image: str
     description:
       "Интуитивно понятная среда – сотрудники начинают пользоваться сервисами сразу, без долгого онбординга и обучения.",
     image: "/img/CardImageVideo.png",
-    position: "lg:flex-row-reverse"
+    isReverse: true
   },
 ]
 </script>
 
 <template>
   <div class="container flex flex-col gap-6 md:gap-8 lg:gap-10 2xl:gap-12">
-    <div
-      v-for="component in components"
-      :key="component.title"
-      class="bg-slate-100 rounded-3xl flex flex-col-reverse lg:flex-row items-center gap-10 xl:gap-12 p-8 md:p-10"
-      :class="component.position"
-    >
-
-      <div class="space-y-10 flex-1">
-        <div class="space-y-4">
-          <h3 v-html="component.title"/>
-
-          <p class="line-clamp-3 text-muted-foreground text-base md:text-lg" v-html="component.description"/>
-        </div>
-
-        <div>
-          <Button size="xl">Получить консультацию</Button>
-        </div>
-      </div>
-
-      <div class="flex-1">
-        <NuxtImg :src="component.image" :alt="component.title" class="w-full" />
-      </div>
-
+    <div v-for="component in components" :key="component.title">
+      <HorizontalCard 
+        :title="component.title"
+        :description="component.description"
+        :image="component.image"
+        :href="component.href"
+        :is-reverse="component.isReverse"
+        :title-html="true"
+        :description-html="true"
+      />
     </div>
   </div>
 </template>

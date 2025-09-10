@@ -24,23 +24,23 @@ useHead({
         <div class="container">
           <h2>Все продукты<br >в одном приложении</h2>
         </div>
-        <BlocksCardsOne />
+        <BlocksProductsInOneApp />
       </div>
 
       <div class="space-y-8 lg:space-y-16">
         <div class="container">
           <h2>Подходит именно вам</h2>
         </div>
-        <BlocksCardsTwo />
+        <BlocksSuitableForYou />
       </div>
 
       <div class="space-y-8 lg:space-y-16">
         <div class="container">
           <h2>Почему выбирают IVA&nbsp;360</h2>
         </div>
-        <BlocksCardsThree />
+        <BlocksWhyChooseIva360 />
 
-        <BlocksCardsFive />
+        <BlocksAdditionalFeatures />
       </div>
     </div>
   </div>
