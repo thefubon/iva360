@@ -33,6 +33,13 @@ useHead({
         </div>
         <BlocksCardsTwo />
       </div>
+
+      <div class="space-y-8 lg:space-y-16">
+        <div class="container">
+          <h2>Почему выбирают IVA&nbsp;360</h2>
+        </div>
+        <BlocksCardsThree />
+      </div>
     </div>
   </div>
 </template>
