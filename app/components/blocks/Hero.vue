@@ -14,7 +14,7 @@ import { Button } from '@/components/ui/button'
       </div>
 
       <div class="flex flex-col md:flex-row items-center gap-4">
-        <Button size="xl" class="w-full md:w-auto" asChild>
+        <Button size="xl" class="w-full md:w-auto" as-child>
           <NuxtLink href="#">Попробовать бесплатно</NuxtLink>
         </Button>
 

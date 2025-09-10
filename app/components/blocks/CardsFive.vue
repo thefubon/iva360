@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Card from '@/components/ui/Card.vue'
+
 const components: { title: string, href: string, description: string, image: string }[] = [
   {
     title: "Искусственный интеллект внутри",
@@ -26,22 +28,13 @@ const components: { title: string, href: string, description: string, image: str
 
 <template>
   <div class="container grid md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 lg:gap-10 2xl:gap-12">
-    <div v-for="component in components" :key="component.title"
-      class="bg-slate-100 rounded-3xl relative flex flex-col md:hover:-translate-y-2 transition-all duration-300 overflow-hidden">
-      <a :href="component.href" class="absolute inset-0 z-10"></a>
-
-      <div class="space-y-4 p-8 md:p-10 h-full">
-        <h3>{{ component.title }}</h3>
-
-        <p class="line-clamp-3 text-muted-foreground text-base md:text-lg">
-          {{ component.description }}
-        </p>
-      </div>
-
-      <div>
-        <NuxtImg :src="component.image" :alt="component.title" class="w-full" />
-      </div>
-
+    <div v-for="component in components" :key="component.title">
+      <Card 
+        :title="component.title"
+        :description="component.description"
+        :image="component.image"
+        :href="component.href"
+      />
     </div>
   </div>
 </template>

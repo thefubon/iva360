@@ -34,15 +34,21 @@ const components: { title: string, href: string, description: string, image: str
 
 <template>
   <div>
-    <Carousel class="relative flex justify-center" :opts="{
-      align: 'center',
-    }">
+    <Carousel
+      class="relative flex justify-center"
+      :opts="{
+        align: 'center',
+      }"
+    >
 
       <CarouselContent class="border !-ml-10">
-        <CarouselItem class="basis-3/5 lg:basis-3/5 xl:basis-1/3 border border-red-500 !pl-10"
-          v-for="component in components" :key="component.title">
+        <CarouselItem
+          v-for="component in components"
+          :key="component.title"
+          class="basis-3/5 lg:basis-3/5 xl:basis-1/3 border border-red-500 !pl-10"
+        >
           <div class="bg-slate-100 rounded-3xl relative flex flex-col overflow-hidden h-full">
-            <a :href="component.href" class="absolute inset-0 z-10"></a>
+            <a :href="component.href" class="absolute inset-0 z-10"/>
 
             <div class="space-y-4 p-4 md:p-10 h-full">
               <h3 class="text-4xl font-medium leading-[110%]">{{ component.title }}</h3>

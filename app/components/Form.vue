@@ -41,42 +41,52 @@ const isOpen = ref(false)
 
       <div class="grid gap-3">
         <Label html-for="username">Имя и Фамилия</Label>
-        <Input class="h-12" id="username" default-value="" />
+        <Input id="username" class="h-12" default-value="" />
       </div>
 
       <div class="grid md:grid-cols-2 gap-4">
         <div class="grid gap-3">
           <Label html-for="email">Email</Label>
-          <Input class="h-12" id="email" type="email" default-value="" />
+          <Input
+            id="email"
+            class="h-12"
+            type="email"
+            default-value=""
+          />
         </div>
 
         <div class="grid gap-3">
           <Label html-for="tel">Телефон</Label>
-          <Input class="h-12" id="tel" type="tel" default-value="" />
+          <Input
+            id="tel"
+            class="h-12"
+            type="tel"
+            default-value=""
+          />
         </div>
       </div>
 
       <div class="grid md:grid-cols-2 gap-4">
         <div class="grid gap-3">
           <Label html-for="company">Компания</Label>
-          <Input class="h-12" id="company" default-value="" />
+          <Input id="company" class="h-12" default-value="" />
         </div>
 
         <div class="grid gap-3">
           <Label html-for="role">Роль <span class="text-zinc-400">(Опционально)</span></Label>
-          <Input class="h-12" id="role" default-value="" />
+          <Input id="role" class="h-12" default-value="" />
         </div>
       </div>
 
       <div class="flex space-x-2">
-        <Checkbox id="privacy" class="mt-1 size-6" v-model:checked="privacyChecked" />
+        <Checkbox id="privacy" v-model:checked="privacyChecked" class="mt-1 size-6" />
         <Label for="privacy" class="font-normal leading-5">Я даю согласие на обработку моих персональных данных в
           соответствии с условиями политики
           конфиденциальности</Label>
       </div>
 
       <div class="flex space-x-2">
-        <Checkbox id="terms" class="mt-1 size-6" v-model:checked="termsChecked" />
+        <Checkbox id="terms" v-model:checked="termsChecked" class="mt-1 size-6" />
         <Label for="terms" class="font-normal leading-5">Даю согласие на получение рекламных и информационных
           сообщений</Label>
       </div>

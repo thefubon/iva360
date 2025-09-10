@@ -22,7 +22,7 @@ useHead({
 
       <div class="space-y-8 lg:space-y-16">
         <div class="container">
-          <h2>Все продукты<br />в одном приложении</h2>
+          <h2>Все продукты<br >в одном приложении</h2>
         </div>
         <BlocksCardsOne />
       </div>

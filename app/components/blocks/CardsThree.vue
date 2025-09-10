@@ -31,15 +31,18 @@ const components: { title: string, href: string, description: string, image: str
 
 <template>
   <div class="container flex flex-col gap-6 md:gap-8 lg:gap-10 2xl:gap-12">
-    <div v-for="component in components" :key="component.title"
+    <div
+      v-for="component in components"
+      :key="component.title"
       class="bg-slate-100 rounded-3xl flex flex-col-reverse lg:flex-row items-center gap-10 xl:gap-12 p-8 md:p-10"
-      :class="component.position">
+      :class="component.position"
+    >
 
       <div class="space-y-10 flex-1">
         <div class="space-y-4">
-          <h3 v-html="component.title"></h3>
+          <h3 v-html="component.title"/>
 
-          <p class="line-clamp-3 text-muted-foreground text-base md:text-lg" v-html="component.description"></p>
+          <p class="line-clamp-3 text-muted-foreground text-base md:text-lg" v-html="component.description"/>
         </div>
 
         <div>

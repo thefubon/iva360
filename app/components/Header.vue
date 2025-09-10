@@ -19,12 +19,13 @@ import { Search, ShoppingBag, Menu } from 'lucide-vue-next';
 
         <Button variant="secondary" size="icon" class="relative">
           <div
-            class="size-4.5 text-xs bg-destructive text-background !font-bold absolute -top-1.5 -right-1.5 rounded-full flex justify-center items-center">
+            class="size-4.5 text-xs bg-destructive text-background !font-bold absolute -top-1.5 -right-1.5 rounded-full flex justify-center items-center"
+          >
             2</div>
           <ShoppingBag class="size-5" />
         </Button>
 
-        <Button asChild>
+        <Button as-child>
           <NuxtLink href="#">
             Войти
           </NuxtLink>

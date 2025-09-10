@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import IconCard from '@/components/ui/IconCard.vue'
 import Meetings from "@/components/icons/Meetings.vue"
 import Messenger from "@/components/icons/Messenger.vue"
 import Mail from "@/components/icons/Mail.vue"
@@ -18,64 +19,74 @@ const iconComponents: Record<string, any> = {
   Ai
 }
 
-const components: { title: string, href: string, description: string, textColor: string, iconColor: string, icon: string, image: string }[] = [
+const components: { 
+  title: string, 
+  href: string, 
+  description: string, 
+  titleColor: string, 
+  bgColor: string, 
+  iconBgColor: string, 
+  icon: string, 
+  image: string 
+}[] = [
   {
-    title: "Видеовстречи ",
+    title: "Видеовстречи",
     href: "#",
-    description:
-      "Запись видеовстреч, субтитры в реальном времени, текстовая расшифровка встреч, онлайн-перевод, составление резюме после встречи.",
-    iconColor: "bg-primary-50",
+    description: "Запись видеовстреч, субтитры в реальном времени, текстовая расшифровка встреч, онлайн-перевод, составление резюме после встречи.",
+    bgColor: "bg-emerald-50",
+    iconBgColor: "bg-emerald-100",
+    titleColor: "text-emerald-900",
     icon: "Meetings",
-    textColor: "text-forgraund",
     image: "/img/CardImageVideo.png"
   },
   {
     title: "Вебинары",
     href: "#",
-    description:
-      "Интерактивные опросы, реакции участников, подключение по прямой ссылке, автоматическая запись, субтитры и синхронный перевод ИИ-ассистента, и аналитика посещаемости превращают каждое мероприятие в цепочку действий с измеримыми результатами.",
-    iconColor: "bg-slate-100",
-    textColor: "text-forgraund",
-    icon: "Calendar",
+    description: "Интерактивные опросы, реакции участников, подключение по прямой ссылке, автоматическая запись, субтитры и синхронный перевод ИИ-ассистента.",
+    bgColor: "bg-blue-50",
+    iconBgColor: "bg-blue-100",
+    titleColor: "text-blue-900",
+    icon: "Webinar",
     image: "/img/CardImageChat.png"
   },
   {
     title: "Онлайн-трансляции",
     href: "#",
-    description:
-      "Организуем масштабные трансляции. Полный цикл услуг включает разработку концепции, студийное оборудование, логистику и постпродакшн. Трансляции на сайт или внешние ресурсы Rutube, Vimeo...",
-    iconColor: "bg-slate-100",
+    description: "Организуем масштабные трансляции. Полный цикл услуг включает разработку концепции, студийное оборудование, логистику и постпродакшн.",
+    bgColor: "bg-purple-50",
+    iconBgColor: "bg-purple-100",
+    titleColor: "text-purple-900",
     icon: "Messenger",
-    textColor: "text-forgraund",
     image: "/img/CardImageVideo.png"
   },
   {
     title: "Мессенджер",
     href: "#",
-    description: "Ваша команда всегда в едином информационном поле без риска утечек и потерь данных. Управляйте каналами для проектов и бизнес-функций. Экосистемность, объединяющая мессенджер, видеозвонки, почту, диск. А также синхронизации с Active Directory и Exchange.",
-    iconColor: "bg-slate-100",
-    icon: "Webinar",
-    textColor: "text-forgraund",
+    description: "Ваша команда всегда в едином информационном поле без риска утечек и потерь данных. Управляйте каналами для проектов и бизнес-функций.",
+    bgColor: "bg-indigo-50",
+    iconBgColor: "bg-indigo-100",
+    titleColor: "text-indigo-900",
+    icon: "Mail",
     image: "/img/CardImageChat.png"
   },
   {
     title: "AI-ассистент",
     href: "#",
-    description:
-      "Онлайн-события под ключ для вашего бизнеса.",
-    iconColor: "bg-slate-100",
+    description: "Автоматические протоколы встреч, напоминания и поддержка задач – ваш умный помощник прямо во время работы.",
+    bgColor: "bg-amber-50",
+    iconBgColor: "bg-amber-100",
+    titleColor: "text-amber-900",
     icon: "Ai",
-    textColor: "text-forgraund",
     image: "/img/CardImageVideo.png"
   },
   {
     title: "Почта и календарь",
     href: "#",
-    description:
-      "Планируйте встречи и события без хаоса.",
-    iconColor: "bg-slate-100",
+    description: "Планируйте встречи и события без хаоса. Корпоративная электронная почта в защищенной экосистеме.",
+    bgColor: "bg-rose-50",
+    iconBgColor: "bg-rose-100",
+    titleColor: "text-rose-900",
     icon: "Calendar",
-    textColor: "text-forgraund",
     image: "/img/CardImageChat.png"
   },
 ]
@@ -83,31 +94,17 @@ const components: { title: string, href: string, description: string, textColor:
 
 <template>
   <div class="container grid md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
-    <div v-for="component in components" :key="component.title" :class="component.iconColor"
-      class="rounded-3xl relative flex flex-col md:hover:-translate-y-2 transition-all duration-300 p-6 md:p-10 space-y-10 overflow-hidden">
-
-      <a :href="component.href" class="absolute inset-0 z-10"></a>
-
-      <div class="flex-1 space-y-2">
-        <div>
-          <div class="inline-block p-2 rounded-xl" :class="component.iconColor">
-            <component :is="iconComponents[component.icon]" class="!size-12" />
-          </div>
-        </div>
-
-        <div class="space-y-4">
-          <h3 :class="component.textColor">{{ component.title }}</h3>
-
-          <p class="line-clamp-3 text-muted-foreground text-base md:text-lg">
-            {{ component.description }}
-          </p>
-        </div>
-      </div>
-
-      <div>
-        <NuxtImg :src="component.image" :alt="component.title" class="w-full" />
-      </div>
-
+    <div v-for="component in components" :key="component.title">
+      <IconCard 
+        :title="component.title"
+        :description="component.description"
+        :image="component.image"
+        :icon-component="iconComponents[component.icon]"
+        :href="component.href"
+        :title-color="component.titleColor"
+        :bg-color="component.bgColor"
+        :icon-bg-color="component.iconBgColor"
+      />
     </div>
   </div>
 </template>

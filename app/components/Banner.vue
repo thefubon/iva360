@@ -19,11 +19,16 @@ import { ChevronRight } from 'lucide-vue-next';
           2025-2026</div>
       </div>
 
-      <Button class="hidden md:inline-flex" variant="secondary" asChild>
+      <Button class="hidden md:inline-flex" variant="secondary" as-child>
         <NuxtLink href="#">Подробнее</NuxtLink>
       </Button>
 
-      <Button class="md:hidden" variant="secondary" size="icon" asChild>
+      <Button
+        class="md:hidden"
+        variant="secondary"
+        size="icon"
+        as-child
+      >
         <NuxtLink href="#">
           <ChevronRight class="size-5" />
         </NuxtLink>
