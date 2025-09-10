@@ -1,6 +1,82 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
-import { Search, ShoppingBag, Menu } from 'lucide-vue-next';
+import { Search, ShoppingBag, Menu, X } from 'lucide-vue-next'
+
+// Состояние мобильного меню
+const isMobileMenuOpen = ref(false)
+const isMenuFullyOpen = ref(false)
+const mobileMenuRef = ref<HTMLElement>()
+
+// Получаем GSAP из плагина
+const { $gsap } = useNuxtApp()
+
+// Функция для открытия мобильного меню с анимацией
+const openMobileMenu = () => {
+  isMobileMenuOpen.value = true
+  
+  // Блокируем скролл body
+  if (typeof document !== 'undefined') {
+    document.body.style.overflow = 'hidden'
+  }
+  
+  nextTick(() => {
+    if (!mobileMenuRef.value) return
+    
+    // Устанавливаем начальное состояние (сверху)
+    $gsap.set(mobileMenuRef.value, { y: '-100%' })
+    
+    // Анимация выезда контейнера сверху вниз
+    $gsap.to(mobileMenuRef.value, {
+      y: '0%',
+      duration: 0.4,
+      ease: "power3.out",
+      onComplete: () => {
+        // После открытия контейнера показываем кнопки через состояние
+        isMenuFullyOpen.value = true
+      }
+    })
+  })
+}
+
+// Функция для закрытия мобильного меню с анимацией
+const closeMobileMenu = () => {
+  if (!mobileMenuRef.value) return
+  
+  // Скрываем кнопки через состояние
+  isMenuFullyOpen.value = false
+  
+  // Небольшая задержка перед анимацией контейнера
+  setTimeout(() => {
+    $gsap.to(mobileMenuRef.value, {
+      y: '-100%',
+      duration: 0.3,
+      ease: "power2.in",
+      onComplete: () => {
+        isMobileMenuOpen.value = false
+        // Разблокируем скролл body
+        if (typeof document !== 'undefined') {
+          document.body.style.overflow = ''
+        }
+      }
+    })
+  }, 200)
+}
+
+// Функция для переключения мобильного меню
+const toggleMobileMenu = () => {
+  if (isMobileMenuOpen.value) {
+    closeMobileMenu()
+  } else {
+    openMobileMenu()
+  }
+}
+
+// Очищаем блокировку скролла при размонтировании
+onUnmounted(() => {
+  if (typeof document !== 'undefined') {
+    document.body.style.overflow = ''
+  }
+})
 </script>
 
 <template>
@@ -31,7 +107,12 @@ import { Search, ShoppingBag, Menu } from 'lucide-vue-next';
           </NuxtLink>
         </Button>
 
-        <Button class="md:hidden" variant="secondary" size="icon">
+        <Button
+          class="md:hidden"
+          variant="secondary"
+          size="icon"
+          @click="toggleMobileMenu"
+        >
           <Menu class="size-5" />
         </Button>
       </div>
@@ -43,5 +124,61 @@ import { Search, ShoppingBag, Menu } from 'lucide-vue-next';
       <Navbar />
     </div>
   </div>
+
+  <!-- Полноэкранное мобильное меню с GSAP анимацией -->
+  <div
+    v-if="isMobileMenuOpen"
+    ref="mobileMenuRef"
+    class="fixed inset-0 bg-background z-[60] md:hidden flex flex-col py-10"
+  >
+    <!-- Контент меню с прокруткой -->
+    <div class="flex-1 overflow-y-auto">
+      <MobileNavbar />
+    </div>
+    
+    <!-- Sticky кнопка входа снизу -->
+    <Transition
+      enter-active-class="transition-all duration-300 ease-out delay-150"
+      enter-from-class="opacity-0 translate-y-8"
+      enter-to-class="opacity-100 translate-y-0"
+      leave-active-class="transition-all duration-200 ease-in"
+      leave-from-class="opacity-100 translate-y-0"
+      leave-to-class="opacity-0 translate-y-8"
+    >
+      <div
+        v-if="isMenuFullyOpen"
+        class="sticky bottom-0 bg-background border-t p-4 mt-auto"
+      >
+        <Button class="w-full" size="lg" @click="toggleMobileMenu">
+          Войти
+        </Button>
+      </div>
+    </Transition>
+  </div>
+
+  <!-- Фиксированная кнопка закрытия (выезжает справа) -->
+  <Transition
+    enter-active-class="transition-all duration-300 ease-out"
+    enter-from-class="opacity-0 translate-x-8"
+    enter-to-class="opacity-100 translate-x-0"
+    leave-active-class="transition-all duration-200 ease-in"
+    leave-from-class="opacity-100 translate-x-0"
+    leave-to-class="opacity-0 translate-x-8"
+  >
+    <div
+      v-if="isMenuFullyOpen"
+      class="fixed top-4 right-4 z-[70] md:hidden"
+    >
+      <Button
+        variant="outline"
+        size="icon"
+        class="bg-background"
+        @click="toggleMobileMenu"
+      >
+        <X class="size-6" />
+      </Button>
+    </div>
+  </Transition>
+
 
 </template>
