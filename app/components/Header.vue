@@ -1,34 +1,10 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
-import { Search } from 'lucide-vue-next';
-import { ShoppingBag, Menu, ChevronRight } from 'lucide-vue-next';
+import { Search, ShoppingBag, Menu } from 'lucide-vue-next';
 </script>
 
 <template>
-  <div class="bg-slate-900 text-background">
-    <div class="container flex justify-center items-center gap-4 p-4">
-      <div>
-        <div class="text-sm md:text-base font-semibold">Вебинар: Тенденции и прогноз развития российского рынка
-          унифицированных коммуникаций
-          (UC) в
-          2025-2026</div>
-        <div class="text-sm">
-          <span>18 сентября 2025 г.</span>
-          <span>11:00</span>
-        </div>
-      </div>
-
-      <Button class="hidden md:inline-flex" variant="secondary" asChild>
-        <NuxtLink href="#">Подробнее</NuxtLink>
-      </Button>
-
-      <Button class="md:hidden" variant="secondary" size="icon" asChild>
-        <NuxtLink href="#">
-          <ChevronRight class="size-5" />
-        </NuxtLink>
-      </Button>
-    </div>
-  </div>
+  <Banner />
 
   <header class="bg-background border-b sticky top-0 z-50">
     <div class="container flex justify-between items-center h-16">
