@@ -82,36 +82,32 @@ const components: { title: string, href: string, description: string, textColor:
 </script>
 
 <template>
-  <div class="md:container space-y-10 md:space-y-16">
-    <h2 class="px-4 md:px-0">Все продукты<br />в одном приложении</h2>
+  <div class="container grid md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 lg:gap-10 3xl:gap-12">
+    <div v-for="component in components" :key="component.title" :class="component.iconColor"
+      class="rounded-3xl relative flex flex-col md:hover:-translate-y-2 transition-all duration-300 p-4 md:p-10 space-y-10 overflow-hidden">
 
-    <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 lg:gap-10 3xl:gap-12">
-      <div v-for="component in components" :key="component.title" :class="component.iconColor"
-        class="rounded-3xl relative flex flex-col md:hover:-translate-y-2 transition-all duration-300 p-4 md:p-10 space-y-10">
+      <a :href="component.href" class="absolute inset-0 z-10"></a>
 
-        <a :href="component.href" class="absolute inset-0 z-10"></a>
-
-        <div class="flex-1 space-y-2">
-          <div>
-            <div class="inline-block p-2 rounded-xl" :class="component.iconColor">
-              <component :is="iconComponents[component.icon]" class="!size-12" />
-            </div>
-          </div>
-
-          <div class="space-y-4">
-            <h3 class="text-4xl font-medium leading-[110%]" :class="component.textColor">{{ component.title }}</h3>
-
-            <p class="line-clamp-3 text-muted-foreground">
-              {{ component.description }}
-            </p>
-          </div>
-        </div>
-
+      <div class="flex-1 space-y-2">
         <div>
-          <NuxtImg :src="component.image" :alt="component.title" class="w-full" />
+          <div class="inline-block p-2 rounded-xl" :class="component.iconColor">
+            <component :is="iconComponents[component.icon]" class="!size-12" />
+          </div>
         </div>
 
+        <div class="space-y-4">
+          <h3 class="text-4xl font-medium leading-[110%]" :class="component.textColor">{{ component.title }}</h3>
+
+          <p class="line-clamp-3 text-muted-foreground text-lg">
+            {{ component.description }}
+          </p>
+        </div>
       </div>
+
+      <div>
+        <NuxtImg :src="component.image" :alt="component.title" class="w-full" />
+      </div>
+
     </div>
   </div>
 </template>
