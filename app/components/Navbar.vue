@@ -91,9 +91,9 @@ const components: { title: string, href: string, description: string, icon: stri
   <NavigationMenu>
     <NavigationMenuList>
       <NavigationMenuItem>
-        <NavigationMenuTrigger class="uppercase cursor-pointer">Продукты</NavigationMenuTrigger>
+        <NavigationMenuTrigger>Продукты</NavigationMenuTrigger>
         <NavigationMenuContent>
-          <ul class="grid w-[480px] gap-4 p-4 md:w-[670px] md:grid-cols-2 lg:w-[670px]">
+          <ul class="grid w-[480px] gap-4 p-4 md:w-[680px] md:grid-cols-2 lg:w-[800px]">
             <li v-for="component in components" :key="component.title">
               <NavigationMenuLink as-child>
                 <a :href="component.href"
@@ -117,9 +117,9 @@ const components: { title: string, href: string, description: string, icon: stri
       </NavigationMenuItem>
 
       <NavigationMenuItem>
-        <NavigationMenuTrigger class="uppercase cursor-pointer">Отрасли</NavigationMenuTrigger>
+        <NavigationMenuTrigger>Отрасли</NavigationMenuTrigger>
         <NavigationMenuContent>
-          <ul class="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[minmax(0,.75fr)_minmax(0,1fr)]">
+          <ul class="grid w-[480px] gap-3 p-6 md:w-[680px] lg:w-[800px] md:grid-cols-[minmax(0,.75fr)_minmax(0,1fr)]">
             <li class="row-span-3">
               <NavigationMenuLink as-child>
                 <a class="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
@@ -173,20 +173,20 @@ const components: { title: string, href: string, description: string, icon: stri
         </NavigationMenuContent>
       </NavigationMenuItem>
 
-      <NavigationMenuItem class="uppercase cursor-pointer">
+      <NavigationMenuItem>
         <NavigationMenuLink href="#" :class="navigationMenuTriggerStyle()">
           Новости и статьи
         </NavigationMenuLink>
       </NavigationMenuItem>
 
-      <NavigationMenuItem class="uppercase cursor-pointer">
-        <NavigationMenuLink href="#" :class="navigationMenuTriggerStyle()">
+      <NavigationMenuItem>
+        <NavigationMenuLink href="#" class="!text-lg" :class="navigationMenuTriggerStyle()">
           Наши вебинары
         </NavigationMenuLink>
       </NavigationMenuItem>
 
-      <NavigationMenuItem class="uppercase cursor-pointer">
-        <NavigationMenuLink href="#" :class="navigationMenuTriggerStyle()">
+      <NavigationMenuItem>
+        <NavigationMenuLink href="#" class="!text-lg" :class="navigationMenuTriggerStyle()">
           Тарифы
         </NavigationMenuLink>
       </NavigationMenuItem>

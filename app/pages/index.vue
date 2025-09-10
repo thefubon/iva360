@@ -12,8 +12,8 @@ useHead({
 </script>
 
 <template>
-  <div>
-    <div class="absolute inset-x-0 top-32 md:top-40 lg:top-72 overflow-x-clip">
+  <div class="relative">
+    <div class="absolute inset-x-0 top-32 md:top-40 overflow-x-clip">
       <BgLine class="w-full h-full scale-130 lg:scale-160 xl:scale-130" />
     </div>
 
