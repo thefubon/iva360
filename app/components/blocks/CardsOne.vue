@@ -84,7 +84,7 @@ const components: { title: string, href: string, description: string, textColor:
 <template>
   <div class="container grid md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 lg:gap-10 3xl:gap-12">
     <div v-for="component in components" :key="component.title" :class="component.iconColor"
-      class="rounded-3xl relative flex flex-col md:hover:-translate-y-2 transition-all duration-300 p-4 md:p-10 space-y-10 overflow-hidden">
+      class="rounded-3xl relative flex flex-col md:hover:-translate-y-2 transition-all duration-300 p-6 md:p-10 space-y-10 overflow-hidden">
 
       <a :href="component.href" class="absolute inset-0 z-10"></a>
 
@@ -96,9 +96,9 @@ const components: { title: string, href: string, description: string, textColor:
         </div>
 
         <div class="space-y-4">
-          <h3 class="text-4xl font-medium leading-[110%]" :class="component.textColor">{{ component.title }}</h3>
+          <h3 :class="component.textColor">{{ component.title }}</h3>
 
-          <p class="line-clamp-3 text-muted-foreground text-lg">
+          <p class="line-clamp-3 text-muted-foreground text-base md:text-lg">
             {{ component.description }}
           </p>
         </div>

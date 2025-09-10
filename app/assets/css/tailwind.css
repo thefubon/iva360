@@ -192,6 +192,7 @@
   body {
     @apply bg-background text-foreground antialiased flex flex-col overflow-x-clip;
   }
+  
   h1 {
     @apply text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl leading-[110%];
     font-family: 'GuarujaNeue', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans";
@@ -204,7 +205,13 @@
     font-weight: 500 !important;
   }
 
-  h3, h4, h5, h6 {
+  h3 {
+    @apply text-3xl lg:text-4xl leading-[110%];
+    font-family: 'GuarujaNeue', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans";
+    font-weight: 500 !important;
+  }
+
+   h4, h5, h6 {
     font-family: 'GuarujaNeue', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans";
     font-weight: 500 !important;
   }

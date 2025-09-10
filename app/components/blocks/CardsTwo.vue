@@ -30,10 +30,10 @@ const components: { title: string, href: string, description: string, image: str
       class="bg-slate-100 rounded-3xl relative flex flex-col md:hover:-translate-y-2 transition-all duration-300 overflow-hidden">
       <a :href="component.href" class="absolute inset-0 z-10"></a>
 
-      <div class="space-y-4 p-4 md:p-10 h-full">
-        <h3 class="text-4xl font-medium leading-[110%]">{{ component.title }}</h3>
+      <div class="space-y-4 p-8 md:p-10 h-full">
+        <h3>{{ component.title }}</h3>
 
-        <p class="line-clamp-3 text-muted-foreground text-lg">
+        <p class="line-clamp-3 text-muted-foreground text-base md:text-lg">
           {{ component.description }}
         </p>
       </div>

@@ -2,6 +2,7 @@
 import { Button } from '@/components/ui/button'
 import { Search } from 'lucide-vue-next';
 import { ShoppingBag } from 'lucide-vue-next';
+import { Menu } from 'lucide-vue-next';
 </script>
 
 <template>
@@ -12,13 +13,15 @@ import { ShoppingBag } from 'lucide-vue-next';
         <Logo />
       </div>
 
-      <div class="flex items-center gap-x-4">
+      <div class="flex items-center gap-x-3 md:gap-x-4">
         <Button variant="secondary" size="icon">
           <Search class="size-5" />
         </Button>
 
         <Button variant="secondary" size="icon" class="relative">
-          <div class="size-4.5 text-xs bg-destructive text-background !font-bold absolute -top-1.5 -right-1.5 rounded-full flex justify-center items-center">2</div>
+          <div
+            class="size-4.5 text-xs bg-destructive text-background !font-bold absolute -top-1.5 -right-1.5 rounded-full flex justify-center items-center">
+            2</div>
           <ShoppingBag class="size-5" />
         </Button>
 
@@ -28,11 +31,9 @@ import { ShoppingBag } from 'lucide-vue-next';
           </NuxtLink>
         </Button>
 
-        <!-- <Button variant="outline" asChild>
-          <NuxtLink href="#">
-            Регистрация
-          </NuxtLink>
-        </Button> -->
+        <Button class="md:hidden" variant="secondary" size="icon">
+          <Menu class="size-5" />
+        </Button>
       </div>
     </div>
   </header>
