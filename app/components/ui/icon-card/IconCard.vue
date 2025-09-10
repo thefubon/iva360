@@ -29,7 +29,7 @@ const {
 </script>
 
 <template>
-  <div :class="`rounded-3xl relative flex flex-col md:hover:-translate-y-2 transition-all duration-300 overflow-hidden p-8 md:p-10 space-y-10 ${bgColor} ${customClass}`">
+  <div :class="`rounded-3xl relative flex flex-col md:hover:-translate-y-2 transition-all duration-300 overflow-hidden p-8 md:p-10 space-y-10 h-full ${bgColor} ${customClass}`">
     <a :href="href" class="absolute inset-0 z-10"/>
 
     <div class="flex-1 space-y-2">
