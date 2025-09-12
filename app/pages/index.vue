@@ -22,25 +22,27 @@ useHead({
 
       <div class="space-y-8 lg:space-y-16">
         <div class="container">
-          <h2>Все продукты<br >в одном приложении</h2>
+          <h2>Все продукты<br>в одном приложении</h2>
         </div>
         <BlocksProductsInOneApp />
       </div>
 
       <div class="space-y-8 lg:space-y-16">
         <div class="container">
-          <h2>Подходит именно вам</h2>
+          <h2>Почему выбирают IVA 360</h2>
         </div>
-        <BlocksSuitableForYou />
+        <BlocksAdditionalFeatures />
       </div>
 
       <div class="space-y-8 lg:space-y-16">
-        <div class="container">
-          <h2>Почему выбирают IVA&nbsp;360</h2>
-        </div>
+
         <BlocksWhyChooseIva360 />
 
-        <BlocksAdditionalFeatures />
+        <div class="container">
+          <h2>Подходит именно вам</h2>
+        </div>
+        <BlocksSuitableForYou />
+
       </div>
     </div>
   </div>
