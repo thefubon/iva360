@@ -107,7 +107,7 @@ onUnmounted(() => {
         </Button>
 
         <Button as-child>
-          <NuxtLink href="/dashboard">
+          <NuxtLink href="/auth">
             Войти
           </NuxtLink>
         </Button>

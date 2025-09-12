@@ -18,7 +18,7 @@ import { Button } from '@/components/ui/button'
           <NuxtLink href="#">Попробовать бесплатно</NuxtLink>
         </Button>
 
-        <Form />
+        <ContactForm />
       </div>
     </div>
 

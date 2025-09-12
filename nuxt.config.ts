@@ -4,6 +4,21 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: false },
+  
+  app: {
+    head: {
+      titleTemplate: 'IVA360 | %s',
+      title: 'IVA360',
+      meta: [
+        { name: 'description', content: 'Empty' },
+        { name: 'robots', content: 'noindex, nofollow' }
+      ],
+      htmlAttrs: {
+        lang: 'ru',
+      },
+    }
+  },
+
   css: ['~/assets/css/tailwind.css'],
 
   vite: {
@@ -17,18 +32,4 @@ export default defineNuxtConfig({
     prefix: '',
     componentDir: './app/components/ui'
   },
-
-  app: {
-    head: {
-      titleTemplate: 'IVA360 | %s',
-      title: 'IVA360',
-      meta: [
-        { name: 'description', content: 'Empty' },
-        { name: 'robots', content: 'noindex, nofollow' }
-      ],
-      htmlAttrs: {
-        lang: 'ru',
-      },
-    }
-  }
 })
