@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Card from '@/components/ui/card/Card.vue'
+import { FeatureCard } from '@/components/ui/feature-card'
 
 const components: { title: string, href: string, description: string, image: string }[] = [
   {
@@ -28,13 +28,13 @@ const components: { title: string, href: string, description: string, image: str
 
 <template>
   <div class="container grid md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 lg:gap-10 2xl:gap-12">
-    <div v-for="component in components" :key="component.title">
-      <Card 
-        :title="component.title"
-        :description="component.description"
-        :image="component.image"
-        :href="component.href"
-      />
-    </div>
+    <FeatureCard
+      v-for="component in components" 
+      :key="component.title"
+      :title="component.title"
+      :description="component.description"
+      :image="component.image"
+      :href="component.href"
+    />
   </div>
 </template>
