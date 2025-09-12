@@ -17,7 +17,7 @@ const isMobile = breakpoints.smaller('mobile');
       <SidebarTrigger />
     </div>
 
-    <div class="flex items-center gap-4">
+    <div class="flex items-center md:gap-4 gap-3">
       <Button variant="outline" :size="isMobile ? 'icon' : 'default'" asChild>
         <NuxtLink to="#" class="flex items-center gap-2">
           <MonitorSmartphone class="size-6 stroke-[1.5]" /> <span class="hidden md:block">Приложение</span>
@@ -34,7 +34,7 @@ const isMobile = breakpoints.smaller('mobile');
         <ShoppingBag class="size-6 stroke-[1.5]" />
       </Button>
 
-      <NuxtImg src="/img/avatar.png" alt="" class="rounded-lg size-9" />
+      <DashboardProfileMenu />
     </div>
   </div>
 </template>
