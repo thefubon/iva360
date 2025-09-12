@@ -378,9 +378,8 @@ const handleSocialLogin = async (provider: string) => {
       </CardContent>
     </Card>
     <div
-      class="text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary">
-      Нажимая "Продолжить", вы соглашаетесь с нашими <a href="#">Условиями использования</a>
-      и <a href="#">Политикой конфиденциальности</a>.
+      class="text-xs text-center">
+      &copy; 2021—{{ new Date().getFullYear() }} IVA 360. Все права защищены.
     </div>
   </div>
 </template>
