@@ -55,11 +55,13 @@ import { LogOut, User } from 'lucide-vue-next';
 
       <DropdownMenuRadioGroup class="p-1">
         <DropdownMenuItem class="py-2 px-3">
-          <LogOut class="size-4" />
-          <span>Выход</span>
+          <NuxtLink to="/" class="flex items-center gap-2">
+            <LogOut class="size-4" />
+            <span>Выход</span>
+          </NuxtLink>
         </DropdownMenuItem>
       </DropdownMenuRadioGroup>
     </DropdownMenuContent>
-    
+
   </DropdownMenu>
 </template>
