@@ -10,11 +10,14 @@ interface Props {
   showButton?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  href: '#',
-  buttonText: 'Узнать больше',
-  showButton: false
-})
+const { 
+  title,
+  description,
+  image,
+  href = '#',
+  buttonText = 'Узнать больше',
+  showButton = false
+} = defineProps<Props>()
 </script>
 
 <template>

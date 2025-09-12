@@ -13,9 +13,7 @@ interface Props {
   isVisible?: boolean
 }
 
-const { isVisible } = withDefaults(defineProps<Props>(), {
-  isVisible: false
-})
+const { isVisible = false } = defineProps<Props>()
 
 // Map icon names to components
 const iconComponents: Record<string, any> = {

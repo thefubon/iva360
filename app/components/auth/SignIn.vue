@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+// Убрали импорт BaseCard
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { Eye, EyeOff, Loader2 } from "lucide-vue-next"
+import Logo from "@/components/Logo.vue"
 
 // Состояние загрузки
 const isLoading = ref(false)
@@ -143,7 +144,6 @@ const calculateCursorPosition = (formattedValue: string, digitsBefore: number) =
 // Обработчик ввода телефона
 const handlePhoneInput = (event: Event) => {
   const target = event.target as HTMLInputElement
-  const cursorPosition = target.selectionStart || 0
   const oldValue = phoneNumber.value
   const newValue = target.value
   
@@ -267,8 +267,8 @@ const handleSocialLogin = async (provider: string) => {
 
 <template>
   <div class="flex flex-col gap-6">
-    <Card class="overflow-hidden p-0 shadow-none border-none">
-      <CardContent class="grid p-0 md:grid-cols-2">
+    <div class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border shadow-sm overflow-hidden p-0 border-none">
+      <div class="grid p-0 md:grid-cols-2">
         <form class="p-6 md:p-8" @submit="handleSubmit">
           <div class="flex flex-col gap-6">
             <div class="flex flex-col items-center text-center gap-y-4">
@@ -375,8 +375,8 @@ const handleSocialLogin = async (provider: string) => {
           <NuxtImg src="/img/placeholder.svg" alt="Image"
             class="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale" />
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
     <div
       class="text-xs text-center">
       &copy; 2021—{{ new Date().getFullYear() }} IVA 360. Все права защищены.
