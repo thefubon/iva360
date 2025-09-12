@@ -44,7 +44,7 @@ const {
         <h3 v-else :class="titleColor">{{ title }}</h3>
 
         <p v-if="descriptionHtml" class="line-clamp-3 text-muted-foreground text-base md:text-lg" v-html="description"/>
-        <p v-else class="line-clamp-3 text-muted-foreground text-base md:text-lg">{{ description }}</p>
+        <p v-else class="text-muted-foreground text-base md:text-lg">{{ description }}</p>
       </div>
     </div>
 

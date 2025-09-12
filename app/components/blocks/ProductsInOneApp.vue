@@ -32,9 +32,9 @@ const components: {
   {
     title: "Видеовстречи",
     href: "#",
-    description: "Запись видеовстреч, субтитры в реальном времени, текстовая расшифровка встреч, онлайн-перевод, составление резюме после встречи.",
+    description: "Проводите встречи до 300 участников с сохранением записи в облако. Пользуйтесь встроенным чатом и онлайн-доской. Демонстрируйте экран или отдельные файлы",
     bgColor: "bg-secondary",
-    iconBgColor: "bg-primary-100",
+    iconBgColor: "bg-background",
     titleColor: "text-foreground",
     icon: "Meetings",
     image: "/img/CardImageVideo.png"
@@ -42,39 +42,29 @@ const components: {
   {
     title: "Вебинары",
     href: "#",
-    description: "Интерактивные опросы, реакции участников, подключение по прямой ссылке, автоматическая запись, субтитры и синхронный перевод ИИ-ассистента.",
+    description: "Проводите масштабные мероприятия и включайте интерактивные опросы. Отслеживайте реакции участников и посещаемость. Сохраняйте записи, стенограммы и файлы",
     bgColor: "bg-secondary",
-    iconBgColor: "bg-emerald-100",
+    iconBgColor: "bg-background",
     titleColor: "text-foreground",
-    icon: "Webinar",
+    icon: "Calendar",
     image: "/img/CardImageChat.png"
-  },
-  {
-    title: "Онлайн-трансляции",
-    href: "#",
-    description: "Организуем масштабные трансляции. Полный цикл услуг включает разработку концепции, студийное оборудование, логистику и постпродакшн.",
-    bgColor: "bg-secondary",
-    iconBgColor: "bg-indigo-100",
-    titleColor: "text-foreground",
-    icon: "Messenger",
-    image: "/img/CardImageVideo.png"
   },
   {
     title: "Мессенджер",
     href: "#",
-    description: "Ваша команда всегда в едином информационном поле без риска утечек и потерь данных. Управляйте каналами для проектов и бизнес-функций.",
+    description: "Управляйте защищёнными чатами в мессенджере для компаний и рабочих групп. Включайте поддержку синхронизации с Active Directory и Exchange",
     bgColor: "bg-secondary",
-    iconBgColor: "bg-blue-100",
+    iconBgColor: "bg-background",
     titleColor: "text-foreground",
-    icon: "Mail",
+    icon: "Messenger",
     image: "/img/CardImageChat.png"
   },
   {
     title: "AI-ассистент",
     href: "#",
-    description: "Автоматические протоколы встреч, напоминания и поддержка задач – ваш умный помощник прямо во время работы.",
+    description: "Субтитры в реальном времени, онлайн-перевод на 22 языка. Автоматическое резюме встречи, формирование поручений, фиксация принятых решений",
     bgColor: "bg-secondary",
-    iconBgColor: "bg-rose-100",
+    iconBgColor: "bg-background",
     titleColor: "text-foreground",
     icon: "Ai",
     image: "/img/CardImageVideo.png"
@@ -82,13 +72,24 @@ const components: {
   {
     title: "Почта и календарь",
     href: "#",
-    description: "Планируйте встречи и события без хаоса. Корпоративная электронная почта в защищенной экосистеме.",
+    description: "Безопасная почта на вашем домене. Делегируйте папки и работайте со встроенным календарем. Планирование встреч, автоматический поиск свободного времени и интеграция с сервисами IVA 360",
     bgColor: "bg-secondary",
-    iconBgColor: "bg-yellow-100",
+    iconBgColor: "bg-background",
     titleColor: "text-foreground",
-    icon: "Calendar",
+    icon: "Mail",
     image: "/img/CardImageChat.png"
   },
+  {
+    title: "Диск и совместная работа с файлами",
+    href: "#",
+    description: "Сервис для совместной работы с файлами: загружайте документы, создавайте папки, настраивайте доступ и делитесь документами",
+    bgColor: "bg-secondary",
+    iconBgColor: "bg-background",
+    titleColor: "text-foreground",
+    icon: "Disc",
+    image: "/img/CardImageVideo.png"
+  },
+  
 ]
 </script>
 
