@@ -18,7 +18,7 @@ import { LogOut, User } from 'lucide-vue-next';
       <NuxtImg src="/img/avatar.png" alt="" class="rounded-lg size-9" />
     </DropdownMenuTrigger>
 
-    <DropdownMenuContent align="end" class="translate-y-1.5 border shadow-lg shadow-slate-600/10 rounded-lg">
+    <DropdownMenuContent align="end" class="translate-y-1.5 border-none shadow-lg shadow-slate-600/10 rounded-lg">
       <DropdownMenuLabel asChild class="w-64 p-3">
         <div class="space-y-4">
           <div class="flex items-center gap-2">
