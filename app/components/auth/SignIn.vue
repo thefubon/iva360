@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { Eye, EyeOff, Loader2 } from "lucide-vue-next"
 import Logo from "@/components/Logo.vue"
+import AuthCarousel from "@/components/auth/AuthCarousel.vue"
 
 // Состояние загрузки
 const isLoading = ref(false)
@@ -371,9 +372,8 @@ const handleSocialLogin = async (provider: string) => {
           </div>
         </form>
 
-        <div class="relative hidden bg-muted md:block">
-          <NuxtImg src="/img/placeholder.svg" alt="Image"
-            class="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale" />
+        <div class="hidden md:block">
+          <AuthCarousel />
         </div>
       </div>
     </div>
