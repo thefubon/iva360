@@ -6,19 +6,19 @@ import { ChevronLeft, ChevronRight } from "lucide-vue-next"
 // Данные для слайдера изображений
 const carouselImages = [
   { 
-    src: '/img/CardFive-1.png', 
+    src: '/img/placeholder.svg', 
     alt: 'IVA360 Dashboard Preview',
     title: 'Умная панель управления',
     description: 'Интуитивный интерфейс для управления всеми процессами вашего бизнеса в одном месте'
   },
   { 
-    src: '/img/CardImageChat.png', 
+    src: '/img/placeholder.svg', 
     alt: 'Chat Interface',
     title: 'Мгновенное общение',
     description: 'Встроенная система чатов для быстрой коммуникации с командой и клиентами'
   },
   { 
-    src: '/img/CardImageVideo.png', 
+    src: '/img/placeholder.svg', 
     alt: 'Video Conference',
     title: 'Видеоконференции',
     description: 'HD качество видеосвязи для эффективных онлайн-встреч и презентаций'
