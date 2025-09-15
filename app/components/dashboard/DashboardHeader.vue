@@ -18,13 +18,13 @@ const isMobile = breakpoints.smaller('mobile');
     </div>
 
     <div class="flex items-center md:gap-4 gap-3">
-      <Button variant="outline" :size="isMobile ? 'icon' : 'default'" asChild>
+      <Button variant="outline" :size="isMobile ? 'icon' : 'default'" as-child>
         <NuxtLink to="#" class="flex items-center gap-2">
           <MonitorSmartphone class="size-5 stroke-[1.5]" /> <span class="hidden md:block">Приложение</span>
         </NuxtLink>
       </Button>
 
-      <Button variant="secondary" :size="isMobile ? 'icon' : 'default'" asChild>
+      <Button variant="secondary" :size="isMobile ? 'icon' : 'default'" as-child>
         <NuxtLink to="#" class="flex items-center gap-2">
           <Ticket class="size-5 stroke-[1.5]" /> <span class="hidden md:block">Промокод</span>
         </NuxtLink>

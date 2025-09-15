@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import LoginForm from "@/components/auth/SignIn.vue"
+
 definePageMeta({
   layout: 'auth',
 });
@@ -9,8 +11,6 @@ useHead({
     { name: 'description', content: 'Описание главной страницы' }
   ],
 });
-
-import LoginForm from "@/components/auth/SignIn.vue"
 </script>
 
 <template>

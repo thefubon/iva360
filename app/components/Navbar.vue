@@ -93,7 +93,7 @@ const components: { title: string, href: string, description: string, icon: stri
       <NavigationMenuItem>
         <NavigationMenuTrigger>Продукты</NavigationMenuTrigger>
         <NavigationMenuContent>
-          <ul class="grid w-[480px] gap-4 p-4 md:w-[680px] md:grid-cols-2 lg:w-[800px]">
+          <ul class="grid w-full gap-4 py-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             <li v-for="component in components" :key="component.title">
               <NavigationMenuLink as-child>
                 <a
@@ -121,7 +121,7 @@ const components: { title: string, href: string, description: string, icon: stri
       <NavigationMenuItem>
         <NavigationMenuTrigger>Отрасли</NavigationMenuTrigger>
         <NavigationMenuContent>
-          <ul class="grid w-[480px] gap-3 p-6 md:w-[680px] lg:w-[800px] md:grid-cols-[minmax(0,.75fr)_minmax(0,1fr)]">
+          <ul class="grid w-full gap-3 p-6 md:grid-cols-[minmax(0,.75fr)_minmax(0,1fr)]">
             <li class="row-span-3">
               <NavigationMenuLink as-child>
                 <a

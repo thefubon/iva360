@@ -19,7 +19,7 @@ import { LogOut, User } from 'lucide-vue-next';
     </DropdownMenuTrigger>
 
     <DropdownMenuContent align="end" class="translate-y-1.5 border-none shadow-lg shadow-slate-600/10 rounded-lg">
-      <DropdownMenuLabel asChild class="w-64 p-3">
+      <DropdownMenuLabel as-child class="w-64 p-3">
         <div class="space-y-4">
           <div class="flex items-center gap-2">
             <div class="inline-block">
@@ -33,7 +33,7 @@ import { LogOut, User } from 'lucide-vue-next';
           </div>
 
           <div>
-            <Button class="w-full" size="sm" asChild>
+            <Button class="w-full" size="sm" as-child>
               <NuxtLink to="/dashboard/profile">Оформление подписки</NuxtLink>
             </Button>
           </div>

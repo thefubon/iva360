@@ -52,7 +52,13 @@ provide(FieldContextKey, fieldContext)
 <template>
   <section>
     <slot v-bind="props">
-      <Accordion type="single" as-child class="w-full" collapsible :disabled="disabled">
+      <Accordion
+        type="single"
+        as-child
+        class="w-full"
+        collapsible
+        :disabled="disabled"
+      >
         <FormItem>
           <AccordionItem :value="fieldName" class="border-none">
             <AccordionTrigger>

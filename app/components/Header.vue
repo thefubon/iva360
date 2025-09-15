@@ -125,7 +125,7 @@ onUnmounted(() => {
   </header>
 
   <div class="hidden md:block bg-background shadow-lg shadow-slate-600/10 relative z-40">
-    <div class="container flex justify-center items-center h-20">
+    <div class="w-full flex justify-center items-center h-20">
       <Navbar />
     </div>
   </div>

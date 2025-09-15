@@ -1,6 +1,24 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
 import { cn } from '@/lib/utils'
+</script>
+
+<template>
+  <div
+    data-slot="card"
+    :class="
+      cn(
+        'bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm',
+        cardProps.class,
+      )
+    "
+  >
+    <slot />
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
 
 // Интерфейсы для подкомпонентов
 interface CardProps {
@@ -37,24 +55,6 @@ interface BaseCardProps {
 
 // Основной пропс для Card
 const cardProps = defineProps<CardProps>()
-</script>
-
-<template>
-  <div
-    data-slot="card"
-    :class="
-      cn(
-        'bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm',
-        cardProps.class,
-      )
-    "
-  >
-    <slot />
-  </div>
-</template>
-
-<script lang="ts">
-import { defineComponent } from 'vue'
 
 // CardHeader компонент
 export const CardHeader = defineComponent({
