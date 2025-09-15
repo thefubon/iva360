@@ -100,8 +100,7 @@ onUnmounted(() => {
 
         <Button variant="secondary" size="icon" class="relative">
           <div
-            class="size-4.5 text-xs bg-destructive text-background !font-bold absolute -top-1.5 -right-1.5 rounded-full flex justify-center items-center"
-          >
+            class="size-4.5 text-xs bg-destructive text-background !font-bold absolute -top-1.5 -right-1.5 rounded-full flex justify-center items-center">
             2</div>
           <ShoppingBag class="size-5" />
         </Button>
@@ -112,48 +111,33 @@ onUnmounted(() => {
           </NuxtLink>
         </Button>
 
-        <Button
-          class="md:hidden"
-          variant="secondary"
-          size="icon"
-          @click="toggleMobileMenu"
-        >
+        <Button class="md:hidden" variant="secondary" size="icon" @click="toggleMobileMenu">
           <Menu class="size-5" />
         </Button>
       </div>
     </div>
   </header>
 
-  <div class="hidden md:block bg-background shadow-lg shadow-slate-600/10 relative z-40">
+  <div class="sticky top-16 z-40 hidden md:block bg-background shadow-lg shadow-slate-600/10">
     <div class="w-full flex justify-center items-center h-20">
       <Navbar />
     </div>
   </div>
 
   <!-- Полноэкранное мобильное меню с GSAP анимацией -->
-  <div
-    v-if="isMobileMenuOpen"
-    ref="mobileMenuRef"
-    class="fixed inset-0 bg-background z-[60] md:hidden flex flex-col py-10"
-  >
+  <div v-if="isMobileMenuOpen" ref="mobileMenuRef"
+    class="fixed inset-0 bg-background z-[60] md:hidden flex flex-col py-10">
     <!-- Контент меню с прокруткой -->
     <div v-if="isContentVisible" class="flex-1 overflow-y-auto">
       <MobileNavbar :is-visible="isContentVisible" />
     </div>
-    
+
     <!-- Sticky кнопка входа снизу -->
-    <Transition
-      enter-active-class="transition-all duration-300 ease-out delay-150"
-      enter-from-class="opacity-0 translate-y-8"
-      enter-to-class="opacity-100 translate-y-0"
-      leave-active-class="transition-all duration-200 ease-in"
-      leave-from-class="opacity-100 translate-y-0"
-      leave-to-class="opacity-0 translate-y-8"
-    >
-      <div
-        v-if="isMenuFullyOpen"
-        class="sticky bottom-0 bg-background border-t p-4 mt-auto"
-      >
+    <Transition enter-active-class="transition-all duration-300 ease-out delay-150"
+      enter-from-class="opacity-0 translate-y-8" enter-to-class="opacity-100 translate-y-0"
+      leave-active-class="transition-all duration-200 ease-in" leave-from-class="opacity-100 translate-y-0"
+      leave-to-class="opacity-0 translate-y-8">
+      <div v-if="isMenuFullyOpen" class="sticky bottom-0 bg-background border-t p-4 mt-auto">
         <Button class="w-full" size="lg" @click="toggleMobileMenu">
           Войти
         </Button>
@@ -162,24 +146,11 @@ onUnmounted(() => {
   </div>
 
   <!-- Фиксированная кнопка закрытия (выезжает справа) -->
-  <Transition
-    enter-active-class="transition-all duration-300 ease-out"
-    enter-from-class="opacity-0 translate-x-8"
-    enter-to-class="opacity-100 translate-x-0"
-    leave-active-class="transition-all duration-200 ease-in"
-    leave-from-class="opacity-100 translate-x-0"
-    leave-to-class="opacity-0 translate-x-8"
-  >
-    <div
-      v-if="isMenuFullyOpen"
-      class="fixed top-4 right-4 z-[70] md:hidden"
-    >
-      <Button
-        variant="outline"
-        size="icon"
-        class="bg-background"
-        @click="toggleMobileMenu"
-      >
+  <Transition enter-active-class="transition-all duration-300 ease-out" enter-from-class="opacity-0 translate-x-8"
+    enter-to-class="opacity-100 translate-x-0" leave-active-class="transition-all duration-200 ease-in"
+    leave-from-class="opacity-100 translate-x-0" leave-to-class="opacity-0 translate-x-8">
+    <div v-if="isMenuFullyOpen" class="fixed top-4 right-4 z-[70] md:hidden">
+      <Button variant="outline" size="icon" class="bg-background" @click="toggleMobileMenu">
         <X class="size-6" />
       </Button>
     </div>
