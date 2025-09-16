@@ -113,7 +113,7 @@ onUnmounted(() => {
   <!-- Navigation Menu Overlay -->
   <div 
     :class="[
-      'fixed inset-0 bg-foreground/40 z-30 transition-opacity duration-300',
+      'fixed inset-0 bg-foreground/40 z-30 transition-opacity duration-400',
       isNavigationMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
     ]" 
     style="pointer-events: none;" />
