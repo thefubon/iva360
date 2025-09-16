@@ -37,66 +37,37 @@ const isOpen = ref(false)
 
 <template>
   <UseTemplate>
-    <div class="grid items-start gap-6">
+    <div class="grid items-start gap-6 py-6">
       <!-- Форма без кнопки отправить для переиспользования -->
-      <div class="grid gap-3">
+      <div class="flex gap-x-4">
         <Label html-for="username">Имя и Фамилия</Label>
         <Input id="username" class="h-12" default-value="" />
       </div>
 
-      <div class="grid md:grid-cols-2 gap-4">
-        <div class="grid gap-3">
-          <Label html-for="email">Email</Label>
-          <Input
-            id="email"
-            class="h-12"
-            type="email"
-            default-value=""
-          />
-        </div>
-
-        <div class="grid gap-3">
-          <Label html-for="tel">Телефон</Label>
-          <Input
-            id="tel"
-            class="h-12"
-            type="tel"
-            default-value=""
-          />
-        </div>
+      <div class="flex gap-x-4">
+        <Label html-for="email">Email</Label>
+        <Input id="email" class="h-12" type="email" default-value="" />
       </div>
 
-      <div class="grid md:grid-cols-2 gap-4">
-        <div class="grid gap-3">
-          <Label html-for="company">Компания</Label>
-          <Input id="company" class="h-12" default-value="" />
-        </div>
-
-        <div class="grid gap-3">
-          <Label html-for="role">Роль <span class="text-zinc-400">(Опционально)</span></Label>
-          <Input id="role" class="h-12" default-value="" />
-        </div>
+      <div class="flex gap-x-4">
+        <Label html-for="tel">Телефон</Label>
+        <Input id="tel" class="h-12" type="tel" default-value="" />
       </div>
 
-      <div class="flex space-x-2">
-        <Checkbox
-          id="privacy"
-          v-model:checked="privacyChecked"
-          :default-checked="true"
-          class="mt-1 size-6"
-        />
+      <div class="flex gap-x-4">
+        <Label html-for="company">Компания</Label>
+        <Input id="company" class="h-12" default-value="" />
+      </div>
+
+      <div class="flex space-x-2 mt-4">
+        <Checkbox id="privacy" v-model:checked="privacyChecked" :default-checked="true" class="mt-1 size-6" />
         <Label for="privacy" class="font-normal leading-5">Я даю согласие на обработку моих персональных данных в
           соответствии с условиями политики
           конфиденциальности</Label>
       </div>
 
       <div class="flex space-x-2">
-        <Checkbox
-          id="terms"
-          v-model:checked="termsChecked"
-          :default-checked="true"
-          class="mt-1 size-6"
-        />
+        <Checkbox id="terms" v-model:checked="termsChecked" :default-checked="true" class="mt-1 size-6" />
         <Label for="terms" class="font-normal leading-5">Даю согласие на получение рекламных и информационных
           сообщений</Label>
       </div>
@@ -138,12 +109,12 @@ const isOpen = ref(false)
           Расскажем, как внедрить платформу IVA360 в вашу компанию, и продемонстрируем её работу.
         </DrawerDescription>
       </DrawerHeader>
-      
+
       <!-- Прокручиваемый контент -->
       <div class="flex-1 overflow-y-auto px-4">
         <GridForm />
       </div>
-      
+
       <!-- Фиксированный футер с кнопками -->
       <DrawerFooter class="pt-4 pb-8 flex-shrink-0 border-t">
         <Button size="xl" type="submit" class="cursor-pointer w-full">

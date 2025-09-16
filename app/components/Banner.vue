@@ -5,7 +5,7 @@ import { ChevronRight } from 'lucide-vue-next';
 
 
 <template>
-  <div class="bg-slate-900 text-background">
+  <div class="bg-slate-900 text-background relative z-60">
     <NuxtLink href="#" class="block group">
       <div class="container flex justify-center items-center gap-4 p-4">
         <div class="flex items-center gap-x-4">

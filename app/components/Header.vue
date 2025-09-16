@@ -11,6 +11,29 @@ const mobileMenuRef = ref<HTMLElement>()
 // Получаем GSAP из плагина
 const { $gsap } = useNuxtApp()
 
+// Overlay для navigation menu
+const isNavigationMenuOpen = ref(false)
+
+// Отслеживаем состояние навигационного меню
+onMounted(() => {
+  nextTick(() => {
+    const checkMenuState = () => {
+      const viewport = document.querySelector('[data-slot="navigation-menu-viewport"]')
+      if (viewport) {
+        const state = viewport.getAttribute('data-state')
+        isNavigationMenuOpen.value = state === 'open'
+      }
+    }
+    
+    // Проверяем состояние каждые 100мс
+    const interval = setInterval(checkMenuState, 100)
+    
+    onUnmounted(() => {
+      clearInterval(interval)
+    })
+  })
+})
+
 // Функция для открытия мобильного меню с анимацией
 const openMobileMenu = () => {
   isMobileMenuOpen.value = true
@@ -87,7 +110,15 @@ onUnmounted(() => {
 <template>
   <Banner />
 
-  <header class="bg-background border-b sticky top-0 z-50">
+  <!-- Navigation Menu Overlay -->
+  <div 
+    :class="[
+      'fixed inset-0 bg-foreground/40 z-30 transition-opacity duration-300',
+      isNavigationMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+    ]" 
+    style="pointer-events: none;" />
+
+  <header class="bg-background border-b sticky top-0 z-60">
     <div class="container flex justify-between items-center h-16 gap-x-4">
       <div class="flex-shrink-0">
         <Logo />
