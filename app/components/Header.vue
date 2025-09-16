@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 import { Search, ShoppingBag, Menu, X } from 'lucide-vue-next'
+
+// Состояние поиска
+const searchQuery = ref('')
 
 // Состояние мобильного меню
 const isMobileMenuOpen = ref(false)
@@ -88,16 +92,24 @@ onUnmounted(() => {
   <Banner />
 
   <header class="bg-background border-b sticky top-0 z-50">
-    <div class="container flex justify-between items-center h-16">
-      <div>
+    <div class="container flex justify-between items-center h-16 gap-x-4">
+      <div class="flex-shrink-0">
         <Logo />
       </div>
 
-      <div class="flex items-center gap-x-3 md:gap-x-4">
-        <Button variant="secondary" size="icon">
-          <Search class="size-5" />
-        </Button>
+      <!-- Поле поиска во всю ширину -->
+      <div class="flex-1 relative">
+        <div class="relative">
+          <Search class="absolute left-3 top-1/2 transform -translate-y-1/2 size-4 text-muted-foreground" />
+          <Input 
+            v-model="searchQuery" 
+            placeholder="Поиск..."
+            class="pl-10 w-full"
+          />
+        </div>
+      </div>
 
+      <div class="flex items-center gap-x-3 md:gap-x-4 flex-shrink-0">
         <Button variant="secondary" size="icon" class="relative">
           <div
             class="size-4.5 text-xs bg-destructive text-background !font-bold absolute -top-1.5 -right-1.5 rounded-full flex justify-center items-center">

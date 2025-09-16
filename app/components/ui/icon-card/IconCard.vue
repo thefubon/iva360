@@ -26,11 +26,20 @@ const {
   image,
   iconComponent
 } = defineProps<Props>()
+
+import { ChevronRight } from 'lucide-vue-next';
 </script>
 
 <template>
-  <div :class="`rounded-3xl relative flex flex-col md:hover:-translate-y-2 transition-all duration-300 overflow-hidden p-8 md:p-10 space-y-10 h-full ${bgColor} ${customClass}`">
-    <a :href="href" class="absolute inset-0 z-10"/>
+  <div
+    :class="`group rounded-3xl relative flex flex-col md:hover:-translate-y-2 transition-all duration-300 overflow-hidden p-8 md:p-10 space-y-10 h-full ${bgColor} ${customClass}`">
+    <a :href="href" class="absolute inset-0 z-10" />
+
+    <div
+      class="absolute px-4 h-10 top-12 right-10 bg-background shadow-lg shadow-slate-600/10 rounded-full flex justify-center items-center group-hover:top-10 transition-all duration-200 opacity-0 group-hover:opacity-100 text-muted-foreground text-sm">
+      Подробнее
+      <!-- <ChevronRight class="size-6" /> -->
+    </div>
 
     <div class="flex-1 space-y-2">
       <div>
@@ -40,10 +49,11 @@ const {
       </div>
 
       <div class="space-y-4">
-        <h3 v-if="titleHtml" :class="titleColor" v-html="title"/>
+        <h3 v-if="titleHtml" :class="titleColor" v-html="title" />
         <h3 v-else :class="titleColor">{{ title }}</h3>
 
-        <p v-if="descriptionHtml" class="line-clamp-3 text-muted-foreground text-base md:text-lg" v-html="description"/>
+        <p v-if="descriptionHtml" class="line-clamp-3 text-muted-foreground text-base md:text-lg"
+          v-html="description" />
         <p v-else class="text-muted-foreground text-base md:text-lg">{{ description }}</p>
       </div>
     </div>
