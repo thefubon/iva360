@@ -15,6 +15,8 @@ const { $gsap } = useNuxtApp()
 const isNavigationMenuOpen = ref(false)
 
 // Отслеживаем состояние навигационного меню
+let menuStateInterval: NodeJS.Timeout | null = null
+
 onMounted(() => {
   nextTick(() => {
     const checkMenuState = () => {
@@ -26,11 +28,7 @@ onMounted(() => {
     }
     
     // Проверяем состояние каждые 100мс
-    const interval = setInterval(checkMenuState, 100)
-    
-    onUnmounted(() => {
-      clearInterval(interval)
-    })
+    menuStateInterval = setInterval(checkMenuState, 100)
   })
 })
 
@@ -103,6 +101,11 @@ const toggleMobileMenu = () => {
 onUnmounted(() => {
   if (typeof document !== 'undefined') {
     document.body.style.overflow = ''
+  }
+  
+  // Очищаем interval для отслеживания меню
+  if (menuStateInterval) {
+    clearInterval(menuStateInterval)
   }
 })
 </script>
