@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
   <div class="container flex flex-col-reverse lg:flex-row items-center gap-6 md:gap-10">
     <div class="flex flex-col gap-10 flex-1">
       <div class="space-y-6">
-        <h1>Продуктовая экосистема<br >онлайн-коммуникаций</h1>
+        <h1>Цифровая платформа<br/>онлайн-коммуникаций</h1>
         <p class="text-base md:text-lg text-muted-foreground">Все для вашей работы: встречи, мессенджер, вебинары,
           трансляции, ИИ-ассистент, почта и&nbsp;календарь&nbsp;- все в&nbsp;едином корпоративном пространстве</p>
       </div>

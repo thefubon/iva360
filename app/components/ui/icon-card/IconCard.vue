@@ -36,9 +36,8 @@ import { ChevronRight } from 'lucide-vue-next';
     <a :href="href" class="absolute inset-0 z-10" />
 
     <div
-      class="absolute px-4 h-10 top-12 right-10 bg-background shadow-lg shadow-slate-600/10 rounded-full flex justify-center items-center group-hover:top-10 transition-all duration-200 opacity-0 group-hover:opacity-100 text-muted-foreground text-sm">
-      Подробнее
-      <!-- <ChevronRight class="size-6" /> -->
+      class="absolute size-10 h-10 top-8 right-6 bg-background shadow-md shadow-slate-600/5 rounded-full flex justify-center items-center group-hover:top-6 transition-all duration-200 opacity-0 group-hover:opacity-100 text-foreground text-sm">
+      <ChevronRight class="size-6" />
     </div>
 
     <div class="flex-1 space-y-2">

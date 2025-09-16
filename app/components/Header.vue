@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import { Search, ShoppingBag, Menu, X } from 'lucide-vue-next'
-
-// Состояние поиска
-const searchQuery = ref('')
 
 // Состояние мобильного меню
 const isMobileMenuOpen = ref(false)
@@ -98,21 +94,19 @@ onUnmounted(() => {
       </div>
 
       <!-- Поле поиска во всю ширину -->
-      <div class="flex-1 relative">
-        <div class="relative">
-          <Search class="absolute left-3 top-1/2 transform -translate-y-1/2 size-4 text-muted-foreground" />
-          <Input 
-            v-model="searchQuery" 
-            placeholder="Поиск..."
-            class="pl-10 w-full"
-          />
-        </div>
+      <div class="hidden xl:flex flex-1">
+        <Navbar />
       </div>
 
-      <div class="flex items-center gap-x-3 md:gap-x-4 flex-shrink-0">
-        <Button variant="secondary" size="icon" class="relative">
+      <div class="flex items-center gap-x-3 md:gap-x-3 flex-shrink-0">
+        <Button variant="outlineDark" size="icon">
+          <Search class="size-5" />
+        </Button>
+
+
+        <Button variant="outlineDark" size="icon" class="relative">
           <div
-            class="size-4.5 text-xs bg-destructive text-background !font-bold absolute -top-1.5 -right-1.5 rounded-full flex justify-center items-center">
+            class="size-4.5 text-xs bg-primary text-background !font-bold absolute -top-2 -right-2 rounded-full flex justify-center items-center">
             2</div>
           <ShoppingBag class="size-5" />
         </Button>
@@ -123,22 +117,22 @@ onUnmounted(() => {
           </NuxtLink>
         </Button>
 
-        <Button class="md:hidden" variant="secondary" size="icon" @click="toggleMobileMenu">
+        <Button class="hidden md:flex" variant="outline" as-child>
+          <NuxtLink href="/auth">
+            Регистрация
+          </NuxtLink>
+        </Button>
+
+        <Button class="xl:hidden" variant="secondary" size="icon" @click="toggleMobileMenu">
           <Menu class="size-5" />
         </Button>
       </div>
     </div>
   </header>
 
-  <div class="sticky top-16 z-40 hidden md:block bg-background shadow-lg shadow-slate-600/10">
-    <div class="w-full flex justify-center items-center h-20">
-      <Navbar />
-    </div>
-  </div>
-
   <!-- Полноэкранное мобильное меню с GSAP анимацией -->
   <div v-if="isMobileMenuOpen" ref="mobileMenuRef"
-    class="fixed inset-0 bg-background z-[60] md:hidden flex flex-col py-10">
+    class="fixed inset-0 bg-background z-[60] xl:hidden flex flex-col py-10">
     <!-- Контент меню с прокруткой -->
     <div v-if="isContentVisible" class="flex-1 overflow-y-auto">
       <MobileNavbar :is-visible="isContentVisible" />
@@ -161,7 +155,7 @@ onUnmounted(() => {
   <Transition enter-active-class="transition-all duration-300 ease-out" enter-from-class="opacity-0 translate-x-8"
     enter-to-class="opacity-100 translate-x-0" leave-active-class="transition-all duration-200 ease-in"
     leave-from-class="opacity-100 translate-x-0" leave-to-class="opacity-0 translate-x-8">
-    <div v-if="isMenuFullyOpen" class="fixed top-4 right-4 z-[70] md:hidden">
+    <div v-if="isMenuFullyOpen" class="fixed top-4 right-4 z-[70] xl:hidden">
       <Button variant="outline" size="icon" class="bg-background" @click="toggleMobileMenu">
         <X class="size-6" />
       </Button>
