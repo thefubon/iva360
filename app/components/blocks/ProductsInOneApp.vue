@@ -46,7 +46,7 @@ const components: {
     bgColor: "bg-secondary",
     iconBgColor: "bg-background",
     titleColor: "text-foreground",
-    icon: "Calendar",
+    icon: "Webinar",
     image: "/img/CardImageChat.png"
   },
   {

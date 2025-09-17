@@ -13,7 +13,7 @@ import { ChevronRight } from 'lucide-vue-next';
             Вебинар
           </Button>
 
-          <div class="text-xs font-semibold">Тенденции и прогноз развития российского рынка
+          <div class="text-sm font-semibold">Тенденции и прогноз развития российского рынка
             унифицированных коммуникаций
             (UC) в
             2025-2026</div>
