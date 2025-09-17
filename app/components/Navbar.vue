@@ -13,6 +13,7 @@ import Meetings from "@/components/icons/Meetings.vue"
 import Messenger from "@/components/icons/Messenger.vue"
 import Mail from "@/components/icons/Mail.vue"
 import Calendar from "@/components/icons/Calendar.vue"
+import Online from "@/components/icons/Online.vue"
 import Disc from "@/components/icons/Disc.vue"
 import Webinar from "@/components/icons/Webinar.vue"
 import Ai from "@/components/icons/Ai.vue"
@@ -23,6 +24,7 @@ const iconComponents: Record<string, any> = {
   Messenger,
   Mail,
   Calendar,
+  Online,
   Disc,
   Webinar,
   Ai
@@ -47,7 +49,7 @@ const components: { title: string, href: string, description: string, icon: stri
     href: "#",
     description:
       "Онлайн-события под ключ для вашего бизнеса",
-    icon: "Meetings"
+    icon: "Online"
   },
   {
     title: "Мессенджер",
@@ -98,10 +100,10 @@ const components: { title: string, href: string, description: string, icon: stri
               <li v-for="component in components" :key="component.title">
                 <NavigationMenuLink as-child>
                   <a :href="component.href"
-                    class="block select-none rounded-xl p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                    class="block select-none hover:bg-slate-100 rounded-xl p-4 leading-none no-underline outline-none transition-colors h-full">
                     <div class="flex gap-x-4">
                       <div>
-                        <component :is="iconComponents[component.icon]" class="!size-9" />
+                        <component :is="iconComponents[component.icon]" class="!size-10" />
                       </div>
                       <div class="space-y-1.5">
                         <div class="font-medium leading-none">{{ component.title }}</div>
@@ -127,7 +129,7 @@ const components: { title: string, href: string, description: string, icon: stri
                 <NavigationMenuLink as-child>
                   <a class="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                     href="/">
-                    <img src="https://www.reka-ui.com/logo.svg" class="h-6 w-6">
+                    <img src="https://www.reka-ui.com/logo.svg" class="size-6">
                     <div class="mb-2 mt-4 text-lg font-medium">
                       Баннер
                     </div>
