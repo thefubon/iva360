@@ -100,7 +100,7 @@ const components: { title: string, href: string, description: string, icon: stri
               <li v-for="component in components" :key="component.title">
                 <NavigationMenuLink as-child>
                   <a :href="component.href"
-                    class="block select-none hover:bg-slate-100 rounded-xl p-4 leading-none no-underline outline-none transition-colors h-full">
+                    class="block select-none rounded-xl p-4 leading-none no-underline outline-none transition-colors h-full">
                     <div class="flex gap-x-4">
                       <div>
                         <component :is="iconComponents[component.icon]" class="!size-10" />
@@ -124,27 +124,11 @@ const components: { title: string, href: string, description: string, icon: stri
         <NavigationMenuTrigger>Отрасли</NavigationMenuTrigger>
         <NavigationMenuContent>
           <div class="container">
-            <ul class="grid w-full gap-3 py-6 md:grid-cols-[minmax(0,.75fr)_minmax(0,1fr)]">
-              <li class="row-span-3">
-                <NavigationMenuLink as-child>
-                  <a class="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/">
-                    <img src="https://www.reka-ui.com/logo.svg" class="size-6">
-                    <div class="mb-2 mt-4 text-lg font-medium">
-                      Баннер
-                    </div>
-                    <p class="text-sm leading-tight text-muted-foreground">
-                      Beautifully designed components built with Radix UI and
-                      Tailwind CSS.
-                    </p>
-                  </a>
-                </NavigationMenuLink>
-              </li>
-
+            <ul class="grid w-full gap-4 py-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               <li>
                 <NavigationMenuLink as-child>
                   <a href="/docs/introduction"
-                    class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                    class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground h-full">
                     <div class="text-sm font-medium leading-none">Малому и среднему бизнесу</div>
                     <p class="line-clamp-2 text-sm leading-snug text-muted-foreground">
                       Облачная платформа для встреч, работы с клиентами и управления командой – все в одном решении.

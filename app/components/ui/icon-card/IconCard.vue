@@ -7,7 +7,6 @@ interface Props {
   href?: string
   titleColor?: string
   bgColor?: string
-  iconBgColor?: string
   titleHtml?: boolean
   descriptionHtml?: boolean
   customClass?: string
@@ -16,8 +15,7 @@ interface Props {
 const {
   href = '#',
   titleColor = 'text-foreground',
-  bgColor = 'bg-slate-100',
-  iconBgColor = 'bg-slate-200',
+  bgColor = 'bg-slate-50',
   titleHtml = false,
   descriptionHtml = false,
   customClass = '',
@@ -40,11 +38,9 @@ import { ChevronRight } from 'lucide-vue-next';
       <ChevronRight class="size-6" />
     </div>
 
-    <div class="flex-1 space-y-2">
+    <div class="flex-1 space-y-4">
       <div>
-        <div :class="`inline-block p-2 rounded-xl ${iconBgColor}`">
           <component :is="iconComponent" class="!size-12" />
-        </div>
       </div>
 
       <div class="space-y-4">
