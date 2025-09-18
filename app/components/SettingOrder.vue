@@ -129,7 +129,7 @@ const finalTotalPrice = computed(() => {
         <DialogTitle class="text-2xl md:text-2xl">Настройка тарифа</DialogTitle>
       </DialogHeader>
 
-      <div class="space-y-6 p-4 md:p-6 md:pt-2 min-h-[120vh]">
+      <div class="space-y-6 p-4 md:p-6 md:pt-2">
 
         <div class="grid md:grid-cols-2 gap-4 items-center sticky top-0 py-4 z-20 bg-background">
           <div class="grid gap-y-2">
