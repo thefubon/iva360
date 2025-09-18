@@ -115,8 +115,6 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Banner />
-
   <!-- Navigation Menu Overlay -->
   <div 
     :class="[
