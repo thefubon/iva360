@@ -91,11 +91,12 @@ const components: { title: string, href: string, description: string, icon: stri
 
 <template>
   <NavigationMenu>
-    <NavigationMenuList>
-      <NavigationMenuItem class="overflow-hidden">
-        <NavigationMenuTrigger class="h-16 rounded-none group px-0">
+    <NavigationMenuList class="overflow-hidden">
+      <NavigationMenuItem>
+        <NavigationMenuTrigger class="h-16 rounded-none group">
           Продукты
-          <span class="absolute inset-x-0 bg-primary h-1 -bottom-1 group-data-[state=open]:-bottom-0 transition-all duration-300"/>
+          <span
+            class="absolute inset-x-0 bg-primary h-1 -bottom-1 group-data-[state=open]:-bottom-0 transition-all duration-300" />
         </NavigationMenuTrigger>
         <NavigationMenuContent>
           <div class="container">
@@ -124,7 +125,11 @@ const components: { title: string, href: string, description: string, icon: stri
       </NavigationMenuItem>
 
       <NavigationMenuItem>
-        <NavigationMenuTrigger>Отрасли</NavigationMenuTrigger>
+        <NavigationMenuTrigger class="h-16 rounded-none group">
+          Отрасли
+          <span
+            class="absolute inset-x-0 bg-primary h-1 -bottom-1 group-data-[state=open]:-bottom-0 transition-all duration-300" />
+        </NavigationMenuTrigger>
         <NavigationMenuContent>
           <div class="container">
             <ul class="grid w-full gap-4 py-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
