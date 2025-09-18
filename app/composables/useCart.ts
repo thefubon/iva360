@@ -4,20 +4,20 @@ import { ref, computed } from 'vue'
 const cartItems = ref<number>(0)
 
 export const useCart = () => {
-  // Добавить товар в корзину
+  // Добавить тариф в корзину
   const addToCart = (quantity: number) => {
     cartItems.value = quantity
   }
 
-  // Убрать товар из корзины
+  // Убрать тариф из корзины
   const removeFromCart = () => {
     cartItems.value = 0
   }
 
-  // Проверка, есть ли товары в корзине
+  // Проверка, есть ли тариф в корзине
   const hasItems = computed(() => cartItems.value > 0)
 
-  // Общее количество товаров
+  // Общее количество тарифов
   const totalItems = computed(() => cartItems.value)
 
   return {

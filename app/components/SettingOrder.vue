@@ -16,7 +16,7 @@ import {
   NumberFieldIncrement,
   NumberFieldInput,
 } from "@/components/ui/number-field"
-import { ChevronRight } from 'lucide-vue-next'
+import { ChevronRight, Trash2 } from 'lucide-vue-next'
 import { useCart } from '@/composables/useCart'
 
 // Массив данных для периодов подписки
@@ -40,20 +40,24 @@ const isAddedToCart = ref(false)
 // Количество
 const quantity = ref(1)
 
+// URL для перехода в корзину
+const cartUrl = ref('/cart')
+
 // Функция для выбора периода
 const selectPeriod = (value: number) => {
   selectedPeriod.value = value
 }
 
 // Функция для добавления в корзину
-const toggleCart = () => {
-  isAddedToCart.value = !isAddedToCart.value
-  
-  if (isAddedToCart.value) {
-    addToCart(quantity.value)
-  } else {
-    removeFromCart()
-  }
+const addToCartHandler = () => {
+  isAddedToCart.value = true
+  addToCart(quantity.value)
+}
+
+// Функция для удаления из корзины
+const removeFromCartHandler = () => {
+  isAddedToCart.value = false
+  removeFromCart()
 }
 
 // Отслеживание изменений количества
@@ -152,14 +156,34 @@ const endDate = computed(() => {
           </NumberField>
           
           <Button 
+            v-if="!isAddedToCart"
             size="lg" 
-            :variant="isAddedToCart ? 'secondary' : 'default'"
-            @click="toggleCart"
-            class="flex items-center gap-2"
+            @click="addToCartHandler"
           >
-            <span>{{ isAddedToCart ? 'В корзину' : 'Добавить' }}</span>
-            <ChevronRight v-if="isAddedToCart" class="w-4 h-4" />
+            Добавить
           </Button>
+          
+          <template v-else>
+            <Button 
+              size="lg" 
+              variant="secondary"
+              as-child
+              class="flex items-center gap-2"
+            >
+              <NuxtLink :to="cartUrl" class="flex items-center gap-2">
+                <span>В корзину</span>
+                <ChevronRight class="size-4" />
+              </NuxtLink>
+            </Button>
+            
+            <Button 
+              variant="outlineDark" 
+              size="icon"
+              @click="removeFromCartHandler"
+            >
+              <Trash2 class="size-4" />
+            </Button>
+          </template>
         </div>
       </DialogFooter>
 
