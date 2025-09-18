@@ -38,7 +38,7 @@ const selectPeriod = (value: number) => {
 
     <DialogScrollContent class="max-w-full md:max-w-[980px] p-0 gap-0 border-none">
 
-      <DialogHeader class="p-4 md:p-6">
+      <DialogHeader class="p-4 md:p-6 border-b border-border">
         <DialogTitle>Настройка тарифа</DialogTitle>
       </DialogHeader>
 
