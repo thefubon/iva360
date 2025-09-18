@@ -15,7 +15,7 @@ interface Props {
 const {
   href = '#',
   titleColor = 'text-foreground',
-  bgColor = 'bg-slate-50',
+  bgColor = 'bg-muted',
   titleHtml = false,
   descriptionHtml = false,
   customClass = '',
