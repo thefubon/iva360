@@ -42,7 +42,7 @@ const selectPeriod = (value: number) => {
         <DialogTitle>Настройка тарифа</DialogTitle>
       </DialogHeader>
 
-      <div class="space-y-6 p-4 md:p-6">
+      <div class="space-y-6 p-4 md:p-6 !pt-0">
 
         <div class="grid md:grid-cols-2 gap-4 items-center">
           <div class="grid gap-y-2">
