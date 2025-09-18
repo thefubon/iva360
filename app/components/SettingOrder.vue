@@ -80,7 +80,7 @@ const selectPeriod = (value: number) => {
             ]"
           >
             <span>{{ period.label }}</span>
-            <span class="ml-2 px-1.5 py-0.5 bg-primary text-white text-xs rounded-md">
+            <span class="ml-2 px-1.5 py-0.5 bg-primary text-background text-xs rounded-full">
               {{ period.discount }}
             </span>
           </button>
