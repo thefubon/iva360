@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
 import { Search, ShoppingBag, Menu, X } from 'lucide-vue-next'
+import { useCart } from '@/composables/useCart'
+
+// Состояние корзины
+const { hasItems, totalItems } = useCart()
 
 // Состояние мобильного меню
 const isMobileMenuOpen = ref(false)
@@ -140,8 +144,9 @@ onUnmounted(() => {
 
         <Button variant="outlineDark" size="icon" class="relative">
           <div
+            v-if="hasItems"
             class="size-4.5 text-xs bg-primary text-background !font-bold absolute -top-2 -right-2 rounded-full flex justify-center items-center">
-            2</div>
+            {{ totalItems }}</div>
           <ShoppingBag class="size-5" />
         </Button>
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -9,6 +9,15 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import {
+  NumberField,
+  NumberFieldContent,
+  NumberFieldDecrement,
+  NumberFieldIncrement,
+  NumberFieldInput,
+} from "@/components/ui/number-field"
+import { ChevronRight } from 'lucide-vue-next'
+import { useCart } from '@/composables/useCart'
 
 // Массив данных для периодов подписки
 const subscriptionPeriods = ref([
@@ -22,10 +31,51 @@ const selectedPeriod = ref(
   subscriptionPeriods.value.find(period => period.isDefault)?.value || 12
 )
 
+// Использование глобального состояния корзины
+const { addToCart, removeFromCart } = useCart()
+
+// Состояние кнопки добавления
+const isAddedToCart = ref(false)
+
+// Количество
+const quantity = ref(1)
+
 // Функция для выбора периода
 const selectPeriod = (value: number) => {
   selectedPeriod.value = value
 }
+
+// Функция для добавления в корзину
+const toggleCart = () => {
+  isAddedToCart.value = !isAddedToCart.value
+  
+  if (isAddedToCart.value) {
+    addToCart(quantity.value)
+  } else {
+    removeFromCart()
+  }
+}
+
+// Отслеживание изменений количества
+watch(quantity, (newQuantity) => {
+  if (isAddedToCart.value) {
+    addToCart(newQuantity)
+  }
+})
+
+// Вычисляемое свойство для даты завершения тарифа
+const endDate = computed(() => {
+  const today = new Date()
+  const endDate = new Date(today)
+  endDate.setMonth(endDate.getMonth() + selectedPeriod.value)
+  
+  // Форматируем дату в формате DD.MM.YYYY
+  const day = endDate.getDate().toString().padStart(2, '0')
+  const month = (endDate.getMonth() + 1).toString().padStart(2, '0')
+  const year = endDate.getFullYear()
+  
+  return `${day}.${month}.${year}`
+})
 </script>
 
 <template>
@@ -53,19 +103,16 @@ const selectPeriod = (value: number) => {
           <div
             class="bg-background shadow-lg shadow-slate-600/15 border-l-4 border-primary h-full rounded-r-md inline-flex flex-col py-2 px-4">
             <p class="text-sm">Вы оформляете ваш тариф CORP-100 на {{ selectedPeriod }}&nbsp;мес.</p>
-            <p class="text-sm font-medium">Дата завершения тарифа: <span class="text-primary">17.09.2025</span></p>
+            <p class="text-sm font-medium">Дата завершения тарифа: <span class="text-primary">{{ endDate }}</span></p>
           </div>
         </div>
 
         <h4 class="fontFix text-xl md:text-2xl font-medium">Настройки текущего тарифа</h4>
 
         <div class="inline-flex h-10">
-          <button
-            v-for="(period, index) in subscriptionPeriods"
-            :key="period.id"
-            @click="selectPeriod(period.value)"
+          <button v-for="(period, index) in subscriptionPeriods" :key="period.id" @click="selectPeriod(period.value)"
             :class="[
-              'flex px-4 justify-center items-center transition-colors duration-200 border font-medium',
+              'flex px-4 justify-center items-center transition-colors duration-200 border font-medium text-sm',
               selectedPeriod === period.value 
                 ? 'bg-primary-50/50 text-primary border-primary z-10' 
                 : 'bg-background text-foreground hover:bg-muted border-border',
@@ -77,8 +124,7 @@ const selectPeriod = (value: number) => {
               index === 0 ? 'rounded-l-md' : '',
               // Последний элемент
               index === subscriptionPeriods.length - 1 ? 'rounded-r-md' : ''
-            ]"
-          >
+            ]">
             <span>{{ period.label }}</span>
             <span class="ml-2 px-1.5 py-0.5 bg-primary text-background text-xs rounded-full">
               {{ period.discount }}
@@ -89,7 +135,32 @@ const selectPeriod = (value: number) => {
       </div>
 
       <DialogFooter class="p-4 sticky bottom-0 z-20 border-t border-border">
-        Footer
+        <div class="flex items-center justify-end gap-4 w-full">
+          <NumberField 
+            v-if="isAddedToCart"
+            v-model="quantity" 
+            :min="1"
+            :max="10"
+            :default-value="1"
+            class="w-24"
+          >
+            <NumberFieldContent>
+              <NumberFieldDecrement />
+              <NumberFieldInput />
+              <NumberFieldIncrement />
+            </NumberFieldContent>
+          </NumberField>
+          
+          <Button 
+            size="lg" 
+            :variant="isAddedToCart ? 'secondary' : 'default'"
+            @click="toggleCart"
+            class="flex items-center gap-2"
+          >
+            <span>{{ isAddedToCart ? 'В корзину' : 'Добавить' }}</span>
+            <ChevronRight v-if="isAddedToCart" class="w-4 h-4" />
+          </Button>
+        </div>
       </DialogFooter>
 
     </DialogScrollContent>
