@@ -12,9 +12,9 @@ import {
 
 // Массив данных для периодов подписки
 const subscriptionPeriods = ref([
-  { id: 1, label: '3 месяца', value: 3, discount: '-3%', isDefault: false },
-  { id: 2, label: '6 месяцев', value: 6, discount: '-10%', isDefault: false },
-  { id: 3, label: '12 месяцев', value: 12, discount: '-20%', isDefault: true }
+  { id: 1, label: '3 мес.', value: 3, discount: '-3%', isDefault: false },
+  { id: 2, label: '6 мес.', value: 6, discount: '-10%', isDefault: false },
+  { id: 3, label: '12 мес.', value: 12, discount: '-20%', isDefault: true }
 ])
 
 // Выбранный период (автоматически найти период по умолчанию)
