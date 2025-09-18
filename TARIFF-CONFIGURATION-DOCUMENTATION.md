@@ -73,16 +73,89 @@ const pricePerSpeaker = ref(23)
 
 ### Выбор периода подписки
 
+#### Интерактивный переключатель периодов
+
+Компонент использует группу кнопок для выбора периода подписки, которая представляет собой визуально объединённый блок с умной системой границ:
+
+```vue
+<button v-for="(period, index) in subscriptionPeriods" :key="period.id" 
+        @click="selectPeriod(period.value)"
+        :class="[
+          'flex px-4 justify-center items-center transition-colors duration-200 border font-medium text-sm',
+          selectedPeriod === period.value 
+            ? 'bg-primary-50/50 text-primary border-primary z-10' 
+            : 'bg-background text-foreground hover:bg-muted border-border',
+          // Умная система границ для цельного вида
+          index < subscriptionPeriods.length - 1 && selectedPeriod !== period.value ? 'border-r-0' : '',
+          index > 0 && subscriptionPeriods[index - 1]?.value === selectedPeriod && selectedPeriod !== period.value ? 'border-l-0' : '',
+          // Скругления только у крайних элементов
+          index === 0 ? 'rounded-l-md' : '',
+          index === subscriptionPeriods.length - 1 ? 'rounded-r-md' : ''
+        ]">
+  <span>{{ period.label }}</span>
+  <span class="ml-2 px-1.5 py-0.5 bg-primary text-background text-xs rounded-full">
+    {{ period.discount }}
+  </span>
+</button>
+```
+
+#### Как работает переключатель:
+
+**1. Структура данных:**
+```javascript
+const subscriptionPeriods = ref([
+  { id: 1, label: '3 мес.', value: 3, discount: '-3%', isDefault: false },
+  { id: 2, label: '6 мес.', value: 6, discount: '-10%', isDefault: false },
+  { id: 3, label: '12 мес.', value: 12, discount: '-20%', isDefault: true }
+])
+```
+
+**2. Логика выбора:**
 ```javascript
 const selectPeriod = (value: number) => {
   selectedPeriod.value = value
 }
 ```
 
-Пользователь может выбрать один из трёх доступных периодов. При выборе:
-- Обновляется выбранный период
-- Пересчитывается итоговая стоимость
+**3. Визуальные состояния:**
+
+- **Активная кнопка:**
+  - Фон: `bg-primary-50/50` (полупрозрачный primary)
+  - Текст: `text-primary` (акцентный цвет)
+  - Граница: `border-primary` (акцентная граница)
+  - Z-index: `z-10` (выше соседних элементов)
+
+- **Неактивная кнопка:**
+  - Фон: `bg-background` (базовый фон)
+  - Текст: `text-foreground` (основной текст)
+  - Граница: `border-border` (нейтральная граница)
+  - Hover: `hover:bg-muted` (эффект при наведении)
+
+**4. Умная система границ:**
+
+Компонент автоматически управляет границами для создания цельного вида:
+
+- **Убирает правую границу** у кнопок (кроме последней и выбранной)
+- **Убирает левую границу** у кнопки после выбранной
+- **Скругления** только у крайних элементов (`rounded-l-md`, `rounded-r-md`)
+
+**5. Индикатор скидки:**
+
+Каждая кнопка содержит бейдж со скидкой:
+```vue
+<span class="ml-2 px-1.5 py-0.5 bg-primary text-background text-xs rounded-full">
+  {{ period.discount }}
+</span>
+```
+
+#### Автоматические действия при выборе:
+
+Когда пользователь выбирает период, автоматически происходит:
+- Обновляется выбранный период (`selectedPeriod.value`)
+- Пересчитывается итоговая стоимость через `computed` свойства
 - Обновляется дата завершения тарифа
+- Применяется соответствующая скидка
+- Визуально выделяется выбранная кнопка
 
 ### Управление корзиной
 
