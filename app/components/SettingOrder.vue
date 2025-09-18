@@ -43,11 +43,16 @@ const quantity = ref(1)
 // URL для перехода в корзину
 const cartUrl = ref('#')
 
-// Базовая стоимость за месяц
-const basePricePerMonth = ref(500)
+// Базовая стоимость за 3 месяца (дефолтный период)
+const basePriceFor3Months = ref(37608.44)
 
 // Стоимость за докладчика в месяц
 const pricePerSpeaker = ref(23)
+
+// Вычисляем стоимость за месяц на основе базовой цены за 3 месяца
+const pricePerMonth = computed(() => {
+  return basePriceFor3Months.value / 3
+})
 
 // Функция для выбора периода
 const selectPeriod = (value: number) => {
@@ -100,7 +105,7 @@ const discountPercent = computed(() => {
 
 // Общая стоимость без скидки (за весь период с учетом количества)
 const originalTotalPrice = computed(() => {
-  return basePricePerMonth.value * selectedPeriod.value * quantity.value
+  return pricePerMonth.value * selectedPeriod.value * quantity.value
 })
 
 // Общая стоимость со скидкой (с учетом количества)
@@ -121,14 +126,14 @@ const finalTotalPrice = computed(() => {
     <DialogScrollContent class="max-w-full md:max-w-[980px] p-0 gap-0 border-none">
 
       <DialogHeader class="p-4 md:p-6">
-        <DialogTitle>Настройка тарифа</DialogTitle>
+        <DialogTitle class="text-2xl md:text-2xl">Настройка тарифа</DialogTitle>
       </DialogHeader>
 
-      <div class="space-y-6 p-4 md:p-6 md:pt-2">
+      <div class="space-y-6 p-4 md:p-6 md:pt-2 min-h-[120vh]">
 
-        <div class="grid md:grid-cols-2 gap-4 items-center">
+        <div class="grid md:grid-cols-2 gap-4 items-center sticky top-0 py-4 z-20 bg-background">
           <div class="grid gap-y-2">
-            <h4 class="text-3xl md:text-4xl font-semibold uppercase fontFix">Corp-100</h4>
+            <h4 class="text-3xl md:text-4xl font-semibold uppercase fontFix text-primary">Corp-100</h4>
             <p class="text-secondary">Для встреч, совещаний и командной работы</p>
           </div>
 
