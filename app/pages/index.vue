@@ -44,6 +44,10 @@ useHead({
         <BlocksSuitableForYou />
 
       </div>
+
+      <div class="space-y-8 lg:space-y-16">
+        <SettingOrder />
+      </div>
     </div>
   </div>
 </template>

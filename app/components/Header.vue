@@ -121,7 +121,7 @@ onUnmounted(() => {
     ]" 
     style="pointer-events: none;" />
 
-  <header class="bg-background shadow-xl shadow-slate-600/10 sticky top-0 z-60">
+  <header class="bg-background shadow-xl shadow-slate-600/10 sticky top-0 z-50">
     <div class="container flex justify-between items-center h-16 gap-x-4">
       <div class="flex-shrink-0">
         <Logo />
