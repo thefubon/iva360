@@ -41,7 +41,13 @@ const isAddedToCart = ref(false)
 const quantity = ref(1)
 
 // URL для перехода в корзину
-const cartUrl = ref('/cart')
+const cartUrl = ref('#')
+
+// Базовая стоимость за месяц
+const basePricePerMonth = ref(500)
+
+// Стоимость за докладчика в месяц
+const pricePerSpeaker = ref(23)
 
 // Функция для выбора периода
 const selectPeriod = (value: number) => {
@@ -79,6 +85,28 @@ const endDate = computed(() => {
   const year = endDate.getFullYear()
   
   return `${day}.${month}.${year}`
+})
+
+// Получаем процент скидки для выбранного периода
+const currentDiscount = computed(() => {
+  const period = subscriptionPeriods.value.find(p => p.value === selectedPeriod.value)
+  return period?.discount || '0%'
+})
+
+// Процент скидки в числовом виде
+const discountPercent = computed(() => {
+  return parseInt(currentDiscount.value.replace('-', '').replace('%', '')) || 0
+})
+
+// Общая стоимость без скидки (за весь период с учетом количества)
+const originalTotalPrice = computed(() => {
+  return basePricePerMonth.value * selectedPeriod.value * quantity.value
+})
+
+// Общая стоимость со скидкой (с учетом количества)
+const finalTotalPrice = computed(() => {
+  const discount = discountPercent.value / 100
+  return Math.round(originalTotalPrice.value * (1 - discount))
 })
 </script>
 
@@ -139,7 +167,18 @@ const endDate = computed(() => {
       </div>
 
       <DialogFooter class="p-4 sticky bottom-0 z-20 border-t border-border">
-        <div class="flex items-center justify-end gap-4 w-full">
+        <div class="flex items-center justify-between gap-4 w-full">
+          <!-- Блок с ценой -->
+          <div class="flex flex-col">
+            <div class="flex items-baseline gap-2">
+              <span class="text-sm text-muted-foreground line-through">{{ originalTotalPrice }} ₽</span>
+              <span class="text-2xl font-bold">{{ finalTotalPrice }} ₽</span>
+            </div>
+            <p class="text-sm text-primary">{{ pricePerSpeaker }} ₽ за докладчика в месяц</p>
+          </div>
+          
+          <!-- Блок с кнопками -->
+          <div class="flex items-center gap-4">
           <NumberField 
             v-if="isAddedToCart"
             v-model="quantity" 
@@ -170,7 +209,7 @@ const endDate = computed(() => {
               as-child
               class="flex items-center gap-2"
             >
-              <NuxtLink :to="cartUrl" class="flex items-center gap-2">
+              <NuxtLink :to="cartUrl" class="flex items-center gap-2 !text-foreground">
                 <span>В корзину</span>
                 <ChevronRight class="size-4" />
               </NuxtLink>
@@ -184,6 +223,7 @@ const endDate = computed(() => {
               <Trash2 class="size-4" />
             </Button>
           </template>
+          </div>
         </div>
       </DialogFooter>
 
