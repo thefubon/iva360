@@ -6,7 +6,7 @@ import { SidebarProvider } from "@/components/ui/sidebar";
   <SidebarProvider>
     <DashboardSidebar />
 
-    <main class="w-full min-h-screen flex flex-col bg-secondary">
+    <main class="w-full min-h-screen flex flex-col bg-muted">
       <DashboardHeader />
 
       <div class="flex-1 container">
