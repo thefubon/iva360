@@ -132,7 +132,7 @@ const items3 = [
                 route.path === item.url ? 'bg-muted' : ''
               ]" asChild>
               <NuxtLink :href="item.url">
-                <component :is="item.icon" class="!size-6" />
+                <component :is="item.icon" class="!size-6 stroke-[1.5]" />
                 <span>{{ item.title }}</span>
               </NuxtLink>
             </SidebarMenuButton>
@@ -152,7 +152,7 @@ const items3 = [
                 route.path === item.url ? 'bg-muted' : ''
               ]" asChild>
               <NuxtLink :href="item.url">
-                <component :is="item.icon" class="!size-6" />
+                <component :is="item.icon" class="!size-6 stroke-[1.5]" />
                 <span>{{ item.title }}</span>
               </NuxtLink>
             </SidebarMenuButton>
