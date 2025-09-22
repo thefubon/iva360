@@ -14,7 +14,7 @@ import { Button } from "../ui/button";
           <Logo />
         </NuxtLink>
 
-        <div class="leading-[120%] not-odd:text-sm font-medium">
+        <div class="leading-[110%] text-ыь font-medium">
           Панель управления
         </div>
       </div>
