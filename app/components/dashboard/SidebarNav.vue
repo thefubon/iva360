@@ -5,10 +5,13 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
 import { Separator } from "@/components/ui/separator"
 
-import { LayoutPanelLeft, Users, BriefcaseBusiness, Blocks, FileCode2, ChartBarStacked, CreditCard, MessageCircleQuestionMark, BookMarked, ListTodo, SquareLibrary, ArrowUpRight } from "lucide-vue-next"
+import { LayoutPanelLeft, Users, BriefcaseBusiness, Blocks, FileCode2, ChartBarStacked, CreditCard, MessageCircleQuestionMark, BookMarked, ListTodo, SquareLibrary, ArrowUpRight, ChevronDown } from "lucide-vue-next"
 import Meetings from "../icons/sidebar/Meetings.vue";
 import Messenger from "../icons/sidebar/Messenger.vue";
 import Calendar from "../icons/sidebar/Calendar.vue";
@@ -18,6 +21,14 @@ const route = useRoute()
 
 // Настройка скорости анимации уведомлений (в секундах)
 const alertAnimationDuration = 1.2
+
+// Состояние для раскрытия подменю (объект для хранения состояния всех подменю)
+const submenuStates = ref<Record<string, boolean>>({})
+
+// Функция для переключения подменю
+const toggleSubmenu = (itemTitle: string) => {
+  submenuStates.value[itemTitle] = !submenuStates.value[itemTitle]
+}
 
 const items = [
   {
@@ -47,6 +58,14 @@ const items = [
     icon: Disc,
     target: false,
     alert: false,
+    hasSubmenu: true,
+    submenu: [
+      { title: "Все файлы", url: "#/disk/all" },
+      { title: "Мои файлы", url: "#/disk/my" },
+      { title: "Есть доступ", url: "#/disk/shared" },
+      { title: "Избранное", url: "#/disk/favorites" },
+      { title: "Корзина", url: "#/disk/trash" },
+    ]
   },
 ];
 
@@ -140,16 +159,18 @@ const items3 = [
       <SidebarGroupContent>
         <SidebarMenu class="!gap-y-2">
           <SidebarMenuItem v-for="item in items" :key="item.title">
-            <SidebarMenuButton :class="[
-              '!h-9 px-2 hover:bg-muted font-medium relative',
-              route.path === item.url ? 'bg-muted' : ''
-            ]" asChild>
-              <NuxtLink :href="item.url" :target="item.target ? '_blank' : undefined">
+            <!-- Элемент с подменю -->
+            <template v-if="(item as any).hasSubmenu">
+              <SidebarMenuButton @click="() => toggleSubmenu(item.title)" :class="[
+                  '!h-9 px-2 hover:bg-muted font-medium relative',
+                  submenuStates[item.title] ? 'bg-muted' : ''
+                ]">
                 <component :is="item.icon" class="!size-6" />
-
-                <div class="flex items-center gap-2">{{ item.title }}
-                  <ArrowUpRight v-if="item.target" class="!size-4 ml-auto" />
-                </div>
+                <span>{{ item.title }}</span>
+                <ChevronDown :class="[
+                  '!size-4 ml-auto transition-transform duration-200',
+                  submenuStates[item.title] ? 'rotate-180' : ''
+                ]" />
 
                 <span v-if="item.alert"
                   class="absolute top-1 right-1 flex size-4 rounded-full justify-center items-center">
@@ -158,8 +179,47 @@ const items3 = [
                     :style="{ '--animation-duration': alertAnimationDuration + 's' }"></span>
                   <span class="relative inline-flex size-2 rounded-full bg-primary"></span>
                 </span>
-              </NuxtLink>
-            </SidebarMenuButton>
+              </SidebarMenuButton>
+
+              <!-- Подменю -->
+              <SidebarMenuSub v-if="submenuStates[item.title]">
+                <SidebarMenuSubItem v-for="subItem in (item as any).submenu || []" :key="subItem.title">
+                  <SidebarMenuSubButton :class="[
+                    'hover:bg-muted',
+                    route.path === subItem.url ? 'bg-muted' : ''
+                  ]" asChild>
+                    <NuxtLink :href="subItem.url">
+                      <span>{{ subItem.title }}</span>
+                    </NuxtLink>
+                  </SidebarMenuSubButton>
+                </SidebarMenuSubItem>
+              </SidebarMenuSub>
+            </template>
+
+            <!-- Обычный элемент без подменю -->
+            <template v-else>
+              <SidebarMenuButton :class="[
+                '!h-9 px-2 hover:bg-muted font-medium relative',
+                route.path === item.url ? 'bg-muted' : ''
+              ]" asChild>
+                <NuxtLink :href="item.url" :target="item.target ? '_blank' : undefined">
+                  <component :is="item.icon" class="!size-6" />
+
+                  <div class="flex items-center gap-2">
+                    <span>{{ item.title }}</span>
+                    <ArrowUpRight v-if="item.target" class="!size-4 ml-auto" />
+                  </div>
+
+                  <span v-if="item.alert"
+                    class="absolute top-1 right-1 flex size-4 rounded-full justify-center items-center">
+                    <span
+                      class="absolute inline-flex h-full w-full animate-smooth-ping rounded-full bg-primary opacity-75"
+                      :style="{ '--animation-duration': alertAnimationDuration + 's' }"></span>
+                    <span class="relative inline-flex size-2 rounded-full bg-primary"></span>
+                  </span>
+                </NuxtLink>
+              </SidebarMenuButton>
+            </template>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarGroupContent>
@@ -171,16 +231,23 @@ const items3 = [
       <SidebarGroupContent>
         <SidebarMenu class="!gap-y-2">
           <SidebarMenuItem v-for="item in items2" :key="item.title">
-            <SidebarMenuButton :class="[
-                '!h-9 px-2 hover:bg-muted relative',
-                route.path === item.url ? 'bg-muted' : ''
-              ]" asChild>
-              <NuxtLink :href="item.url" :target="item.target ? '_blank' : undefined">
-                <component :is="item.icon" class="!size-6 stroke-[1.5]" />
+            <!-- Элемент с подменю -->
+            <template v-if="(item as any).hasSubmenu">
+              <SidebarMenuButton @click="() => toggleSubmenu(item.title)" :class="[
+                  '!h-9 px-2 hover:bg-muted relative',
+                  submenuStates[item.title] ? 'bg-muted' : ''
+                ]">
+                <component :is="item.icon" class="!size-5 stroke-[1.5]" />
 
-                <div class="flex items-center gap-2">{{ item.title }}
+                <div class="flex items-center gap-2">
+                  <span>{{ item.title }}</span>
                   <ArrowUpRight v-if="item.target" class="!size-4 ml-auto" />
                 </div>
+
+                <ChevronDown :class="[
+                  '!size-4 ml-auto transition-transform duration-200',
+                  submenuStates[item.title] ? 'rotate-180' : ''
+                ]" />
 
                 <span v-if="item.alert"
                   class="absolute top-1 right-1 flex size-4 rounded-full justify-center items-center">
@@ -189,8 +256,50 @@ const items3 = [
                     :style="{ '--animation-duration': alertAnimationDuration + 's' }"></span>
                   <span class="relative inline-flex size-2 rounded-full bg-primary"></span>
                 </span>
-              </NuxtLink>
-            </SidebarMenuButton>
+              </SidebarMenuButton>
+
+              <!-- Подменю -->
+              <SidebarMenuSub v-if="submenuStates[item.title]">
+                <SidebarMenuSubItem v-for="subItem in (item as any).submenu || []" :key="subItem.title">
+                  <SidebarMenuSubButton :class="[
+                    'hover:bg-muted',
+                    route.path === subItem.url ? 'bg-muted' : ''
+                  ]" asChild>
+                    <NuxtLink :href="subItem.url">
+                      <div class="flex items-center gap-2">
+                        <span>{{ item.title }}</span>
+                        <ArrowUpRight v-if="item.target" class="!size-4 ml-auto" />
+                      </div>
+                    </NuxtLink>
+                  </SidebarMenuSubButton>
+                </SidebarMenuSubItem>
+              </SidebarMenuSub>
+            </template>
+
+            <!-- Обычный элемент без подменю -->
+            <template v-else>
+              <SidebarMenuButton :class="[
+                  '!h-9 px-2 hover:bg-muted relative',
+                  route.path === item.url ? 'bg-muted' : ''
+                ]" asChild>
+                <NuxtLink :href="item.url" :target="item.target ? '_blank' : undefined">
+                  <component :is="item.icon" class="!size-5 stroke-[1.5]" />
+
+                  <div class="flex items-center gap-2">
+                    <span>{{ item.title }}</span>
+                    <ArrowUpRight v-if="item.target" class="!size-4 ml-auto" />
+                  </div>
+
+                  <span v-if="item.alert"
+                    class="absolute top-1 right-1 flex size-4 rounded-full justify-center items-center">
+                    <span
+                      class="absolute inline-flex h-full w-full animate-smooth-ping rounded-full bg-primary opacity-75"
+                      :style="{ '--animation-duration': alertAnimationDuration + 's' }"></span>
+                    <span class="relative inline-flex size-2 rounded-full bg-primary"></span>
+                  </span>
+                </NuxtLink>
+              </SidebarMenuButton>
+            </template>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarGroupContent>
@@ -202,25 +311,73 @@ const items3 = [
       <SidebarGroupContent>
         <SidebarMenu class="!gap-y-2">
           <SidebarMenuItem v-for="item in items3" :key="item.title">
-            <SidebarMenuButton :class="[
-                '!h-9 px-2 hover:bg-muted relative',
-                route.path === item.url ? 'bg-muted' : ''
-              ]" asChild>
-              <NuxtLink :href="item.url" :target="item.target ? '_blank' : undefined">
+            <!-- Элемент с подменю -->
+            <template v-if="(item as any).hasSubmenu">
+              <SidebarMenuButton @click="() => toggleSubmenu(item.title)" :class="[
+                  '!h-9 px-2 hover:bg-muted relative',
+                  submenuStates[item.title] ? 'bg-muted' : ''
+                ]">
                 <component :is="item.icon" class="!size-6 stroke-[1.5]" />
-
-                <div class="flex items-center gap-2">{{ item.title }}
+                <div class="flex items-center gap-2">
+                  <span>{{ item.title }}</span>
                   <ArrowUpRight v-if="item.target" class="!size-4 ml-auto" />
                 </div>
+                <ChevronDown :class="[
+                  '!size-4 ml-auto transition-transform duration-200',
+                  submenuStates[item.title] ? 'rotate-180' : ''
+                ]" />
 
                 <span v-if="item.alert"
                   class="absolute top-1 right-1 flex size-4 rounded-full justify-center items-center">
                   <span
-                    class="absolute inline-flex h-full w-full animate-smooth-ping rounded-full bg-primary opacity-75"></span>
+                    class="absolute inline-flex h-full w-full animate-smooth-ping rounded-full bg-primary opacity-75"
+                    :style="{ '--animation-duration': alertAnimationDuration + 's' }"></span>
                   <span class="relative inline-flex size-2 rounded-full bg-primary"></span>
                 </span>
-              </NuxtLink>
-            </SidebarMenuButton>
+              </SidebarMenuButton>
+
+              <!-- Подменю -->
+              <SidebarMenuSub v-if="submenuStates[item.title]">
+                <SidebarMenuSubItem v-for="subItem in (item as any).submenu || []" :key="subItem.title">
+                  <SidebarMenuSubButton :class="[
+                    'hover:bg-muted',
+                    route.path === subItem.url ? 'bg-muted' : ''
+                  ]" asChild>
+                    <NuxtLink :href="subItem.url">
+                      <div class="flex items-center gap-2">
+                        <span>{{ item.title }}</span>
+                        <ArrowUpRight v-if="item.target" class="!size-4 ml-auto" />
+                      </div>
+                    </NuxtLink>
+                  </SidebarMenuSubButton>
+                </SidebarMenuSubItem>
+              </SidebarMenuSub>
+            </template>
+
+            <!-- Обычный элемент без подменю -->
+            <template v-else>
+              <SidebarMenuButton :class="[
+                  '!h-9 px-2 hover:bg-muted relative',
+                  route.path === item.url ? 'bg-muted' : ''
+                ]" asChild>
+                <NuxtLink :href="item.url" :target="item.target ? '_blank' : undefined">
+                  <component :is="item.icon" class="!size-5 stroke-[1.5]" />
+
+                  <div class="flex items-center gap-2">
+                    <span>{{ item.title }}</span>
+                    <ArrowUpRight v-if="item.target" class="!size-4 ml-auto" />
+                  </div>
+
+                  <span v-if="item.alert"
+                    class="absolute top-1 right-1 flex size-4 rounded-full justify-center items-center">
+                    <span
+                      class="absolute inline-flex h-full w-full animate-smooth-ping rounded-full bg-primary opacity-75"
+                      :style="{ '--animation-duration': alertAnimationDuration + 's' }"></span>
+                    <span class="relative inline-flex size-2 rounded-full bg-primary"></span>
+                  </span>
+                </NuxtLink>
+              </SidebarMenuButton>
+            </template>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarGroupContent>
