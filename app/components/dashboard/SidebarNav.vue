@@ -108,7 +108,7 @@ const items3 = [
         <SidebarMenu class="!gap-y-2">
           <SidebarMenuItem v-for="item in items" :key="item.title">
             <SidebarMenuButton :class="[
-              '!h-9 px-2 hover:bg-muted',
+              '!h-9 px-2 hover:bg-muted font-medium',
               route.path === item.url ? 'bg-muted' : ''
             ]" asChild>
               <NuxtLink :href="item.url">
