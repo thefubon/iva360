@@ -13,7 +13,7 @@ import { Gem } from 'lucide-vue-next';
           <Logo />
         </NuxtLink>
 
-        <div class="leading-[110%] text-ыь font-medium">
+        <div class="leading-[110%] text-sm font-medium">
           Панель управления
         </div>
       </div>
