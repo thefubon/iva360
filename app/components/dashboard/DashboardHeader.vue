@@ -34,9 +34,9 @@ const isMobile = breakpoints.smaller('mobile');
           class="border-none shadow-2xl shadow-slate-600/15 rounded-xl min-w-[600px] p-0 overflow-hidden">
           <div class="flex items-center justify-between gap-6">
             <div class="space-y-4 p-6 pr-0 flex-1">
-              <div>
-                <p class="text-lg font-semibold">Мобильное приложение</p>
-                <p class="text-sm text-secondary">Управляйте вашим мероприятием в&nbsp;любое время и&nbsp;в&nbsp;любом
+              <div class="space-y-1">
+                <p class="text-xl font-semibold">Мобильное приложение</p>
+                <p class="text-sm">Управляйте вашим мероприятием в&nbsp;любое время и&nbsp;в&nbsp;любом
                   месте
                 </p>
               </div>
