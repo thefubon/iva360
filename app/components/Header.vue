@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
-import { Search, ShoppingBag, Menu, X } from 'lucide-vue-next'
+import { Search, ShoppingBag, Menu, X, ArrowUpRight } from 'lucide-vue-next'
 import { useCart } from '@/composables/useCart'
 
 // Состояние корзины
@@ -116,12 +116,36 @@ onUnmounted(() => {
 
 <template>
   <!-- Navigation Menu Overlay -->
-  <div 
-    :class="[
+  <div :class="[
       'fixed inset-0 bg-foreground/40 z-30 transition-opacity duration-400',
       isNavigationMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-    ]" 
-    style="pointer-events: none;" />
+    ]" style="pointer-events: none;" />
+
+  <div class="bg-background border-b border-border relative z-50">
+    <div class="container h-10 flex justify-between items-center text-xs">
+      <div class="flex items-center gap-x-3 divide-x-2 divide-border">
+        <div class="pr-3">
+          <NuxtLink href="tel:+74992892085" class="hover:text-primary">+7 (499) 289-20-85</NuxtLink>
+        </div>
+
+        <div class="pr-3">
+          <NuxtLink href="mailto:info@iva360.ru" class="hover:text-primary">info@iva360.ru</NuxtLink>
+        </div>
+
+        <div>
+          <NuxtLink href="https://help.iva360.ru" target="_blank"
+            class="text-primary hover:text-primary-600 flex items-center gap-x-1">
+            <span>База знаний</span>
+            <ArrowUpRight class="size-4" />
+          </NuxtLink>
+        </div>
+      </div>
+
+      <div>
+        English
+      </div>
+    </div>
+  </div>
 
   <header class="bg-background shadow-xl shadow-slate-600/10 sticky top-0 z-50">
     <div class="container flex justify-between items-center h-16 gap-x-4">
@@ -141,8 +165,7 @@ onUnmounted(() => {
 
 
         <Button variant="outlineDark" size="icon" class="relative">
-          <div
-            v-if="hasItems"
+          <div v-if="hasItems"
             class="size-4.5 text-xs bg-primary text-background !font-bold absolute -top-2 -right-2 rounded-full flex justify-center items-center">
             {{ totalItems }}</div>
           <ShoppingBag class="size-5" />
