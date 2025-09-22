@@ -59,7 +59,7 @@ watch(() => route.path, () => {
 const items = [
   {
     title: "Встречи",
-    url: "#",
+    url: "/meet",
     icon: Meetings,
     target: false,
     alert: false,
