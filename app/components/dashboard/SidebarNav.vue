@@ -203,7 +203,7 @@ const items3 = [
                   '!h-9 px-2 hover:bg-muted font-medium relative cursor-pointer',
                   !submenuStates[item.title] && isActiveInSubmenu(item) ? 'bg-muted' : ''
                 ]">
-                <component :is="item.icon" class="!size-5" />
+                <component :is="item.icon" class="!size-6" />
                 <span>{{ item.title }}</span>
                 <ChevronDown :class="[
                   '!size-4 ml-auto transition-transform duration-200',
