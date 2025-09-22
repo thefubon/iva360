@@ -9,10 +9,10 @@ import {
 import { Separator } from "@/components/ui/separator"
 
 import { LayoutPanelLeft, Users, BriefcaseBusiness, Blocks, FileCode2, ChartBarStacked, CreditCard, MessageCircleQuestionMark, BookMarked, ListTodo, SquareLibrary } from "lucide-vue-next"
-import Meetings from "../icons/Meetings.vue";
-import Messenger from "../icons/Messenger.vue";
-import Calendar from "../icons/Calendar.vue";
-import Disc from "../icons/Disc.vue";
+import Meetings from "../icons/sidebar/Meetings.vue";
+import Messenger from "../icons/sidebar/Messenger.vue";
+import Calendar from "../icons/sidebar/Calendar.vue";
+import Disc from "../icons/sidebar/Disc.vue";
 
 const route = useRoute()
 
