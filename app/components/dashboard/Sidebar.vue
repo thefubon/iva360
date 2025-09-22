@@ -2,6 +2,7 @@
 import { Sidebar, SidebarContent } from "@/components/ui/sidebar";
 import Logo from "../Logo.vue";
 import { Gem } from 'lucide-vue-next';
+import SidebarNav from "./SidebarNav.vue";
 </script>
 
 <template>
@@ -19,8 +20,8 @@ import { Gem } from 'lucide-vue-next';
       </div>
     </SidebarHeader>
 
-    <SidebarContent class="p-4 gap-y-4">
-      Content
+    <SidebarContent class="gap-y-4">
+      <SidebarNav />
     </SidebarContent>
 
     <SidebarFooter class="bg-background p-4">
@@ -29,7 +30,7 @@ import { Gem } from 'lucide-vue-next';
           <Gem class="size-9 text-primary" />
           <div>
             <p class="text-sm font-semibold text-primary">Выбрать план</p>
-            <p class="text-xs text-secondary">Разблокируйте больше возможночстей</p>
+            <p class="text-xs">Разблокируйте больше возможночстей</p>
           </div>
         </div>
       </NuxtLink>

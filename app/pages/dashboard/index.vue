@@ -14,7 +14,7 @@ useHead({
 </script>
 
 <template>
-  <div class="flex flex-col gap-4 p-4 md:p-6">
+  <div class="flex flex-col gap-4 p-4">
     <h3 class="text-lg font-semibold">Дашбоард</h3>
 
     <div class="bg-background rounded-lg p-6 border">
