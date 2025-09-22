@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/sidebar"
 import { Separator } from "@/components/ui/separator"
 
-import { LayoutPanelLeft, Users, BriefcaseBusiness, Blocks, FileCode2, ChartBarStacked, CreditCard, MessageCircleQuestionMark, BookMarked, ListTodo, SquareLibrary, SquareArrowOutUpRight } from "lucide-vue-next"
+import { LayoutPanelLeft, Users, BriefcaseBusiness, Blocks, FileCode2, ChartBarStacked, CreditCard, MessageCircleQuestionMark, BookMarked, ListTodo, SquareLibrary, ArrowUpRight } from "lucide-vue-next"
 import Meetings from "../icons/sidebar/Meetings.vue";
 import Messenger from "../icons/sidebar/Messenger.vue";
 import Calendar from "../icons/sidebar/Calendar.vue";
@@ -148,7 +148,7 @@ const items3 = [
                 <component :is="item.icon" class="!size-6" />
 
                 <div class="flex items-center gap-2">{{ item.title }}
-                  <SquareArrowOutUpRight v-if="item.target" class="!size-4 ml-auto" />
+                  <ArrowUpRight v-if="item.target" class="!size-4 ml-auto" />
                 </div>
 
                 <span v-if="item.alert"
@@ -179,7 +179,7 @@ const items3 = [
                 <component :is="item.icon" class="!size-6 stroke-[1.5]" />
 
                 <div class="flex items-center gap-2">{{ item.title }}
-                  <SquareArrowOutUpRight v-if="item.target" class="!size-4 ml-auto" />
+                  <ArrowUpRight v-if="item.target" class="!size-4 ml-auto" />
                 </div>
 
                 <span v-if="item.alert"
@@ -210,7 +210,7 @@ const items3 = [
                 <component :is="item.icon" class="!size-6 stroke-[1.5]" />
 
                 <div class="flex items-center gap-2">{{ item.title }}
-                  <SquareArrowOutUpRight v-if="item.target" class="!size-4 ml-auto" />
+                  <ArrowUpRight v-if="item.target" class="!size-4 ml-auto" />
                 </div>
 
                 <span v-if="item.alert"
