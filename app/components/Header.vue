@@ -125,7 +125,7 @@ onUnmounted(() => {
   <Banner />
 
   <div class="bg-background border-b border-border relative z-50">
-    <div class="container flex flex-col md:flex-row gap-2 md:justify-between md:items-center text-xs px-4 py-3">
+    <div class="container flex flex-col md:flex-row gap-2 md:justify-between md:items-center text-sm px-4 py-3">
       <div class="flex items-center gap-3 divide-x-2 divide-border">
         <div class="pr-3">
           <NuxtLink href="tel:+74992892085" class="hover:text-primary whitespace-nowrap">+7 (499) 289-20-85</NuxtLink>
@@ -134,19 +134,15 @@ onUnmounted(() => {
         <div class="pr-3">
           <NuxtLink href="mailto:info@iva360.ru" class="hover:text-primary whitespace-nowrap">info@iva360.ru</NuxtLink>
         </div>
-
-        <div>
-          <NuxtLink href="https://help.iva360.ru" target="_blank"
-            class="text-primary hover:text-primary/75 flex items-center gap-x-1">
-            <BookMarked class="size-3.5" />
-            <span class="line-clamp-2 leading-3">База знаний</span>
-            <ArrowUpRight class="size-4" />
-          </NuxtLink>
-        </div>
       </div>
 
       <div>
-        English
+        <NuxtLink href="https://help.iva360.ru" target="_blank"
+          class="text-foreground flex items-center gap-x-1 hover:text-primary">
+          <BookMarked class="size-3.5" />
+          <span class="line-clamp-2 leading-3">База знаний</span>
+          <ArrowUpRight class="size-4" />
+        </NuxtLink>
       </div>
     </div>
   </div>
