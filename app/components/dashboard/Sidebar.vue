@@ -2,7 +2,6 @@
 import { Sidebar, SidebarContent } from "@/components/ui/sidebar";
 import Logo from "../Logo.vue";
 import { Gem } from 'lucide-vue-next';
-import { Button } from "../ui/button";
 </script>
 
 <template>
