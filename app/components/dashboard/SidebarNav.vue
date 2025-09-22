@@ -156,7 +156,7 @@ const items3 = [
                   <span
                     class="absolute inline-flex h-full w-full animate-smooth-ping rounded-full bg-primary opacity-75"
                     :style="{ '--animation-duration': alertAnimationDuration + 's' }"></span>
-                  <span class="relative inline-flex size-2.5 rounded-full bg-primary"></span>
+                  <span class="relative inline-flex size-2 rounded-full bg-primary"></span>
                 </span>
               </NuxtLink>
             </SidebarMenuButton>
@@ -187,7 +187,7 @@ const items3 = [
                   <span
                     class="absolute inline-flex h-full w-full animate-smooth-ping rounded-full bg-primary opacity-75"
                     :style="{ '--animation-duration': alertAnimationDuration + 's' }"></span>
-                  <span class="relative inline-flex size-2.5 rounded-full bg-primary"></span>
+                  <span class="relative inline-flex size-2 rounded-full bg-primary"></span>
                 </span>
               </NuxtLink>
             </SidebarMenuButton>
@@ -217,7 +217,7 @@ const items3 = [
                   class="absolute top-1 right-1 flex size-4 rounded-full justify-center items-center">
                   <span
                     class="absolute inline-flex h-full w-full animate-smooth-ping rounded-full bg-primary opacity-75"></span>
-                  <span class="relative inline-flex size-2.5 rounded-full bg-primary"></span>
+                  <span class="relative inline-flex size-2 rounded-full bg-primary"></span>
                 </span>
               </NuxtLink>
             </SidebarMenuButton>
