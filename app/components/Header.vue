@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
-import { Search, ShoppingBag, Menu, X, ArrowUpRight } from 'lucide-vue-next'
+import { Search, ShoppingBag, Menu, X, ArrowUpRight, BookMarked } from 'lucide-vue-next'
 import { useCart } from '@/composables/useCart'
+import Banner from './Banner.vue'
 
 // Состояние корзины
 const { hasItems, totalItems } = useCart()
@@ -121,21 +122,24 @@ onUnmounted(() => {
       isNavigationMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
     ]" style="pointer-events: none;" />
 
+  <Banner />
+
   <div class="bg-background border-b border-border relative z-50">
-    <div class="container h-10 flex justify-between items-center text-xs">
-      <div class="flex items-center gap-x-3 divide-x-2 divide-border">
+    <div class="container flex flex-col md:flex-row gap-2 md:justify-between md:items-center text-xs px-4 py-3">
+      <div class="flex items-center gap-3 divide-x-2 divide-border">
         <div class="pr-3">
-          <NuxtLink href="tel:+74992892085" class="hover:text-primary">+7 (499) 289-20-85</NuxtLink>
+          <NuxtLink href="tel:+74992892085" class="hover:text-primary whitespace-nowrap">+7 (499) 289-20-85</NuxtLink>
         </div>
 
         <div class="pr-3">
-          <NuxtLink href="mailto:info@iva360.ru" class="hover:text-primary">info@iva360.ru</NuxtLink>
+          <NuxtLink href="mailto:info@iva360.ru" class="hover:text-primary whitespace-nowrap">info@iva360.ru</NuxtLink>
         </div>
 
         <div>
           <NuxtLink href="https://help.iva360.ru" target="_blank"
             class="text-primary hover:text-primary-600 flex items-center gap-x-1">
-            <span>База знаний</span>
+            <BookMarked class="size-4" />
+            <span class="line-clamp-2 leading-3">База знаний</span>
             <ArrowUpRight class="size-4" />
           </NuxtLink>
         </div>
@@ -158,7 +162,7 @@ onUnmounted(() => {
         <Navbar />
       </div>
 
-      <div class="flex items-center gap-x-3 md:gap-x-3 flex-shrink-0">
+      <div class="flex items-center gap-x-2 md:gap-x-3 flex-shrink-0">
         <Button variant="outlineDark" size="icon">
           <Search class="size-5" />
         </Button>

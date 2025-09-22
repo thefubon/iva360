@@ -73,7 +73,7 @@ const components: { title: string, href: string, description: string, icon: stri
     icon: "Mail"
   },
   {
-    title: "Диск и документы",
+    title: "Диск",
     href: "#",
     description:
       "Удобное хранение и совместная работы с файлами.",
@@ -85,6 +85,34 @@ const components: { title: string, href: string, description: string, icon: stri
     description:
       "Ваш ИИ-помощник для рабочих встреч и задач",
     icon: "Ai"
+  },
+  {
+    title: "Документы",
+    href: "#",
+    description:
+      "Защищенное общение внутри команды и с клиентами",
+    icon: "Messenger"
+  },
+  {
+    title: "Календарь",
+    href: "#",
+    description:
+      "Планируйте встречи и события без хаоса",
+    icon: "Calendar"
+  },
+  {
+    title: "Почта",
+    href: "#",
+    description:
+      "Корпоративная электронная почта в защищенной экосистеме",
+    icon: "Mail"
+  },
+  {
+    title: "Диск и документы",
+    href: "#",
+    description:
+      "Удобное хранение и совместная работы с файлами.",
+    icon: "Disc"
   },
 ]
 </script>
@@ -137,9 +165,10 @@ const components: { title: string, href: string, description: string, icon: stri
                 <NavigationMenuLink as-child>
                   <a href="/docs/introduction"
                     class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground h-full">
-                    <div class="text-sm font-medium leading-none">Малому и среднему бизнесу</div>
-                    <p class="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                      Облачная платформа для встреч, работы с клиентами и управления командой – все в одном решении.
+                    <div class="font-medium leading-none">Малому и среднему бизнесу</div>
+                    <p class="text-sm leading-snug text-muted-foreground">
+                      Простой и быстрый способ внедрить профрешение в компании без установки и участия системного
+                      администратора
                     </p>
                   </a>
                 </NavigationMenuLink>
@@ -148,9 +177,9 @@ const components: { title: string, href: string, description: string, icon: stri
                 <NavigationMenuLink as-child>
                   <a href="/docs/installation"
                     class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                    <div class="text-sm font-medium leading-none">Installation</div>
-                    <p class="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                      How to install dependencies and structure your app.
+                    <div class="font-medium leading-none">Для крупного бизнеса</div>
+                    <p class="text-sm leading-snug text-muted-foreground">
+                      Универсальное решение для мероприятий и встреч в компании: видеозвонки и мессенджер в одном
                     </p>
                   </a>
                 </NavigationMenuLink>
@@ -159,9 +188,31 @@ const components: { title: string, href: string, description: string, icon: stri
                 <NavigationMenuLink as-child>
                   <a href="/docs/typography"
                     class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                    <div class="text-sm font-medium leading-none">Typography</div>
-                    <p class="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                      Styles for headings, paragraphs, lists...etc
+                    <div class="font-medium leading-none">Для образовательных учреждений</div>
+                    <p class="text-sm leading-snug text-muted-foreground">
+                      Инструменты для онлайн-обучения, вебинаров и взаимодействия с учениками
+                    </p>
+                  </a>
+                </NavigationMenuLink>
+              </li>
+              <li>
+                <NavigationMenuLink as-child>
+                  <a href="/docs/typography"
+                    class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                    <div class="font-medium leading-none">Для госсектора</div>
+                    <p class="text-sm leading-snug text-muted-foreground">
+                      Безопасная цифровая среда для совещаний, веб-конференций и остальных внутренних коммуникаций
+                    </p>
+                  </a>
+                </NavigationMenuLink>
+              </li>
+              <li>
+                <NavigationMenuLink as-child>
+                  <a href="/docs/typography"
+                    class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                    <div class="font-medium leading-none">Партнерам</div>
+                    <p class="text-sm leading-snug text-muted-foreground">
+                      IVA 360 лучшая платформа для ваши клиентов
                     </p>
                   </a>
                 </NavigationMenuLink>

@@ -7,18 +7,18 @@ import { ChevronRight } from 'lucide-vue-next';
 <template>
   <div class="bg-slate-900 text-background relative z-60">
     <NuxtLink href="#" class="block group">
-      <div class="container flex justify-center items-center gap-4 p-4">
+      <div class="container flex justify-center items-center gap-4 py-2 px-4">
         <div class="flex items-center gap-x-4">
-          <Button variant="secondary" size="sm" class="text-xs h-6 group-hover:!bg-primary font-semibold group-hover:text-primary-foreground">
+          <Button variant="secondary" size="sm"
+            class="text-xs h-6 group-hover:!bg-primary font-semibold group-hover:text-primary-foreground">
             Вебинар
           </Button>
 
-          <div class="text-sm font-semibold">Тенденции и прогноз развития российского рынка
+          <div class="text-sm font-semibold line-clamp-2">Тенденции и прогноз развития российского рынка
             унифицированных коммуникаций
             (UC) в
             2025-2026</div>
-
-          <ChevronRight/>
+          <ChevronRight />
         </div>
       </div>
     </NuxtLink>
