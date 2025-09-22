@@ -4,7 +4,7 @@ definePageMeta({
 });
 
 useHead({
-  title: 'Панель управления',
+  title: 'Пользователи',
   meta: [
     { name: 'description', content: 'Описание главной страницы' }
   ],
@@ -13,10 +13,10 @@ useHead({
 
 <template>
   <div class="flex flex-col gap-4 p-4">
-    <h3 class="text-lg font-semibold">Дашбоард</h3>
+    <h3 class="text-lg font-semibold">Пользователи</h3>
 
     <div class="bg-background rounded-lg p-6 border">
-      Dashboard
+      Функционал еще не заехал!
     </div>
   </div>
 </template>

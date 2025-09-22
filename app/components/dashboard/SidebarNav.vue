@@ -79,7 +79,7 @@ const items2 = [
   },
   {
     title: "Пользователи",
-    url: "#",
+    url: "/dashboard/users",
     icon: Users,
     target: false,
     alert: true,
