@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { Sidebar, SidebarContent } from "@/components/ui/sidebar";
 import Logo from "../Logo.vue";
+import { Gem } from 'lucide-vue-next';
+import { Button } from "../ui/button";
 </script>
 
 <template>
@@ -22,8 +24,16 @@ import Logo from "../Logo.vue";
       Content
     </SidebarContent>
 
-    <SidebarFooter>
-      Footer
+    <SidebarFooter class="bg-background p-4">
+      <NuxtLink href="#" class="block">
+        <div class="flex gap-x-2 border border-border rounded-lg p-2">
+          <Gem class="size-9 text-primary" />
+          <div>
+            <p class="text-sm font-semibold text-primary">Выбрать план</p>
+            <p class="text-xs text-secondary">Разблокируйте больше возможночстей</p>
+          </div>
+        </div>
+      </NuxtLink>
     </SidebarFooter>
   </Sidebar>
 </template>
