@@ -137,8 +137,8 @@ onUnmounted(() => {
 
         <div>
           <NuxtLink href="https://help.iva360.ru" target="_blank"
-            class="text-primary hover:text-primary-600 flex items-center gap-x-1">
-            <BookMarked class="size-4" />
+            class="text-primary hover:text-primary/75 flex items-center gap-x-1">
+            <BookMarked class="size-3.5" />
             <span class="line-clamp-2 leading-3">База знаний</span>
             <ArrowUpRight class="size-4" />
           </NuxtLink>
