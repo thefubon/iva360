@@ -15,7 +15,7 @@ import SidebarNav from "./SidebarNav.vue";
         </NuxtLink>
 
         <div class="leading-[110%] text-sm font-medium">
-          Панель управления
+          Панель<br/>управления
         </div>
       </div>
     </SidebarHeader>
