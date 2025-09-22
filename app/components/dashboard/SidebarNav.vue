@@ -30,6 +30,32 @@ const toggleSubmenu = (itemTitle: string) => {
   submenuStates.value[itemTitle] = !submenuStates.value[itemTitle]
 }
 
+// Функция для проверки, находится ли пользователь на одной из страниц подменю
+const isActiveInSubmenu = (item: any) => {
+  if (!item.hasSubmenu || !item.submenu) return false
+  return item.submenu.some((subItem: any) => route.path === subItem.url)
+}
+
+// Автоматически раскрываем подменю, если пользователь находится на одной из внутренних страниц
+const initializeSubmenuStates = () => {
+  const allItems = [...items, ...items2, ...items3]
+  allItems.forEach(item => {
+    if ((item as any).hasSubmenu && isActiveInSubmenu(item)) {
+      submenuStates.value[item.title] = true
+    }
+  })
+}
+
+// Инициализируем состояния подменю при монтировании
+onMounted(() => {
+  initializeSubmenuStates()
+})
+
+// Следим за изменениями маршрута
+watch(() => route.path, () => {
+  initializeSubmenuStates()
+})
+
 const items = [
   {
     title: "Встречи",
@@ -162,7 +188,8 @@ const items3 = [
             <!-- Элемент с подменю -->
             <template v-if="(item as any).hasSubmenu">
               <SidebarMenuButton @click="() => toggleSubmenu(item.title)" :class="[
-                  '!h-9 px-2 hover:bg-muted font-medium relative cursor-pointer'
+                  '!h-9 px-2 hover:bg-muted font-medium relative cursor-pointer',
+                  !submenuStates[item.title] && isActiveInSubmenu(item) ? 'bg-muted' : ''
                 ]">
                 <component :is="item.icon" class="!size-6" />
                 <span>{{ item.title }}</span>
@@ -233,7 +260,8 @@ const items3 = [
             <!-- Элемент с подменю -->
             <template v-if="(item as any).hasSubmenu">
               <SidebarMenuButton @click="() => toggleSubmenu(item.title)" :class="[
-                  '!h-9 px-2 hover:bg-muted relative'
+                  '!h-9 px-2 hover:bg-muted relative',
+                  !submenuStates[item.title] && isActiveInSubmenu(item) ? 'bg-muted' : ''
                 ]">
                 <component :is="item.icon" class="!size-5 stroke-[1.5]" />
 
@@ -312,7 +340,8 @@ const items3 = [
             <!-- Элемент с подменю -->
             <template v-if="(item as any).hasSubmenu">
               <SidebarMenuButton @click="() => toggleSubmenu(item.title)" :class="[
-                  '!h-9 px-2 hover:bg-muted relative'
+                  '!h-9 px-2 hover:bg-muted relative',
+                  !submenuStates[item.title] && isActiveInSubmenu(item) ? 'bg-muted' : ''
                 ]">
                 <component :is="item.icon" class="!size-6 stroke-[1.5]" />
                 <div class="flex items-center gap-2">
