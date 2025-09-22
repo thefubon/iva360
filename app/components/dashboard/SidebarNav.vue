@@ -7,7 +7,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
-import { LayoutPanelLeft, Users, BriefcaseBusiness, Blocks, FileCode2, ChartBarStacked, CreditCard, Calendar, Home, Inbox, Search, Settings } from "lucide-vue-next"
+import { LayoutPanelLeft, Users, BriefcaseBusiness, Blocks, FileCode2, ChartBarStacked, CreditCard, Calendar, MessageCircleQuestionMark, BookMarked, ListTodo, SquareLibrary } from "lucide-vue-next"
 
 const items2 = [
   {
@@ -49,61 +49,56 @@ const items2 = [
 
 const items3 = [
   {
-    title: "Home",
+    title: "Подсказки",
     url: "#",
-    icon: Home,
+    icon: MessageCircleQuestionMark,
   },
   {
-    title: "Inbox",
+    title: "База знаний",
     url: "#",
-    icon: Inbox,
+    icon: BookMarked,
   },
   {
-    title: "Calendar",
+    title: "Дорожная карта",
     url: "#",
-    icon: Calendar,
+    icon: ListTodo,
   },
   {
-    title: "Search",
+    title: "Документы платформы",
     url: "#",
-    icon: Search,
-  },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
+    icon: SquareLibrary,
   },
 ];
 </script>
 
 <template>
-  <div>
-    <SidebarGroup>
+  <div class="p-4">
+    <SidebarGroup class="p-0">
       <SidebarGroupContent>
-        <SidebarMenu>
+        <SidebarMenu class="!gap-y-2">
           <SidebarMenuItem v-for="item in items2" :key="item.title">
-            <SidebarMenuButton asChild>
-              <a :href="item.url">
-                <component :is="item.icon" />
+            <SidebarMenuButton class="!h-9 px-2" asChild>
+              <NuxtLink :href="item.url">
+                <component :is="item.icon" class="!size-6" />
                 <span>{{ item.title }}</span>
-              </a>
+              </NuxtLink>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarGroupContent>
     </SidebarGroup>
 
-    <Separator />
+    <Separator class="!my-4" />
 
-    <SidebarGroup>
+    <SidebarGroup class="p-0">
       <SidebarGroupContent>
-        <SidebarMenu>
+        <SidebarMenu class="!gap-y-2">
           <SidebarMenuItem v-for="item in items3" :key="item.title">
-            <SidebarMenuButton asChild>
-              <a :href="item.url">
-                <component :is="item.icon" />
+            <SidebarMenuButton class="!h-9 px-2" asChild>
+              <NuxtLink :href="item.url">
+                <component :is="item.icon" class="!size-6" />
                 <span>{{ item.title }}</span>
-              </a>
+              </NuxtLink>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
