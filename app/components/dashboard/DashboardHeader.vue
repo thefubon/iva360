@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
 import { Button } from "@/components/ui/button";
 import { ShoppingBag, Ticket, MonitorSmartphone } from 'lucide-vue-next';
 import { useBreakpoints } from '@vueuse/core';
@@ -18,11 +23,17 @@ const isMobile = breakpoints.smaller('mobile');
     </div>
 
     <div class="flex items-center md:gap-4 gap-3">
-      <Button variant="outlineDark" :size="isMobile ? 'icon' : 'default'" as-child>
-        <NuxtLink to="#" class="flex items-center gap-2">
-          <MonitorSmartphone class="size-5 stroke-[1.5]" /> <span class="hidden md:block">Приложение</span>
-        </NuxtLink>
-      </Button>
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button variant="outlineDark" :size="isMobile ? 'icon' : 'default'">
+            <MonitorSmartphone class="size-5 stroke-[1.5]" /> <span class="hidden md:block">Приложение</span>
+          </Button>
+        </PopoverTrigger>
+
+        <PopoverContent side="bottom" align="end" :sideOffset="8" class="border-none shadow-2xl shadow-slate-600/15 rounded-xl" asChild>
+          Some popover content
+        </PopoverContent>
+      </Popover>
 
       <Button variant="outlineDark" :size="isMobile ? 'icon' : 'default'" as-child>
         <NuxtLink to="#" class="flex items-center gap-2">
