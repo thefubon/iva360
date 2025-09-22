@@ -30,33 +30,33 @@ const isMobile = breakpoints.smaller('mobile');
           </Button>
         </PopoverTrigger>
 
-        <PopoverContent side="bottom" align="end" :sideOffset="8"
-          class="border-none shadow-2xl shadow-slate-600/15 rounded-xl min-w-[600px] p-0 overflow-hidden">
-          <div class="flex items-center justify-between gap-6">
-            <div class="space-y-4 p-6 pr-0 flex-1">
+        <PopoverContent side="bottom" align="end" :sideOffset="8"  :alignOffset="isMobile ? 0 : 0"
+          class="border-none shadow-2xl shadow-slate-600/15 rounded-xl w-full max-w-sm md:max-w-2xl p-0 overflow-hidden">
+          <div class="flex items-center justify-between gap-0 md:gap-6">
+            <div class="space-y-4 p-4 md:p-6 md:pr-0 flex-1">
               <div class="space-y-1">
-                <p class="text-xl font-semibold">Мобильное приложение</p>
-                <p class="text-sm">Управляйте вашим мероприятием в&nbsp;любое время и&nbsp;в&nbsp;любом
+                <p class="text-lg md:text-xl font-semibold">Мобильное приложение</p>
+                <p class="text-sm text-muted-foreground">Управляйте вашим мероприятием в&nbsp;любое время и&nbsp;в&nbsp;любом
                   месте
                 </p>
               </div>
 
               <div class="flex gap-x-2">
                 <NuxtLink href="#" target="_blank">
-                  <NuxtImg class="h-9" src="/img/Apple.svg" alt="iOS" />
+                  <NuxtImg class="h-8 md:h-9" src="/img/Apple.svg" alt="iOS" />
                 </NuxtLink>
 
                 <NuxtLink href="#" target="_blank">
-                  <NuxtImg class="h-9" src="/img/Android.svg" alt="Android" />
+                  <NuxtImg class="h-8 md:h-9" src="/img/Android.svg" alt="Android" />
                 </NuxtLink>
               </div>
             </div>
 
-            <div>
+            <div class="hidden md:block">
               <NuxtImg class="h-28 p-1 border border-border rounded-lg block" src="/img/QRCode.svg" alt="QR-Code" />
             </div>
 
-            <div>
+            <div class="hidden md:block">
               <NuxtImg class="h-full w-full block" src="/img/DownloadImages.png" alt="" />
             </div>
           </div>

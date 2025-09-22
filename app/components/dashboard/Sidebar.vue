@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Sidebar, SidebarContent } from "@/components/ui/sidebar";
+import { Sidebar, SidebarContent, SidebarHeader, SidebarFooter } from "@/components/ui/sidebar";
 import Logo from "../Logo.vue";
 import { Gem } from 'lucide-vue-next';
 import SidebarNav from "./SidebarNav.vue";

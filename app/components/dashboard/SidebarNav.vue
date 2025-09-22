@@ -8,6 +8,7 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
+  useSidebar,
 } from "@/components/ui/sidebar"
 import { Separator } from "@/components/ui/separator"
 
@@ -19,6 +20,9 @@ import Disc from "../icons/sidebar/Disc.vue";
 
 const route = useRoute()
 
+// Получаем доступ к функциям управления сайдбаром
+const { isMobile, setOpenMobile } = useSidebar()
+
 // Настройка скорости анимации уведомлений (в секундах)
 const alertAnimationDuration = 1.2
 
@@ -28,6 +32,14 @@ const submenuStates = ref<Record<string, boolean>>({})
 // Функция для переключения подменю
 const toggleSubmenu = (itemTitle: string) => {
   submenuStates.value[itemTitle] = !submenuStates.value[itemTitle]
+}
+
+// Функция для закрытия сайдбара в мобильной версии при клике на ссылку
+const handleNavClick = (url: string, target?: boolean) => {
+  // Закрываем сайдбар только в мобильной версии и только для внутренних ссылок
+  if (isMobile.value && !target && url !== '#') {
+    setOpenMobile(false)
+  }
 }
 
 // Функция для проверки, находится ли пользователь на одной из страниц подменю
@@ -214,7 +226,7 @@ const items3 = [
                     'hover:bg-muted',
                     route.path === subItem.url ? 'bg-muted' : ''
                   ]" asChild>
-                    <NuxtLink :href="subItem.url">
+                    <NuxtLink :href="subItem.url" @click="() => handleNavClick(subItem.url)">
                       <span>{{ subItem.title }}</span>
                     </NuxtLink>
                   </SidebarMenuSubButton>
@@ -228,7 +240,7 @@ const items3 = [
                 '!h-9 px-2 hover:bg-muted font-medium relative',
                 route.path === item.url ? 'bg-muted' : ''
               ]" asChild>
-                <NuxtLink :href="item.url" :target="item.target ? '_blank' : undefined">
+                <NuxtLink :href="item.url" :target="item.target ? '_blank' : undefined" @click="() => handleNavClick(item.url, item.target)">
                   <component :is="item.icon" class="!size-6" />
 
                   <div class="flex items-center gap-2">
@@ -291,7 +303,7 @@ const items3 = [
                     'hover:bg-muted',
                     route.path === subItem.url ? 'bg-muted' : ''
                   ]" asChild>
-                    <NuxtLink :href="subItem.url">
+                    <NuxtLink :href="subItem.url" @click="() => handleNavClick(subItem.url)">
                       <div class="flex items-center gap-2">
                         <span>{{ subItem.title }}</span>
                         <ArrowUpRight v-if="subItem.target" class="!size-4 ml-auto" />
@@ -308,7 +320,7 @@ const items3 = [
                   '!h-9 px-2 hover:bg-muted relative',
                   route.path === item.url ? 'bg-muted' : ''
                 ]" asChild>
-                <NuxtLink :href="item.url" :target="item.target ? '_blank' : undefined">
+                <NuxtLink :href="item.url" :target="item.target ? '_blank' : undefined" @click="() => handleNavClick(item.url, item.target)">
                   <component :is="item.icon" class="!size-5 stroke-[1.5]" />
 
                   <div class="flex items-center gap-2">
@@ -369,7 +381,7 @@ const items3 = [
                     'hover:bg-muted',
                     route.path === subItem.url ? 'bg-muted' : ''
                   ]" asChild>
-                    <NuxtLink :href="subItem.url">
+                    <NuxtLink :href="subItem.url" @click="() => handleNavClick(subItem.url)">
                       <div class="flex items-center gap-2">
                         <span>{{ subItem.title }}</span>
                         <ArrowUpRight v-if="subItem.target" class="!size-4 ml-auto" />
@@ -386,7 +398,7 @@ const items3 = [
                   '!h-9 px-2 hover:bg-muted relative',
                   route.path === item.url ? 'bg-muted' : ''
                 ]" asChild>
-                <NuxtLink :href="item.url" :target="item.target ? '_blank' : undefined">
+                <NuxtLink :href="item.url" :target="item.target ? '_blank' : undefined" @click="() => handleNavClick(item.url, item.target)">
                   <component :is="item.icon" class="!size-5 stroke-[1.5]" />
 
                   <div class="flex items-center gap-2">
