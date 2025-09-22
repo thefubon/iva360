@@ -25,7 +25,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const cardClasses = computed(() => {
-  const baseClass = 'bg-slate-100 rounded-3xl flex flex-col-reverse lg:flex-row items-center gap-10 xl:gap-12 p-8 md:p-10'
+  const baseClass = 'bg-muted rounded-3xl flex flex-col-reverse lg:flex-row items-center gap-10 xl:gap-12 p-8 md:p-10'
   const reverseClass = props.isReverse ? 'lg:flex-row-reverse' : ''
   
   return `${baseClass} ${reverseClass} ${props.customClass}`

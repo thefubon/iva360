@@ -137,7 +137,7 @@ const simpleMenuItems = [
               :href="product.href"
               class="flex items-start gap-3 p-3 rounded-lg hover:bg-muted transition-colors"
             >
-              <div class="bg-slate-200 p-2 rounded-lg">
+              <div class="bg-muted p-2 rounded-lg">
                 <component :is="iconComponents[product.icon]" class="!size-6" />
               </div>
               <div class="flex-1 min-w-0">

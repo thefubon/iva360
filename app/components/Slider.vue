@@ -47,7 +47,7 @@ const components: { title: string, href: string, description: string, image: str
           :key="component.title"
           class="basis-3/5 lg:basis-3/5 xl:basis-1/3 border border-red-500 !pl-10"
         >
-          <div class="bg-slate-100 rounded-3xl relative flex flex-col overflow-hidden h-full">
+          <div class="bg-muted rounded-3xl relative flex flex-col overflow-hidden h-full">
             <a :href="component.href" class="absolute inset-0 z-10"/>
 
             <div class="space-y-4 p-4 md:p-10 h-full">

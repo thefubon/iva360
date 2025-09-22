@@ -21,7 +21,7 @@ const {
 </script>
 
 <template>
-  <div class="bg-slate-100 rounded-3xl relative flex flex-col md:hover:-translate-y-2 transition-all duration-300 overflow-hidden">
+  <div class="bg-muted rounded-3xl relative flex flex-col md:hover:-translate-y-2 transition-all duration-300 overflow-hidden">
     <a :href="href" class="absolute inset-0 z-10"/>
 
     <div class="space-y-4 p-8 md:p-10 h-full">
