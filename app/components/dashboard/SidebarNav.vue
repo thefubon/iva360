@@ -60,7 +60,7 @@ const items = [
     alert: false,
     hasSubmenu: true,
     submenu: [
-      { title: "Все файлы", url: "#/disk/all" },
+      { title: "Все файлы", url: "/dashboard/disc" },
       { title: "Мои файлы", url: "#/disk/my" },
       { title: "Есть доступ", url: "#/disk/shared" },
       { title: "Избранное", url: "#/disk/favorites" },
@@ -162,8 +162,7 @@ const items3 = [
             <!-- Элемент с подменю -->
             <template v-if="(item as any).hasSubmenu">
               <SidebarMenuButton @click="() => toggleSubmenu(item.title)" :class="[
-                  '!h-9 px-2 hover:bg-muted font-medium relative',
-                  submenuStates[item.title] ? 'bg-muted' : ''
+                  '!h-9 px-2 hover:bg-muted font-medium relative cursor-pointer'
                 ]">
                 <component :is="item.icon" class="!size-6" />
                 <span>{{ item.title }}</span>
@@ -234,8 +233,7 @@ const items3 = [
             <!-- Элемент с подменю -->
             <template v-if="(item as any).hasSubmenu">
               <SidebarMenuButton @click="() => toggleSubmenu(item.title)" :class="[
-                  '!h-9 px-2 hover:bg-muted relative',
-                  submenuStates[item.title] ? 'bg-muted' : ''
+                  '!h-9 px-2 hover:bg-muted relative'
                 ]">
                 <component :is="item.icon" class="!size-5 stroke-[1.5]" />
 
@@ -267,8 +265,8 @@ const items3 = [
                   ]" asChild>
                     <NuxtLink :href="subItem.url">
                       <div class="flex items-center gap-2">
-                        <span>{{ item.title }}</span>
-                        <ArrowUpRight v-if="item.target" class="!size-4 ml-auto" />
+                        <span>{{ subItem.title }}</span>
+                        <ArrowUpRight v-if="subItem.target" class="!size-4 ml-auto" />
                       </div>
                     </NuxtLink>
                   </SidebarMenuSubButton>
@@ -314,8 +312,7 @@ const items3 = [
             <!-- Элемент с подменю -->
             <template v-if="(item as any).hasSubmenu">
               <SidebarMenuButton @click="() => toggleSubmenu(item.title)" :class="[
-                  '!h-9 px-2 hover:bg-muted relative',
-                  submenuStates[item.title] ? 'bg-muted' : ''
+                  '!h-9 px-2 hover:bg-muted relative'
                 ]">
                 <component :is="item.icon" class="!size-6 stroke-[1.5]" />
                 <div class="flex items-center gap-2">
@@ -345,8 +342,8 @@ const items3 = [
                   ]" asChild>
                     <NuxtLink :href="subItem.url">
                       <div class="flex items-center gap-2">
-                        <span>{{ item.title }}</span>
-                        <ArrowUpRight v-if="item.target" class="!size-4 ml-auto" />
+                        <span>{{ subItem.title }}</span>
+                        <ArrowUpRight v-if="subItem.target" class="!size-4 ml-auto" />
                       </div>
                     </NuxtLink>
                   </SidebarMenuSubButton>
