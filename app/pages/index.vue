@@ -13,12 +13,14 @@ useHead({
 
 <template>
   <div class="relative">
-    <div class="absolute inset-x-0 top-10 lg:top-40 overflow-x-clip">
+    <!-- <div class="absolute inset-x-0 top-10 lg:top-40 overflow-x-clip">
       <BgLine class="w-full h-full scale-130 lg:scale-160 xl:scale-130" />
-    </div>
+    </div> -->
 
     <div class="py-6 md:py-16 space-y-16 md:space-y-24 relative">
       <BlocksHero />
+
+      <AnimationLine />
 
       <div class="space-y-8 lg:space-y-16">
         <div class="container">
