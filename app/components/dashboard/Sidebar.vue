@@ -8,14 +8,14 @@ import SidebarNav from "./SidebarNav.vue";
 <template>
   <Sidebar>
 
-    <SidebarHeader class="h-16 px-4 flex justify-center bg-background">
+    <SidebarHeader class="h-16 px-4 flex justify-center bg-background border-b border-transparent">
       <div class="flex items-center gap-x-3">
         <NuxtLink href="/dashboard" class="inline-block">
           <Logo />
         </NuxtLink>
 
         <div class="leading-[110%] text-sm font-medium">
-          Панель<br/>управления
+          Панель<br />управления
         </div>
       </div>
     </SidebarHeader>
