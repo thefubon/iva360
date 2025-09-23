@@ -202,7 +202,6 @@ const items3 = [
               <SidebarMenuButton @click="() => toggleSubmenu(item.title)" :class="[
                   '!h-9 px-2 font-medium relative cursor-pointer transition-all duration-200',
                   'hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
-                  'active:bg-sidebar-accent/80 active:scale-[0.98]',
                   !submenuStates[item.title] && isActiveInSubmenu(item) ? 'bg-sidebar-accent text-sidebar-accent-foreground' : ''
                 ]">
                 <component :is="item.icon" class="!size-6" />
