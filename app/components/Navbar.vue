@@ -30,91 +30,94 @@ const iconComponents: Record<string, any> = {
   Ai
 }
 
-const components: { title: string, href: string, description: string, icon: string }[] = [
+const components: { 
+  title: string, 
+  href: string, 
+  description: string, 
+  icon: string,
+  bannerImage: string,
+  bannerTitle: string,
+  bannerDescription: string
+}[] = [
   {
     title: "Встречи",
     href: "#",
-    description:
-      "Стабильная и защищенная коммуникация для вашей команды",
-    icon: "Meetings"
+    description: "Стабильная и защищенная коммуникация для вашей команды",
+    icon: "Meetings",
+    bannerImage: "/img/CardImageVideo.png",
+    bannerTitle: "Видеовстречи нового поколения",
+    bannerDescription: "Проводите профессиональные видеоконференции с HD-качеством, записью и интеллектуальными функциями"
   },
   {
     title: "Вебинары",
     href: "#",
     description: "Обучение и презентации, доступные каждому",
-    icon: "Webinar"
+    icon: "Webinar",
+    bannerImage: "/img/CardTwo-1.png",
+    bannerTitle: "Масштабные вебинары",
+    bannerDescription: "Организуйте обучающие мероприятия для больших аудиторий с интерактивными возможностями"
   },
   {
     title: "Онлайн-трансляции",
     href: "#",
-    description:
-      "Онлайн-события под ключ для вашего бизнеса",
-    icon: "Online"
+    description: "Онлайн-события под ключ для вашего бизнеса",
+    icon: "Online",
+    bannerImage: "/img/CardFive-1.png",
+    bannerTitle: "Профессиональные трансляции",
+    bannerDescription: "Стримьте события в реальном времени с высоким качеством и надежностью"
   },
   {
     title: "Мессенджер",
     href: "#",
-    description:
-      "Защищенное общение внутри команды и с клиентами",
-    icon: "Messenger"
+    description: "Защищенное общение внутри команды и с клиентами",
+    icon: "Messenger",
+    bannerImage: "/img/CardImageChat.png",
+    bannerTitle: "Корпоративный мессенджер",
+    bannerDescription: "Безопасное общение с шифрованием, групповыми чатами и интеграцией с рабочими процессами"
   },
   {
     title: "Календарь",
     href: "#",
-    description:
-      "Планируйте встречи и события без хаоса",
-    icon: "Calendar"
+    description: "Планируйте встречи и события без хаоса",
+    icon: "Calendar",
+    bannerImage: "/img/CardTwo-2.png",
+    bannerTitle: "Умное планирование",
+    bannerDescription: "Синхронизируйте расписания команды, создавайте встречи и получайте напоминания"
   },
   {
     title: "Почта",
     href: "#",
-    description:
-      "Корпоративная электронная почта в защищенной экосистеме",
-    icon: "Mail"
+    description: "Корпоративная электронная почта в защищенной экосистеме",
+    icon: "Mail",
+    bannerImage: "/img/CardFive-2.png",
+    bannerTitle: "Корпоративная почта",
+    bannerDescription: "Профессиональная электронная почта с защитой от спама и интеграцией с другими сервисами"
   },
   {
     title: "Диск",
     href: "#",
-    description:
-      "Удобное хранение и совместная работы с файлами.",
-    icon: "Disc"
+    description: "Удобное хранение и совместная работы с файлами.",
+    icon: "Disc",
+    bannerImage: "/img/CardTwo-3.png",
+    bannerTitle: "Облачное хранилище",
+    bannerDescription: "Безопасное хранение файлов с возможностью совместной работы и синхронизации"
   },
   {
     title: "ИИ-ассистент",
     href: "#",
-    description:
-      "Ваш ИИ-помощник для рабочих встреч и задач",
-    icon: "Ai"
-  },
-  {
-    title: "Документы",
-    href: "#",
-    description:
-      "Защищенное общение внутри команды и с клиентами",
-    icon: "Messenger"
-  },
-  {
-    title: "Календарь",
-    href: "#",
-    description:
-      "Планируйте встречи и события без хаоса",
-    icon: "Calendar"
-  },
-  {
-    title: "Почта",
-    href: "#",
-    description:
-      "Корпоративная электронная почта в защищенной экосистеме",
-    icon: "Mail"
-  },
-  {
-    title: "Диск и документы",
-    href: "#",
-    description:
-      "Удобное хранение и совместная работы с файлами.",
-    icon: "Disc"
-  },
+    description: "Ваш ИИ-помощник для рабочих встреч и задач",
+    icon: "Ai",
+    bannerImage: "/img/CardFive-3.png",
+    bannerTitle: "Искусственный интеллект",
+    bannerDescription: "Автоматизируйте рутинные задачи, получайте аналитику встреч и умные рекомендации"
+  }
 ]
+
+// Реактивное состояние для отслеживания активного компонента
+const activeComponent = ref(0) // По умолчанию показываем первый компонент
+
+// Вычисляемое свойство для получения активного компонента для баннера
+const activeBanner = computed(() => components[activeComponent.value] || components[0])
 </script>
 
 <template>
@@ -128,26 +131,60 @@ const components: { title: string, href: string, description: string, icon: stri
         </NavigationMenuTrigger>
         <NavigationMenuContent>
           <div class="container">
-            <ul class="grid w-full gap-4 py-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              <li v-for="component in components" :key="component.title">
-                <NavigationMenuLink as-child>
-                  <a :href="component.href"
-                    class="block select-none rounded-xl p-4 leading-none no-underline outline-none transition-colors h-full">
-                    <div class="flex gap-x-4">
-                      <div>
-                        <component :is="iconComponents[component.icon]" class="!size-10" />
-                      </div>
-                      <div class="space-y-1.5">
-                        <div class="font-medium leading-none">{{ component.title }}</div>
-                        <p class="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                          {{ component.description }}
-                        </p>
-                      </div>
+            <div class="flex gap-8 py-6">
+              <!-- Сетка меню слева -->
+              <div class="flex-1">
+                <ul class="grid w-full gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                  <li v-for="(component, index) in components" :key="component.title">
+                    <NavigationMenuLink as-child>
+                      <a :href="component.href"
+                        @mouseenter="activeComponent = index"
+                        class="block select-none rounded-xl p-4 leading-none no-underline outline-none transition-colors h-full hover:bg-accent hover:text-accent-foreground">
+                        <div class="flex gap-x-4">
+                          <div>
+                            <component :is="iconComponents[component.icon]" class="!size-10" />
+                          </div>
+                          <div class="space-y-1.5">
+                            <div class="font-medium leading-none">{{ component.title }}</div>
+                            <p class="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                              {{ component.description }}
+                            </p>
+                          </div>
+                        </div>
+                      </a>
+                    </NavigationMenuLink>
+                  </li>
+                </ul>
+              </div>
+              
+              <!-- Баннер справа -->
+              <div class="w-80 flex-shrink-0">
+                <div v-if="activeBanner" class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-6 h-full">
+                  <div class="space-y-4">
+                    <div class="aspect-video w-full overflow-hidden rounded-xl">
+                      <img 
+                        :src="activeBanner.bannerImage" 
+                        :alt="activeBanner.bannerTitle"
+                        class="w-full h-full object-cover transition-all duration-300"
+                      />
                     </div>
-                  </a>
-                </NavigationMenuLink>
-              </li>
-            </ul>
+                    <div class="space-y-2">
+                      <h3 class="text-xl font-semibold text-gray-900">
+                        {{ activeBanner.bannerTitle }}
+                      </h3>
+                      <p class="text-sm text-gray-600 leading-relaxed">
+                        {{ activeBanner.bannerDescription }}
+                      </p>
+                    </div>
+                    <div class="pt-2">
+                      <button class="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-4 py-2 text-sm font-medium transition-colors">
+                        Узнать больше
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </NavigationMenuContent>
       </NavigationMenuItem>
