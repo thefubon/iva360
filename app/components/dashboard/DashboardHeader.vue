@@ -8,6 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { ShoppingBag, Ticket, MonitorSmartphone } from 'lucide-vue-next';
 import { useBreakpoints } from '@vueuse/core';
+import Logo from "../Logo.vue";
 
 const breakpoints = useBreakpoints({
   mobile: 768,
@@ -18,50 +19,55 @@ const isMobile = breakpoints.smaller('mobile');
 
 <template>
   <div class="flex justify-between items-center border-b px-4 h-16 sticky top-0 z-10 bg-background">
-    <div>
-      <SidebarTrigger />
+    <div class="flex items-center gap-x-2">
+      <SidebarTrigger class="hidden md:flex justify-center items-center" />
+
+      <Logo class="md:hidden" />
     </div>
 
     <div class="flex items-center md:gap-4 gap-3">
-      <Popover>
-        <PopoverTrigger asChild>
-          <Button variant="outlineDark" :size="isMobile ? 'icon' : 'default'" class="cursor-pointer">
-            <MonitorSmartphone class="size-5 stroke-[1.5]" /> <span class="hidden md:block">Приложение</span>
-          </Button>
-        </PopoverTrigger>
+      <div class="hidden md:block">
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button variant="outlineDark" :size="isMobile ? 'icon' : 'default'" class="cursor-pointer">
+              <MonitorSmartphone class="size-5 stroke-[1.5]" /> <span class="hidden md:block">Приложение</span>
+            </Button>
+          </PopoverTrigger>
 
-        <PopoverContent side="bottom" align="end" :sideOffset="8"  :alignOffset="isMobile ? 0 : 0"
-          class="border-none shadow-2xl shadow-slate-600/15 rounded-xl w-full max-w-sm md:max-w-2xl p-0 overflow-hidden">
-          <div class="flex items-center justify-between gap-0 md:gap-6">
-            <div class="space-y-4 p-4 md:p-6 md:pr-0 flex-1">
-              <div class="space-y-1">
-                <p class="text-lg md:text-xl font-semibold">Мобильное приложение</p>
-                <p class="text-sm text-muted-foreground">Управляйте вашим мероприятием в&nbsp;любое время и&nbsp;в&nbsp;любом
-                  месте
-                </p>
+          <PopoverContent side="bottom" align="end" :sideOffset="8" :alignOffset="isMobile ? 0 : 0"
+            class="border-none shadow-2xl shadow-slate-600/15 rounded-xl w-full max-w-sm md:max-w-2xl p-0 overflow-hidden">
+            <div class="flex items-center justify-between gap-0 md:gap-6">
+              <div class="space-y-4 p-4 md:p-6 md:pr-0 flex-1">
+                <div class="space-y-1">
+                  <p class="text-lg md:text-xl font-semibold">Мобильное приложение</p>
+                  <p class="text-sm text-muted-foreground">Управляйте вашим мероприятием в&nbsp;любое время
+                    и&nbsp;в&nbsp;любом
+                    месте
+                  </p>
+                </div>
+
+                <div class="flex gap-x-2">
+                  <NuxtLink href="#" target="_blank">
+                    <NuxtImg class="h-8 md:h-9" src="/img/Apple.svg" alt="iOS" />
+                  </NuxtLink>
+
+                  <NuxtLink href="#" target="_blank">
+                    <NuxtImg class="h-8 md:h-9" src="/img/Android.svg" alt="Android" />
+                  </NuxtLink>
+                </div>
               </div>
 
-              <div class="flex gap-x-2">
-                <NuxtLink href="#" target="_blank">
-                  <NuxtImg class="h-8 md:h-9" src="/img/Apple.svg" alt="iOS" />
-                </NuxtLink>
+              <div class="hidden md:block">
+                <NuxtImg class="h-28 p-1 border border-border rounded-lg block" src="/img/QRCode.svg" alt="QR-Code" />
+              </div>
 
-                <NuxtLink href="#" target="_blank">
-                  <NuxtImg class="h-8 md:h-9" src="/img/Android.svg" alt="Android" />
-                </NuxtLink>
+              <div class="hidden md:block">
+                <NuxtImg class="h-full w-full block" src="/img/DownloadImages.png" alt="" />
               </div>
             </div>
-
-            <div class="hidden md:block">
-              <NuxtImg class="h-28 p-1 border border-border rounded-lg block" src="/img/QRCode.svg" alt="QR-Code" />
-            </div>
-
-            <div class="hidden md:block">
-              <NuxtImg class="h-full w-full block" src="/img/DownloadImages.png" alt="" />
-            </div>
-          </div>
-        </PopoverContent>
-      </Popover>
+          </PopoverContent>
+        </Popover>
+      </div>
 
       <Button variant="outlineDark" :size="isMobile ? 'icon' : 'default'" as-child>
         <NuxtLink to="#" class="flex items-center gap-2">
@@ -74,6 +80,8 @@ const isMobile = breakpoints.smaller('mobile');
       </Button>
 
       <DashboardProfileMenu />
+
+      <SidebarTrigger class="md:hidden justify-center items-center" />
     </div>
   </div>
 </template>
