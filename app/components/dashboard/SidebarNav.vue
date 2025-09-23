@@ -200,8 +200,10 @@ const items3 = [
             <!-- Элемент с подменю -->
             <template v-if="(item as any).hasSubmenu">
               <SidebarMenuButton @click="() => toggleSubmenu(item.title)" :class="[
-                  '!h-9 px-2 hover:bg-muted font-medium relative cursor-pointer',
-                  !submenuStates[item.title] && isActiveInSubmenu(item) ? 'bg-muted' : ''
+                  '!h-9 px-2 font-medium relative cursor-pointer transition-all duration-200',
+                  'hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
+                  'active:bg-sidebar-accent/80 active:scale-[0.98]',
+                  !submenuStates[item.title] && isActiveInSubmenu(item) ? 'bg-sidebar-accent text-sidebar-accent-foreground' : ''
                 ]">
                 <component :is="item.icon" class="!size-6" />
                 <span>{{ item.title }}</span>
@@ -223,8 +225,7 @@ const items3 = [
               <SidebarMenuSub v-if="submenuStates[item.title]">
                 <SidebarMenuSubItem v-for="subItem in (item as any).submenu || []" :key="subItem.title">
                   <SidebarMenuSubButton :class="[
-                    'hover:bg-muted',
-                    route.path === subItem.url ? 'bg-muted' : ''
+                    route.path === subItem.url ? 'bg-sidebar-accent text-sidebar-accent-foreground' : ''
                   ]" asChild>
                     <NuxtLink :href="subItem.url" @click="() => handleNavClick(subItem.url)">
                       <span>{{ subItem.title }}</span>
@@ -237,8 +238,10 @@ const items3 = [
             <!-- Обычный элемент без подменю -->
             <template v-else>
               <SidebarMenuButton :class="[
-                '!h-9 px-2 hover:bg-muted font-medium relative',
-                route.path === item.url ? 'bg-muted' : ''
+                '!h-9 px-2 font-medium relative transition-all duration-200',
+                'hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
+                'active:bg-sidebar-accent/80 active:scale-[0.98]',
+                route.path === item.url ? 'bg-sidebar-accent text-sidebar-accent-foreground' : ''
               ]" asChild>
                 <NuxtLink :href="item.url" :target="item.target ? '_blank' : undefined" @click="() => handleNavClick(item.url, item.target)">
                   <component :is="item.icon" class="!size-6" />
@@ -272,8 +275,10 @@ const items3 = [
             <!-- Элемент с подменю -->
             <template v-if="(item as any).hasSubmenu">
               <SidebarMenuButton @click="() => toggleSubmenu(item.title)" :class="[
-                  '!h-9 px-2 hover:bg-muted relative',
-                  !submenuStates[item.title] && isActiveInSubmenu(item) ? 'bg-muted' : ''
+                  '!h-9 px-2 relative cursor-pointer transition-all duration-200',
+                  'hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
+                  'active:bg-sidebar-accent/80 active:scale-[0.98]',
+                  !submenuStates[item.title] && isActiveInSubmenu(item) ? 'bg-sidebar-accent text-sidebar-accent-foreground' : ''
                 ]">
                 <component :is="item.icon" class="!size-5 stroke-[1.5]" />
 
@@ -300,8 +305,8 @@ const items3 = [
               <SidebarMenuSub v-if="submenuStates[item.title]">
                 <SidebarMenuSubItem v-for="subItem in (item as any).submenu || []" :key="subItem.title">
                   <SidebarMenuSubButton :class="[
-                    'hover:bg-muted',
-                    route.path === subItem.url ? 'bg-muted' : ''
+                    'hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
+                    route.path === subItem.url ? 'bg-sidebar-accent text-sidebar-accent-foreground' : ''
                   ]" asChild>
                     <NuxtLink :href="subItem.url" @click="() => handleNavClick(subItem.url)">
                       <div class="flex items-center gap-2">
@@ -317,8 +322,8 @@ const items3 = [
             <!-- Обычный элемент без подменю -->
             <template v-else>
               <SidebarMenuButton :class="[
-                  '!h-9 px-2 hover:bg-muted relative',
-                  route.path === item.url ? 'bg-muted' : ''
+                  '!h-9 px-2 relative transition-all duration-200 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent/80 active:scale-[0.98]',
+                  route.path === item.url ? 'bg-sidebar-accent text-sidebar-accent-foreground' : ''
                 ]" asChild>
                 <NuxtLink :href="item.url" :target="item.target ? '_blank' : undefined" @click="() => handleNavClick(item.url, item.target)">
                   <component :is="item.icon" class="!size-5 stroke-[1.5]" />
@@ -352,8 +357,10 @@ const items3 = [
             <!-- Элемент с подменю -->
             <template v-if="(item as any).hasSubmenu">
               <SidebarMenuButton @click="() => toggleSubmenu(item.title)" :class="[
-                  '!h-9 px-2 hover:bg-muted relative',
-                  !submenuStates[item.title] && isActiveInSubmenu(item) ? 'bg-muted' : ''
+                  '!h-9 px-2 relative cursor-pointer transition-all duration-200',
+                  'hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
+                  'active:bg-sidebar-accent/80 active:scale-[0.98]',
+                  !submenuStates[item.title] && isActiveInSubmenu(item) ? 'bg-sidebar-accent text-sidebar-accent-foreground' : ''
                 ]">
                 <component :is="item.icon" class="!size-6 stroke-[1.5]" />
                 <div class="flex items-center gap-2">
@@ -378,8 +385,8 @@ const items3 = [
               <SidebarMenuSub v-if="submenuStates[item.title]">
                 <SidebarMenuSubItem v-for="subItem in (item as any).submenu || []" :key="subItem.title">
                   <SidebarMenuSubButton :class="[
-                    'hover:bg-muted',
-                    route.path === subItem.url ? 'bg-muted' : ''
+                    'hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
+                    route.path === subItem.url ? 'bg-sidebar-accent text-sidebar-accent-foreground' : ''
                   ]" asChild>
                     <NuxtLink :href="subItem.url" @click="() => handleNavClick(subItem.url)">
                       <div class="flex items-center gap-2">
@@ -395,8 +402,8 @@ const items3 = [
             <!-- Обычный элемент без подменю -->
             <template v-else>
               <SidebarMenuButton :class="[
-                  '!h-9 px-2 hover:bg-muted relative',
-                  route.path === item.url ? 'bg-muted' : ''
+                  '!h-9 px-2 relative transition-all duration-200 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent/80 active:scale-[0.98]',
+                  route.path === item.url ? 'bg-sidebar-accent text-sidebar-accent-foreground' : ''
                 ]" asChild>
                 <NuxtLink :href="item.url" :target="item.target ? '_blank' : undefined" @click="() => handleNavClick(item.url, item.target)">
                   <component :is="item.icon" class="!size-5 stroke-[1.5]" />
