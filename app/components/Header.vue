@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
-import { Search, ShoppingBag, Menu, X, ArrowUpRight, BookMarked } from 'lucide-vue-next'
+import { Search, ShoppingBag, Menu, X, ArrowUpRight, BookMarked, MonitorSmartphone } from 'lucide-vue-next'
 import { useCart } from '@/composables/useCart'
 import Banner from './Banner.vue'
 
@@ -134,14 +134,19 @@ onUnmounted(() => {
         <div class="pr-3">
           <NuxtLink href="mailto:info@iva360.ru" class="hover:text-primary whitespace-nowrap">info@iva360.ru</NuxtLink>
         </div>
+
+        <NuxtLink href="https://help.iva360.ru" target="_blank"
+          class="text-foreground flex items-center gap-x-2 hover:text-primary">
+          <BookMarked class="size-4" />
+          <span class="line-clamp-2">База знаний</span>
+          <ArrowUpRight class="size-4" />
+        </NuxtLink>
       </div>
 
       <div>
-        <NuxtLink href="https://help.iva360.ru" target="_blank"
-          class="text-foreground flex items-center gap-x-1 hover:text-primary">
-          <BookMarked class="size-3.5" />
-          <span class="line-clamp-2 leading-3">База знаний</span>
-          <ArrowUpRight class="size-4" />
+        <NuxtLink href="#" class="text-foreground flex items-center gap-x-2 hover:text-primary">
+          <MonitorSmartphone class="size-5" />
+          <span>Приложения</span>
         </NuxtLink>
       </div>
     </div>
@@ -150,7 +155,9 @@ onUnmounted(() => {
   <header class="bg-background shadow-xl shadow-slate-600/10 sticky top-0 z-50">
     <div class="container flex justify-between items-center h-16 gap-x-4">
       <div class="flex-shrink-0">
-        <Logo />
+        <NuxtLink href="/">
+          <Logo />
+        </NuxtLink>
       </div>
 
       <!-- Поле поиска во всю ширину -->
