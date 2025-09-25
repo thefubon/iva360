@@ -18,6 +18,8 @@ import Disc from "@/components/icons/Disc.vue"
 import Webinar from "@/components/icons/Webinar.vue"
 import Ai from "@/components/icons/Ai.vue"
 
+import type { MainMenuItem } from '~/content/navigation/main-menu'
+
 // Map icon names to components
 const iconComponents: Record<string, any> = {
   Meetings,
@@ -30,94 +32,22 @@ const iconComponents: Record<string, any> = {
   Ai
 }
 
-const components: { 
-  title: string, 
-  href: string, 
-  description: string, 
-  icon: string,
-  bannerImage: string,
-  bannerTitle: string,
-  bannerDescription: string
-}[] = [
-  {
-    title: "Встречи",
-    href: "#",
-    description: "Стабильная и защищенная коммуникация для вашей команды",
-    icon: "Meetings",
-    bannerImage: "/img/CardImageVideo.png",
-    bannerTitle: "Видеовстречи нового поколения",
-    bannerDescription: "Проводите профессиональные видеоконференции с HD-качеством, записью и интеллектуальными функциями"
-  },
-  {
-    title: "Вебинары",
-    href: "#",
-    description: "Обучение и презентации, доступные каждому",
-    icon: "Webinar",
-    bannerImage: "/img/CardTwo-1.png",
-    bannerTitle: "Масштабные вебинары",
-    bannerDescription: "Организуйте обучающие мероприятия для больших аудиторий с интерактивными возможностями"
-  },
-  {
-    title: "Онлайн-трансляции",
-    href: "#",
-    description: "Онлайн-события под ключ для вашего бизнеса",
-    icon: "Online",
-    bannerImage: "/img/CardFive-1.png",
-    bannerTitle: "Профессиональные трансляции",
-    bannerDescription: "Стримьте события в реальном времени с высоким качеством и надежностью"
-  },
-  {
-    title: "Мессенджер",
-    href: "#",
-    description: "Защищенное общение внутри команды и с клиентами",
-    icon: "Messenger",
-    bannerImage: "/img/CardImageChat.png",
-    bannerTitle: "Корпоративный мессенджер",
-    bannerDescription: "Безопасное общение с шифрованием, групповыми чатами и интеграцией с рабочими процессами"
-  },
-  {
-    title: "Календарь",
-    href: "#",
-    description: "Планируйте встречи и события без хаоса",
-    icon: "Calendar",
-    bannerImage: "/img/CardTwo-2.png",
-    bannerTitle: "Умное планирование",
-    bannerDescription: "Синхронизируйте расписания команды, создавайте встречи и получайте напоминания"
-  },
-  {
-    title: "Почта",
-    href: "#",
-    description: "Корпоративная электронная почта в защищенной экосистеме",
-    icon: "Mail",
-    bannerImage: "/img/CardFive-2.png",
-    bannerTitle: "Корпоративная почта",
-    bannerDescription: "Профессиональная электронная почта с защитой от спама и интеграцией с другими сервисами"
-  },
-  {
-    title: "Диск",
-    href: "#",
-    description: "Удобное хранение и совместная работы с файлами.",
-    icon: "Disc",
-    bannerImage: "/img/CardTwo-3.png",
-    bannerTitle: "Облачное хранилище",
-    bannerDescription: "Безопасное хранение файлов с возможностью совместной работы и синхронизации"
-  },
-  {
-    title: "ИИ-ассистент",
-    href: "#",
-    description: "Ваш ИИ-помощник для рабочих встреч и задач",
-    icon: "Ai",
-    bannerImage: "/img/CardFive-3.png",
-    bannerTitle: "Искусственный интеллект",
-    bannerDescription: "Автоматизируйте рутинные задачи, получайте аналитику встреч и умные рекомендации"
-  }
-]
+// Получаем данные через API
+const { data: menuData, pending, error } = await useFetch<{
+  success: boolean
+  data: MainMenuItem[]
+  timestamp: string
+  count: number
+}>('/api/navigation/main-menu')
+
+// Реактивные данные
+const components = computed(() => menuData.value?.data || [])
 
 // Реактивное состояние для отслеживания активного компонента
 const activeComponent = ref(0) // По умолчанию показываем первый компонент
 
 // Вычисляемое свойство для получения активного компонента для баннера
-const activeBanner = computed(() => components[activeComponent.value] || components[0])
+const activeBanner = computed(() => components.value[activeComponent.value] || components.value[0])
 </script>
 
 <template>

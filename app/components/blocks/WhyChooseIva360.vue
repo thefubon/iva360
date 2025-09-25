@@ -1,38 +1,17 @@
 <script setup lang="ts">
 import HorizontalCard from '@/components/ui/horizontal-card/HorizontalCard.vue'
+import type { WhyChooseItem } from '~/content/pages/home-page'
 
-const components: { 
-  title: string, 
-  href: string, 
-  description: string, 
-  image: string, 
-  isReverse: boolean 
-}[] = [
-  {
-    title: "Одна платформа вместо&nbsp;6+ отдельных сервисов",
-    href: "#",
-    description:
-      "Все инструменты для коммуникации и организации рабочего процесса собраны в одном пространстве – без переключений и потерь данных.",
-    image: "/img/CardImageVideo.png",
-    isReverse: true
-  },
-  {
-    title: "Российская разработка, соответствующая требованиям безопасности",
-    href: "#",
-    description:
-      "Собственная инфраструктура, сертифицированные серверы и контроль доступа в соответствии с корпоративными и государственными стандартами.",
-    image: "/img/CardImageChat.png",
-    isReverse: false
-  },
-  {
-    title: "Простой интерфейс, не&nbsp;требующий обучения",
-    href: "#",
-    description:
-      "Интуитивно понятная среда – сотрудники начинают пользоваться сервисами сразу, без долгого онбординга и обучения.",
-    image: "/img/CardImageVideo.png",
-    isReverse: true
-  },
-]
+// Получаем данные через API
+const { data: whyChooseData } = await useFetch<{
+  success: boolean
+  data: WhyChooseItem[]
+  timestamp: string
+  count: number
+}>('/api/content/why-choose')
+
+// Реактивные данные
+const components = computed(() => whyChooseData.value?.data || [])
 </script>
 
 <template>

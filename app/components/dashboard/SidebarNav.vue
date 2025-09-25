@@ -17,6 +17,7 @@ import Meetings from "../icons/sidebar/Meetings.vue";
 import Messenger from "../icons/sidebar/Messenger.vue";
 import Calendar from "../icons/sidebar/Calendar.vue";
 import Disc from "../icons/sidebar/Disc.vue";
+import type { DashboardMenuItem } from '~/content/navigation/dashboard-menu'
 
 const route = useRoute()
 
@@ -50,7 +51,7 @@ const isActiveInSubmenu = (item: any) => {
 
 // Автоматически раскрываем подменю, если пользователь находится на одной из внутренних страниц
 const initializeSubmenuStates = () => {
-  const allItems = [...items, ...items2, ...items3]
+  const allItems = [...items.value, ...items2.value, ...items3.value]
   allItems.forEach(item => {
     if ((item as any).hasSubmenu && isActiveInSubmenu(item)) {
       submenuStates.value[item.title] = true
@@ -68,127 +69,49 @@ watch(() => route.path, () => {
   initializeSubmenuStates()
 })
 
-const items = [
-  {
-    title: "Встречи",
-    url: "/dashboard/meet",
-    icon: Meetings,
-    target: false,
-    alert: false,
-  },
-  {
-    title: "Мессенджер",
-    url: "https://meet.iva360.ru",
-    icon: Messenger,
-    target: true,
-    alert: false,
-  },
-  {
-    title: "Почта и Календарь",
-    url: "#",
-    icon: Calendar,
-    target: false,
-    alert: false,
-  },
-  {
-    title: "Диск и Документы",
-    url: "#",
-    icon: Disc,
-    target: false,
-    alert: false,
-    hasSubmenu: true,
-    submenu: [
-      { title: "Все файлы", url: "/dashboard/disc" },
-      { title: "Мои файлы", url: "#/disk/my" },
-      { title: "Есть доступ", url: "#/disk/shared" },
-      { title: "Избранное", url: "#/disk/favorites" },
-      { title: "Корзина", url: "#/disk/trash" },
-    ]
-  },
-];
+// Получаем данные через API
+const { data: menuData } = await useFetch<{
+  success: boolean
+  data: {
+    products: DashboardMenuItem[]
+    admin: DashboardMenuItem[]
+    support: DashboardMenuItem[]
+  }
+  timestamp: string
+  count: any
+}>('/api/navigation/dashboard-menu')
 
-const items2 = [
-  {
-    title: "Дашборд",
-    url: "/dashboard",
-    icon: LayoutPanelLeft,
-    target: false,
-    alert: false,
-  },
-  {
-    title: "Пользователи",
-    url: "/dashboard/users",
-    icon: Users,
-    target: false,
-    alert: true,
-  },
-  {
-    title: "Моя компания",
-    url: "#",
-    icon: BriefcaseBusiness,
-    target: false,
-    alert: false,
-  },
-  {
-    title: "Мои продукты",
-    url: "#",
-    icon: Blocks,
-    target: false,
-    alert: false,
-  },
-  {
-    title: "Управление API",
-    url: "#",
-    icon: FileCode2,
-    target: false,
-    alert: false,
-  },
-  {
-    title: "Статистика",
-    url: "#",
-    icon: ChartBarStacked,
-    target: false,
-    alert: false,
-  },
-  {
-    title: "Тарифы",
-    url: "#",
-    icon: CreditCard,
-    target: false,
-    alert: false,
-  },
-];
+// Маппинг для иконок
+const iconMap: Record<string, any> = {
+  Meetings,
+  Messenger,
+  Calendar,
+  Disc,
+  LayoutPanelLeft,
+  Users,
+  BriefcaseBusiness,
+  Blocks,
+  FileCode2,
+  ChartBarStacked,
+  CreditCard,
+  MessageCircleQuestionMark,
+  BookMarked,
+  ListTodo,
+  SquareLibrary,
+}
 
-const items3 = [
-  {
-    title: "Подсказки",
-    url: "#",
-    icon: MessageCircleQuestionMark,
-    target: false,
-    alert: false,
-  },
-  {
-    title: "База знаний",
-    url: "https://help.iva360.ru",
-    icon: BookMarked,
-    target: true,
-    alert: false,
-  },
-  {
-    title: "Дорожная карта",
-    url: "#",
-    icon: ListTodo,
-    target: false,
-    alert: false,
-  },
-  {
-    title: "Документы платформы",
-    url: "#",
-    icon: SquareLibrary,
-    target: false,
-    alert: false,
-  },
-];
+// Функция для маппинга иконок
+const mapIconsToComponents = (items: DashboardMenuItem[]) => {
+  return items.map(item => ({
+    ...item,
+    icon: iconMap[item.icon] || item.icon
+  }))
+}
+
+// Реактивные данные меню
+const items = computed(() => mapIconsToComponents(menuData.value?.data?.products || []))
+const items2 = computed(() => mapIconsToComponents(menuData.value?.data?.admin || []))
+const items3 = computed(() => mapIconsToComponents(menuData.value?.data?.support || []))
 </script>
 
 <template>

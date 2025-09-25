@@ -1,29 +1,17 @@
 <script setup lang="ts">
 import { FeatureCard } from '@/components/ui/feature-card'
+import type { AdditionalFeatureItem } from '~/content/pages/home-page'
 
-const components: { title: string, href: string, description: string, image: string }[] = [
-  {
-    title: "Искусственный интеллект внутри",
-    href: "#",
-    description:
-      "Автоматические протоколы встреч, напоминания и поддержка задач – прямо во время работы.",
-    image: "/img/CardFive-1.png"
-  },
-  {
-    title: "Стабильная работа даже при слабом интернете",
-    href: "#",
-    description:
-      "Оптимизированные технологии передачи данных обеспечивают устойчивую видеосвязь даже в удаленных регионах.",
-    image: "/img/CardFive-2.png"
-  },
-  {
-    title: "Совместимость с профессиональным видеооборудованием",
-    href: "#",
-    description:
-      "Поддержка современных стандартов связи и интеграция с камерами и переговорными – для бизнеса любого масштаба.",
-    image: "/img/CardFive-3.png"
-  },
-]
+// Получаем данные через API
+const { data: featuresData } = await useFetch<{
+  success: boolean
+  data: AdditionalFeatureItem[]
+  timestamp: string
+  count: number
+}>('/api/content/additional-features')
+
+// Реактивные данные
+const components = computed(() => featuresData.value?.data || [])
 </script>
 
 <template>

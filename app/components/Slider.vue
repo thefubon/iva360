@@ -7,29 +7,18 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel'
 
-const components: { title: string, href: string, description: string, image: string }[] = [
-  {
-    title: "Бизнес и корпорации",
-    href: "#",
-    description:
-      "Надёжная видеосвязь, корпоративный чат и AI-ассистент  в единой защищённой платформе.",
-    image: "/img/CardTwo-1.png"
-  },
-  {
-    title: "Образовательные учреждения",
-    href: "#",
-    description:
-      "Интерактивные вебинары, онлайн-лекции и сопровождение студентов — современная цифровая среда для обучения.",
-    image: "/img/CardTwo-2.png"
-  },
-  {
-    title: "Госучреждения",
-    href: "#",
-    description:
-      "Безопасная коммуникация и совместная работа — на российских серверах и в соответствии с требованиями по защите данных.",
-    image: "/img/CardTwo-3.png"
-  },
-]
+import type { TargetAudienceItem } from '~/content/pages/home-page'
+
+// Получаем данные через API
+const { data: audienceData } = await useFetch<{
+  success: boolean
+  data: TargetAudienceItem[]
+  timestamp: string
+  count: number
+}>('/api/content/target-audience')
+
+// Реактивные данные
+const components = computed(() => audienceData.value?.data || [])
 </script>
 
 <template>

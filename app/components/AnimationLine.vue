@@ -28,7 +28,7 @@ let scrollTriggerInstance = null
 
 onMounted(async () => {
   // Динамически импортируем ScrollTrigger только на клиенте
-  if (process.client) {
+  if (import.meta.client) {
     const { ScrollTrigger } = await import('gsap/ScrollTrigger')
     gsap.registerPlugin(ScrollTrigger)
     

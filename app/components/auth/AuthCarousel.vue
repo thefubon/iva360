@@ -3,33 +3,18 @@ import { Button } from "@/components/ui/button"
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
 import { ChevronLeft, ChevronRight } from "lucide-vue-next"
 
+import type { AuthCarouselItem } from '~/content/auth/auth-carousel'
+
+// Получаем данные через API
+const { data: carouselData } = await useFetch<{
+  success: boolean
+  data: AuthCarouselItem[]
+  timestamp: string
+  count: number
+}>('/api/auth/carousel')
+
 // Данные для слайдера изображений
-const carouselImages = [
-  { 
-    src: '/img/placeholder.svg', 
-    alt: 'IVA360 Dashboard Preview',
-    title: 'Умная панель управления',
-    description: 'Интуитивный интерфейс для управления всеми процессами вашего бизнеса в одном месте'
-  },
-  { 
-    src: '/img/placeholder.svg', 
-    alt: 'Chat Interface',
-    title: 'Мгновенное общение',
-    description: 'Встроенная система чатов для быстрой коммуникации с командой и клиентами'
-  },
-  { 
-    src: '/img/placeholder.svg', 
-    alt: 'Video Conference',
-    title: 'Видеоконференции',
-    description: 'HD качество видеосвязи для эффективных онлайн-встреч и презентаций'
-  },
-  { 
-    src: '/img/placeholder.svg', 
-    alt: 'Video Conference',
-    title: 'Мощные возможности',
-    description: 'Расширенная аналитика и инструменты для роста вашего бизнеса'
-  },
-]
+const carouselImages = computed(() => carouselData.value?.data || [])
 
 // Текущий активный слайд
 const currentSlide = ref(0)
