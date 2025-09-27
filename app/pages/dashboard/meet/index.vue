@@ -17,6 +17,7 @@ useHead({
 
     <div class="bg-background rounded-lg p-6 border">
       Функционал еще не заехал!
+      <div class="h-[300vh]" />
     </div>
   </div>
 </template> 

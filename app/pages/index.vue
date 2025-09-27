@@ -20,8 +20,6 @@ useHead({
     <div class="py-6 md:py-16 space-y-16 md:space-y-24 relative">
       <BlocksHero />
 
-      <AnimationLine />
-
       <div class="space-y-8 lg:space-y-16">
         <div class="container">
           <h2>Все продукты<br>в одном приложении</h2>
