@@ -169,9 +169,10 @@ const finalTotalPrice = computed(() => {
           </button>
         </div>
 
+        <div class="h-[500px] border border-primary rounded-2xl border-dashed p-4">Контент</div>
       </div>
 
-      <DialogFooter class="p-4 sticky bottom-0 z-20 border-t border-border">
+      <DialogFooter class="p-4 sticky bottom-0 z-20 border-t border-border bg-background rounded-b-2xl">
         <div class="flex items-center justify-between gap-4 w-full">
           <!-- Блок с ценой -->
           <div class="flex flex-col">
